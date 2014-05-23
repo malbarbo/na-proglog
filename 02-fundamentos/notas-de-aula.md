@@ -326,7 +326,7 @@ quadrado(X, Y) :-
 
 Para executar os utilize o predicado `run_tests`
 
-```prolog
+```text
 ?- run_tests.
 % PL-Unit: quadrado .. done
 % All 2 tests passed

@@ -606,7 +606,7 @@ coloracao(A, B, C, D, E) :-
 ### Exemplo 1.2
 
 ```prolog
-%% cordif(A?, B?) is nondet
+%% cor\_dif(A?, B?) is nondet
 %
 %  Verdeiro se A é uma cor diferente da cor B.
 
