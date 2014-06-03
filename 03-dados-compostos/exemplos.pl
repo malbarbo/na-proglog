@@ -4,7 +4,7 @@
 %
 %  Verdadeiro se a quantidade de elementos na lista XS é T.
 %
-%  Veja o predicado pré-defininido length/2.
+%  Veja o predicado pré-definido length/2.
 
 :- begin_tests(tamanho).
 
@@ -151,31 +151,31 @@ membrochk(X, [_ | XS]) :-
 
 % Exemplo 3.5
 
-%% concatena(?X, ?Y, ?Z) is nondet
+%% concatenacao(?X, ?Y, ?Z) is nondet
 %
-%  Verdadeiro se Z é Y concatenado com Z.
+%  Verdadeiro se Z é a concatenação de X com Y.
 %
-%  Veja o predicado pré-definido append/3
+%  Veja o predicado pré-definido append/3.
 
-:- begin_tests(concatena).
+:- begin_tests(concatenacao).
 
-test(t0) :- concatena([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
-test(t1, [nondet, XS == [1, 2, 4]]) :- concatena(XS, [3], [1, 2, 4, 3]).
-test(t2, YS == [4, 3]) :- concatena([1, 2], YS, [1, 2, 4, 3]).
+test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
+test(t1, [nondet, XS == [1, 2, 4]]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
+test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
 test(t3, all(p(XS, YS) == [
          p([], [1, 2, 3]),
          p([1], [2, 3]),
          p([1, 2], [3]),
          p([1, 2, 3], [])])) :-
-    concatena(XS, YS, [1, 2, 3]).
+    concatenacao(XS, YS, [1, 2, 3]).
 
 
-:- end_tests(concatena).
+:- end_tests(concatenacao).
 
-concatena([], YS, YS).
+concatenacao([], YS, YS).
 
-concatena([X | XS], YS, [X | XSYS]) :-
-    concatena(XS, YS, XSYS).
+concatenacao([X | XS], YS, [X | XSYS]) :-
+    concatenacao(XS, YS, XSYS).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,7 +230,7 @@ tamanho_acc(L, T) :-
 
 %% tamanho(+XS, +Acc, ?T) is semidet
 %
-%  Verdadeiro se a quantidade de elemetos de XS + Acc é T.
+%  Verdadeiro se a quantidade de elementos de XS + Acc é T.
 
 tamanho_acc([], Acc, Acc).
 
@@ -247,7 +247,7 @@ tamanho_acc([_|R], Acc, T) :-
 %
 %  Verdadeiro se o reverso da lista A é R.
 %
-%  Veja o predicado pré-definido reverse/2
+%  Veja o predicado pré-definido reverse/2.
 
 :- begin_tests(reverso).
 
@@ -293,3 +293,27 @@ reverso_acc([], Acc, Acc).
 
 reverso_acc([A|As], Acc, R) :-
     reverso_acc(As, [A|Acc], R).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Exemplo 3.10
+
+%% concatenacao_dif(?X, ?Y, ?Z) is nondet
+%
+%  Verdadeiro se Z é a concatenação de X com Y. Este predicado é diferente de
+%  concatenacao/3 porque os argumentos devem ser diferença de lista.
+
+:- begin_tests(concatenacao_dif).
+
+test(t0, r(X, Z) = r([4, 5 | Y], [1, 2, 3, 4, 5 | D])) :-
+    concatenacao_dif([1, 2, 3 | X]-X, [4, 5 | Y]-Y, Z-D).
+
+test(t0, r(A, B) = r([1, 2, 3 | B], [4, 5 | Y])) :-
+    concatenacao_dif(A-B, [4, 5 | Y]-Y, [1, 2, 3, 4, 5 | D]-D).
+
+:- end_tests(concatenacao_dif).
+
+concatenacao_dif(A-B, B-C, A-C).
+
+% vim: set ft=prolog spell spelllang=pt_br:

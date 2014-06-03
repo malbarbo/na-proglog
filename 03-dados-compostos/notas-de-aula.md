@@ -737,38 +737,38 @@ L = [_G67, _G69, X|_G279] ;
 
 ### Exemplo 3.5
 
-Defina um predicado `concatena(XS, YS, ZS)` que é verdadeiro se `ZS` é `XS`
-concatenado com `YS`. (Veja o predicado pré-definido `append/3`)
+Defina um predicado `concatenacao(XS, YS, ZS)` que é verdadeiro se `ZS`
+é a concatenação de `XS` com `YS`. (Veja o predicado pré-definido `append/3`)
 
 ### Exemplo 3.5
 
 ```prolog
-% concatena(?XS, ?YS, ?ZS) is nondet
+% concatenacao(?XS, ?YS, ?ZS) is nondet
 %
-% Verdadeiro se ZS é YS concatenado com ZS.
+% Verdadeiro se ZS é a concatenação de XS com YS.
 
-:- begin_tests(concatena).
+:- begin_tests(concatenacao).
 
-test(t0) :- concatena([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
-test(t1, XS == [1, 2, 4]) :- concatena(XS, [3], [1, 2, 4, 3]).
-test(t2, YS == [4, 3]) :- concatena([1, 2], YS, [1, 2, 4, 3]).
+test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
+test(t1, XS == [1, 2, 4]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
+test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
 test(t3, all(p(XS, YS) == [
          p([], [1, 2, 3]),
          p([1], [2, 3]),
          p([1, 2], [3]),
          p([1, 2, 3], [])])) :-
-    concatena(XS, YS, [1, 2, 3]).
+    concatenacao(XS, YS, [1, 2, 3]).
 
-:- end_tests(concatena).
+:- end_tests(concatenacao).
 ```
 
 ### Exemplo 3.5
 
 ```prolog
-concatena([], YS, YS).
+concatenacao([], YS, YS).
 
-concatena([X | XS], YS, [X | XSYS]) :-
-    concatena(XS, YS, XSYS).
+concatenacao([X | XS], YS, [X | XSYS]) :-
+    concatenacao(XS, YS, XSYS).
 ```
 
 ### Exemplo 3.5
@@ -776,8 +776,8 @@ concatena([X | XS], YS, [X | XSYS]) :-
 Resultado dos testes
 
 ```
-?- run_tests(concatena).
-% PL-Unit: concatena .
+?- run_tests(concatenacao).
+% PL-Unit: concatenacao .
 Warning: /home/malbarbo/desktop/ex_dados.pl:46:
     PL-Unit: Test t1: Test succeeded with choicepoint
 .. done
@@ -787,7 +787,7 @@ true.
 
 -   Porque?
 
-    -   Na consulta `concatena(XS, [3], [1, 2, 4, 3])` são testadas as duas
+    -   Na consulta `concatenacao(XS, [3], [1, 2, 4, 3])` são testadas as duas
         cláusulas, gerando a escolha
 
 -   Solução
@@ -800,23 +800,23 @@ true.
 ### Exemplo 3.5
 
 ```prolog
-% concatena(?XS, ?YS, ?ZS) is nondet
+% concatenacao(?XS, ?YS, ?ZS) is nondet
 %
-% Verdadeiro se ZS é YS concatenado com ZS.
+% Verdadeiro se ZS é a concatenação de XS com YS.
 
-:- begin_tests(concatena).
+:- begin_tests(concatenacao).
 
-test(t0) :- concatena([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
-test(t1, [nondet, XS == [1, 2, 4]]) :- concatena(XS, [3], [1, 2, 4, 3]).
-test(t2, YS == [4, 3]) :- concatena([1, 2], YS, [1, 2, 4, 3]).
+test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
+test(t1, [nondet, XS == [1, 2, 4]]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
+test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
 test(t3, all(p(XS, YS) == [
          p([], [1, 2, 3]),
          p([1], [2, 3]),
          p([1, 2], [3]),
          p([1, 2, 3], [])])) :-
-    concatena(XS, YS, [1, 2, 3]).
+    concatenacao(XS, YS, [1, 2, 3]).
 
-:- end_tests(concatena).
+:- end_tests(concatenacao).
 ```
 
 # Listas aninhadas
@@ -928,8 +928,6 @@ descendente mais afastado. Uma árvore com um único nó tem altura 0.
     diferenças de listas
 
 
-## Acumuladores
-
 ### Acumuladores
 
 -   Exemplo 3.8, tamanho de uma lista.
@@ -937,10 +935,22 @@ descendente mais afastado. Uma árvore com um único nó tem altura 0.
 -   Exemplo 3.9, reverso de uma lista.
 
 
-## Diferenças de listas
-
 ### Diferenças de listas
 
 -   Exemplo 3.10, concatenação de listas.
+
+
+# Referências
+
+### Referências
+
+-   Capítulo 3 e sessão 7.5 do livro Programming in Prolog
+
+-   Capítulos
+    [4](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch4) e
+    [6](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch6)
+    do livro
+    [Learn Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
+
 
 <!-- vim: set spell spelllang=pt_br: !-->
