@@ -1,5 +1,3 @@
-:- use_module(library(plunit)).
-
 % Exemplo 2.1
 
 %% quadrado(+X, ?Y) is semidet
