@@ -48,8 +48,8 @@ template: slide.tex
     mulher(marcia).
     mulher(elsa).
 
-    mulher(joao).
-    mulher(paulo).
+    homem(joao).
+    homem(paulo).
     ```
 
 ### Retrocesso
