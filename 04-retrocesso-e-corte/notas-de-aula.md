@@ -256,7 +256,7 @@ Se `N` não estiver instanciado, o predicado deve gerar números naturais.
 
     ```prolog
     a :- b, c.
-    a :- \+b, c, d.
+    a :- \+b, d.
     ```
 
 -   O Prolog pode tentar satisfazer a meta `b` duas vezes. Isto pode ser
