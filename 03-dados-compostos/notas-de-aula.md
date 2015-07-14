@@ -38,7 +38,7 @@ template: slide.tex
 
     ```prolog
     %% lista(+X) is semidet
-    % 
+    %
     %  Verdadeiro se X é uma lista.
 
     lista(vazia).
@@ -183,7 +183,7 @@ template: slide.tex
     ?- [A, B, C] = [7, 3, 4].
     A = 7,
     B = 3,
-    C = 4.    
+    C = 4.
     ```
 
 
@@ -246,7 +246,7 @@ tamanho([_ | XS], T) :-
     tamanho(XS, T0),
     T is T0 + 1.
 
-tamanho([], 0). 
+tamanho([], 0).
 ```
 
 ### Exemplo 3.1
@@ -262,7 +262,7 @@ tamanho([_ | XS], T) :-
     T is T0 + 1.
 
 % O tamanho da lista [] é 0.
-tamanho([], 0). 
+tamanho([], 0).
 ```
 
 Resultado dos testes
@@ -335,7 +335,7 @@ Resultado dos testes
 
 ```text
 ?- run_tests(kesimo).
-% PL-Unit: kesimo 
+% PL-Unit: kesimo
 Warning: /home/malbarbo/desktop/x.pl:39:
     PL-Unit: Test t0: Test succeeded with choicepoint
 Warning: /home/malbarbo/desktop/x.pl:40:
@@ -400,7 +400,7 @@ true.
         tamanho(XS, T0),
         T is T0 + 1.
 
-    tamanho([], 0). 
+    tamanho([], 0).
     ```
 
 -   Observamos que o primeiro argumento da primeira cláusula é a estrutura
@@ -591,7 +591,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
         tamanho(XS, T0),
         T is T0 + 1.
 
-    tamanho([], 0). 
+    tamanho([], 0).
     ```
 
 -   O que acontece na consulta?
@@ -894,7 +894,7 @@ super_soma([X | XS], S) :-
     -   `nil`; ou
 
     -   `t(X, L, R)` onde `X` é o elemento raiz e `L` é a sub árvore a esquerda
-        e `R` é a sub árvore a direita 
+        e `R` é a sub árvore a direita
 
 - Template
 
