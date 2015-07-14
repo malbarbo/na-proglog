@@ -1,7 +1,7 @@
 %% Exemplo 1.1
 
 % Circuito exemplo
-% 
+%
 % A ---|\  X
 %      | >o----+
 % B -+-|/      |

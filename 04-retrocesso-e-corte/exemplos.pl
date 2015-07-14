@@ -50,7 +50,7 @@ permutacao(L, [X|T]) :-
 % Exemplo 4.3
 
 %% natural(-N) is nondet
-%  
+%
 %  Verdadeiro se N é um número natural. Este predicado é um gerador. A cada fez
 %  que ele é satisfeito ele gera um número.
 %
@@ -95,7 +95,7 @@ test(t3, all(N == [0, 1, 2, 3])) :-
 :- end_tests(naturalx).
 
 naturalx(N) :-
-    nonvar(N), !,    
+    nonvar(N), !,
     integer(N), % predicado pré-definido que é verdadeiro se N é inteiro.
     N > 0.
 
@@ -189,7 +189,7 @@ primeiro_primo(N, P) :-
 
 
 %% primo(+X) is semidet
-%  
+%
 %  Verdadeiro se X é um número primo.
 
 primo(X) :-
@@ -317,7 +317,7 @@ subcaminho(C, T, Sub) :-
 %  Verdadeiro se C é um caminho em G.
 caminho(G, [U]) :-
     vertice(G, U), !.
-    
+
 caminho(G, [U, V | R]) :-
     aresta(G, U, V), !,
     caminho(G, [V | R]).

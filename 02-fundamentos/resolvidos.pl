@@ -42,7 +42,7 @@ triangulo(A, B, C, escaleno) :-
     B =\= C.
 
 %% triangulo(+A, +B, +C) is semidet
-%  
+%
 %  Verdadeiro se se A, B e C formam um triângulo.
 
 triangulo(A, B, C) :-
@@ -91,7 +91,7 @@ area(retangulo(H, L), A) :-
 % Exercício 2.9
 
 %% soma_quadrado_maiores(+A, +B, +C, ?S)
-%  
+%
 %  Verdadeiro se S é a soma dos quadrados dos dois maiores números entre
 %  A, B e C.
 
@@ -121,7 +121,7 @@ soma_quadrado(A, B, S) :-
 
 
 %% maximo(+A, +B, ?C) is semidet
-%  
+%
 %  Verdadeiro se C é o valor máximo entre A e B.
 
 maximo(A, B, A) :-
@@ -136,7 +136,7 @@ maximo(A, B, B) :-
 % Exercício 2.10
 
 %% primo(+X)
-%  
+%
 %  Verdadeiro se X é um número primo.
 
 :- begin_tests(primo).

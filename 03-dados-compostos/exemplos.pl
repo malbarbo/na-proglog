@@ -243,7 +243,7 @@ tamanho_acc([_|R], Acc, T) :-
 
 % Exemplo 3.9
 
-%% reverso(+A, ?R) is nondet 
+%% reverso(+A, ?R) is nondet
 %
 %  Verdadeiro se o reverso da lista A é R.
 %
