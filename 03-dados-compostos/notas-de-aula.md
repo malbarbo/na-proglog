@@ -23,14 +23,14 @@ template: slide.tex
 -   Exemplos
 
     ```prolog
-    ?- L0 = vazio, L1 = cons(3, vazio), L2 = cons(3, cons(4, vazio)).
+    ?- L0 = vazia, L1 = cons(3, vazia), L2 = cons(3, cons(4, vazia)).
     L0 = vazia,
     L1 = cons(3, vazia),
     L2 = cons(3, cons(4, vazia)).
     ```
 
 -   A lista `L0` é vazia, a lista `L1` contém apenas o elemento 3 e a lista
-    `L2` contém os elemento 3 e 4
+    `L2` contém os elementos 3 e 4
 
 ### Listas
 
@@ -63,16 +63,17 @@ template: slide.tex
     false.
     ```
 
--   Não existe nada diferente do vimos anteriormente. O "truque" é que estamos
-    usando estruturas recursivas
+-   Não existe nada diferente do que vimos anteriormente. O "truque" é que estamos usando estruturas recursivas
 
 ### Listas
 
 -   O Prolog já "entende" uma definição de lista semelhante a nossa
 
-    -   `[]` ao invés de `vazia`
+    -   `[]` em vez de `vazia`
 
-    -   `'.'` ao invés de `cons`
+    -   `'.'` em vez de `cons`
+
+        -   Obs.: o SWI-Prolog 7 utiliza o construtor `'[|]'` em vez de `'.'`
 
 ### Listas
 
@@ -368,7 +369,7 @@ true.
 
 ### Escrevendo predicados (semi) determinísticos
 
--   Porque o predicado `tamanho` não teve este problema?
+-   Por que o predicado `tamanho` não teve este problema?
 
     -   Teoricamente o predicado `tamanho` também deveria apresentar este
         problema, isto porque após a consulta ser satisfeita unificando com
@@ -381,14 +382,14 @@ true.
         "compatível" com a consulta
 
         -   Se o primeiro argumento da consulta é uma constante, ele tenta as
-            cláusula que o primeiro argumento seja a mesma constante da
+            cláusulas que o primeiro argumento seja a mesma constante da
             consulta ou uma variável
 
         -   Se o primeiro argumento da consulta é uma variável, ele tenta todas
             as cláusulas
 
         -   Se o primeiro argumento da consulta é uma estrutura, ele tenta as
-            cláusula que o primeiro argumento seja uma estrutura com o mesmo
+            cláusulas que o primeiro argumento seja uma estrutura com o mesmo
             functor da estrutura da consulta ou uma variável
 
 ### Escrevendo predicados (semi) determinísticos
@@ -483,7 +484,6 @@ test(t2) :- comprimida([3, 3, 3, 4, 4, 3, 5, 5, 5], [3, 4, 3, 5]).
 :- end_tests(comprimida).
 ```
 
-
 ### Exemplo 3.3
 
 ```prolog
@@ -502,7 +502,6 @@ comprimida([X | XS], [X | YS]) :-
 
 Usamos o template para listas. Caso a lista não seja vazia, existem duas
 alternativas, o elemento é repetido ou não é repetido
-
 
 ### Exemplo 3.3
 
@@ -582,7 +581,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
 
 # Exemplos
 
-### Variáveis instanciadas vs não instanciadas
+### Variáveis instanciadas _vs_ não instanciadas
 
 -   Vamos voltar ao predicado `tamanho`
 
@@ -613,7 +612,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
 
     -   Usamos os predicados pré-definidos `nonvar` e `var`, respectivamente
 
-### Variáveis instanciadas vs não instanciadas
+### Variáveis instanciadas _vs_ não instanciadas
 
 -   Nova versão
 
@@ -632,7 +631,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
         tamanho(XS, T0).
     ```
 
-### Variáveis instanciadas vs não instanciadas
+### Variáveis instanciadas _vs_ não instanciadas
 
 -   O que acontece nas consultas?
 
@@ -650,7 +649,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
 
 Defina um predicado `membro(X, XS)` que é verdadeiro se `X` é membro de `XS`.
 Defina uma versão que seja não determinística e outra que seja semi
-determinística.  (Veja os predicados pré-definido `member/2` e `memberchk/2`)
+determinística. (Veja os predicados pré-definido `member/2` e `memberchk/2`)
 
 ### Exemplo 3.4
 
@@ -698,9 +697,9 @@ L = [_G67, _G69, X|_G279] ;
 
 -   O predicado `membro` é não determinístico
 
--   Para testar predicados não determinísticos usados o argumento `[nondet]`
+-   Para testar predicados não determinísticos usamos o argumento `[nondet]`
 
--   Para testar todas as respostas de um predicado não determinísticos usamos
+-   Para testar todas as respostas de um predicado não determinístico usamos
     o termo `all`
 
 -   Como definir uma versão semi determinística deste predicado?
@@ -785,7 +784,7 @@ Warning: /home/malbarbo/desktop/ex_dados.pl:46:
 true.
 ```
 
--   Porque?
+-   Por quê?
 
     -   Na consulta `concatenacao(XS, [3], [1, 2, 4, 3])` são testadas as duas
         cláusulas, gerando a escolha
@@ -921,7 +920,7 @@ descendente mais afastado. Uma árvore com um único nó tem altura 0.
 -   Assim como o Racket, o Prolog faz otimizações das chamadas recursivas em
     cauda
 
--   As vezes é necessário utilizar acumuladores para transformar uma recursão em
+-   Às vezes é necessário utilizar acumuladores para transformar uma recursão em
     recursão em cauda
 
 -   Uma outra técnica de otimização comum em Prolog é a utilização de
@@ -938,6 +937,8 @@ descendente mais afastado. Uma árvore com um único nó tem altura 0.
 ### Diferenças de listas
 
 -   Exemplo 3.10, concatenação de listas.
+
+-   É a representação utilizada pelo Prolog para Gramáticas de Cláusulas Definidas (GCD).
 
 
 # Referências
