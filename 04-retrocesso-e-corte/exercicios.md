@@ -118,7 +118,7 @@ template: exercicios.tex
 
 # Referências
 
--   [lpn]. [Lear Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
+-   [lpn]. [Learn Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
 
 -   [pip]. Programming in Prolog.
 

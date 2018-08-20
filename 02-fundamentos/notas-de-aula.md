@@ -14,6 +14,18 @@ template: slide.tex
 
 -   Uma **cláusula** é um fato ou uma regra
 
+    ```prolog
+    hacker(elliot).
+    hacker(darlene).
+    hacker(mrRobot) :- hacker(elliot).
+    fsociety(X) :- hacker(X).
+    ```
+
+-   Essa base de conhecimento possui:
+
+    -   2 predicados (hacker e darlene)
+
+    -   4 cláusulas (2 fatos e 2 regras)
 
 ## Constantes, variáveis e estruturas
 
@@ -41,7 +53,8 @@ template: slide.tex
 
     -   Dígitos: `0 .. 9`
 
-    -   Símbolos: `+ - * /\ ~ ^ < > : . ? @ # $`
+    -   Símbolos: `+ - * / \ ~ ^ < > : . ? @ # $`
+
     <!-- TODO: o símbolo \ não fica bom no latex !-->
 
 
@@ -49,7 +62,7 @@ template: slide.tex
 
 -   Constantes nomeiam objetos ou relações específicas
 
--   Átomos começam com letra minúscula ou símbolo, ou entre apóstrofos '
+-   Átomos começam com letra minúscula ou símbolo, ou entre apóstrofos `'`
 
     ```prolog
     casa
@@ -116,7 +129,7 @@ template: slide.tex
 
 ### Operadores
 
--   As vezes é conveniente escrever functors como operadores
+-   Às vezes é conveniente escrever functors como operadores
 
 -   `x + y` ao invés de `+(x, y)`
 
@@ -126,7 +139,7 @@ template: slide.tex
 -   O Prolog usa regras de precedência e associatividade semelhantes a de outras
     linguagens
 
-    -   `2 + 4 * 3` é o mesmo que `+(2, \*(4, 3))`
+    -   `2 + 4 * 3` é o mesmo que `+(2, *(4, 3))`
 
     -   `8/2/2` é o mesmo que `/(/(8,2), 2)`
 
@@ -184,8 +197,8 @@ template: slide.tex
 -   Dois termos constantes unificam se eles são iguais \pause
 
 -   Um termo que é uma variável não instanciada unifica com qualquer outro
-    termo. No caso de duas variáveis não instanciadas é criado uma
-    co-referência, neste caso, quando uma das variáveis é instanciada, a outra
+    termo. No caso de duas variáveis não instanciadas é criada uma
+    correferência: quando uma das variáveis é instanciada, a outra
     também é \pause
 
 -   Duas estruturas unificam se \pause
@@ -195,7 +208,7 @@ template: slide.tex
     -   Todos os argumentos correspondentes unificam (observe que a definição
         é recursiva)
 
-    -   A instanciação das variáveis são compatíveis
+    -   As instanciações das variáveis são compatíveis
 
 ### Unificação
 
@@ -249,7 +262,7 @@ template: slide.tex
 -   O operador `is` pode ser usado para instanciar uma variável com o resultado
     de uma expressão aritmética
 
--   O termo da direita é interpretado como um expressão aritmética e o resultado
+-   O termo da direita é interpretado como uma expressão aritmética e o resultado
     da avaliação da expressão é unificado com o termo da esquerda
 
     ```prolog
@@ -324,7 +337,7 @@ quadrado(X, Y) :-
     Y is X * X.
 ```
 
-Para executar os utilize o predicado `run_tests`
+Para executar os testes utilize o predicado `run_tests`
 
 ```text
 ?- run_tests.

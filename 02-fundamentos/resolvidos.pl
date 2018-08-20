@@ -167,7 +167,7 @@ primo(X) :-
 % X é o menor divisor de X començando com X
 menor_divisor(X, X, X) :- !.
 
-% D é o menor divisor de X començando com D se X é divisível por D.
+% D é o menor divisor de X começando com D se X é divisível por D.
 menor_divisor(X, D, D) :-
     divisivel(X, D), !.
 

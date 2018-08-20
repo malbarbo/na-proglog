@@ -22,7 +22,7 @@ template: slide.tex
         desfaz as unificações para esta meta e tenta satisfazer $m_1$ novamente obtendo
         um (novo) conjunto de unificações
 
-    -   A meta $m_2$ não é satisfeita. Nesta casso o Prolog retrocede para a $m_1$,
+    -   A meta $m_2$ não é satisfeita. Neste caso o Prolog retrocede para a $m_1$,
         desfaz as unificações para esta meta e tenta satisfazer $m_1$ novamente
         obtendo um (novo) conjunto de unificações
 
@@ -76,7 +76,7 @@ Y = paulo.
 ### Retrocesso
 
 -   A maioria dos predicados pré-definidos do Prolog quando usados em metas com
-    (várias) variáveis podem produzir mais do que uma reposta
+    (várias) variáveis podem produzir mais do que uma resposta
 
     ```prolog
     ?- member(3, [1, 3, 2, 4]).
@@ -170,8 +170,8 @@ false.
 
 ### Exemplo 4.1
 
-Defina um predicado `selecionado(?N, ?L, ?R)` que é verdadeiro a lista `R`
-é a como a lista `L` mas sem o elemento `N`. (Mesmo comportamento do predicado
+Defina um predicado `selecionado(?N, ?L, ?R)` que é verdadeiro se a lista `R`
+é como a lista `L` mas sem o elemento `N`. (Mesmo comportamento do predicado
 pré-definido `select/3`).
 
 ### Exemplo 4.2
@@ -184,9 +184,9 @@ permutação da lista `L`. (Mesmo comportamento do predicado pré-definido
 
 ### Geradores
 
--   Predicados que produzem mais de uma resposta podem ser chamados de gerados
+-   Predicados que produzem mais de uma resposta podem ser chamados de geradores
 
--   As vezes é interessante ter predicados que possam ser satisfeitos infinitas
+-   Às vezes é interessante ter predicados que possam ser satisfeitos infinitas
     vezes, gerando um conjunto de unificação a cada vez. Isto é particularmente
     interessante na estratégia gerar e testar
 
@@ -205,21 +205,21 @@ Se `N` não estiver instanciado, o predicado deve gerar números naturais.
 
 -   A meta corte é especificada com o predicado `!`
 
--   Quando a meta `!` é encontrar ela é satisfeita imediatamente mas não pode
+-   Quando a meta `!` é encontrada, ela é satisfeita imediatamente e não pode
     ser resatisfeita, isto é, quando um corte é encontrado como uma meta,
-    o sistema compromete-se com todas as escolhas feitas deste que meta pai foi
-    invocada. Todas as outras alternativas são descartadas. Ou seja, um
+    o sistema compromete-se com todas as escolhas feitas desde que meta pai foi
+    invocada. Todas as outras alternativas são descartadas. Ou seja, uma
     tentativa de ressatisfação feita em uma meta entre a meta pai e a meta
     corte irá falhar
 
 ### Corte
 
--   No exemplo abaixo o Prolog irá fazer o retrocesso entre as metas $a, b, c$
-    até que a meta $c$ seja satisfeita. Uma vez que a meta $c$ e satisfeita
-    logo em seguida a meta corte também é satisfeita. Deste momento em diante
-    o retrocesso pode acontecer entre as metas $d, e, f$, mas uma vez que
-    a meta $d$ não posso mais ser satisfeita, o Prolog não retrocede para
-    tentar ressatisfazer as metas $a, b e c$, e portanto a meta $m$ irá falhar
+-   No exemplo abaixo o Prolog irá fazer o retrocesso entre as metas $a$, $b$, $c$
+    até que a meta $c$ seja satisfeita. Uma vez que a meta $c$ é satisfeita,
+    logo em seguida a meta corte também é satisfeita. Desse momento em diante
+    o retrocesso pode acontecer entre as metas $d$, $e$, $f$, mas uma vez que
+    a meta $d$ não pode mais ser satisfeita, o Prolog não retrocede para
+    tentar ressatisfazer as metas $a$, $b$, $c$, e portanto a meta $m$ irá falhar
     (possivelmente depois de ser satisfeita várias vezes)
 
     ```prolog
@@ -244,13 +244,13 @@ Se `N` não estiver instanciado, o predicado deve gerar números naturais.
     seja, para informar para o Prolog que ele não precisa buscar respostas
     alternativas
 
--   Este uso ocorre comumente quando queremos que um predicado se parece com
+-   Este uso ocorre comumente quando queremos que um predicado se pareça com
     uma função (veja os exemplos de dados compostos que utilizam corte).
 
 ### Confirmação de escolha
 
 -   Nestes casos o corte é uma otimização, é possível escrever um predicado
-    com a mesma semântica sem utiliza corte. Considere o exemplo onde eu tenho
+    com a mesma semântica sem utilizar corte. Considere o exemplo onde eu tenho
     duas escolhas excludentes para um determinado predicado que depende de uma
     determinada condição
 
@@ -272,7 +272,7 @@ Se `N` não estiver instanciado, o predicado deve gerar números naturais.
 
 ### Combinação com fail
 
--   As vezes é necessário dizer ao Prolog para falhar imediadamente uma meta
+-   As vezes é necessário dizer ao Prolog para falhar imediatamente uma meta
     específica sem ter que tentar soluções alternativas
 
 -   Por exemplo, suponha que uma determinada meta possa ser satisfeita de
@@ -284,7 +284,7 @@ Se `N` não estiver instanciado, o predicado deve gerar números naturais.
 ### Exemplo 4.4
 
 Defina um predicado `aprovado(A)` que é verdadeiro se o aluno `A` foi aprovado.
-Um aluno pode ser aprovado se ele obteve média maior ou igual a 6 ou se a após
+Um aluno pode ser aprovado se ele obteve média maior ou igual a 6 ou se após
 o exame ele obteve média maior ou igual a 5. Em ambos os casos ele deve ter
 pelo menos 75% de presença.
 

@@ -27,7 +27,7 @@ Consequência da transparência referencial.
     -   Ordem de execução é crucial, os comandos só podem ser entendidos no
         contexto das computações anteriores devido aos efeitos colaterais
 
-    -   Controle é responsabilidade do programados
+    -   Controle é responsabilidade do programador
 
     -   Exemplos: Java, C, Pascal
 
@@ -59,7 +59,7 @@ Consequência da transparência referencial.
 
     -   Baseado em declaração e aplicação de funções (cálculo lambda)
 
-    -   Todos os parâmetro de uma função precisam estar instanciados
+    -   Todos os parâmetros de uma função precisam estar instanciados
 
     -   Clara distinção entre entrada e saída
 
@@ -103,11 +103,12 @@ Consequência da transparência referencial.
 
 ### Edição e consulta com editor integrado
 
-![](swipl-terminal)
+![](swipl-terminal)\
+
 
 ### Editor integrado
 
-![](swipl-editor)
+![](swipl-editor)\
 
 
 ### Edição e consulta com outro editor
@@ -124,7 +125,7 @@ Consequência da transparência referencial.
 
     ```prolog
     ?- editor(joao, E).
-    E = emacs.
+    E = vim.
     ```
 
 -   Depois de alterar o arquivo, ele deve ser lido novamente
@@ -493,7 +494,7 @@ C ---|/
 ### Exemplo 1.1
 
 ```prolog
-%% circuito(A?, B?, C?, D?) is nondet
+%% circuito(?A, ?B, ?C, ?D) is nondet
 %
 %  Verdadeiro se o circuito exemplo com as entradas A, B e C produz
 %  a saída D.
@@ -507,7 +508,7 @@ circuito(A, B, C, D) :-
 ### Exemplo 1.1
 
 ```prolog
-%% and(A?, B?, C?) is nondet
+%% and(?A, ?B, ?C) is nondet
 %
 %  Verdadeiro se C = A and B.
 
@@ -516,7 +517,7 @@ and(0, 1, 0).
 and(1, 0, 0).
 and(1, 1, 1).
 
-%% or(A?, B?, C?) is nondet
+%% or(?A, ?B, ?C) is nondet
 %
 %  Verdadeiro se C = A or B.
 
@@ -529,14 +530,14 @@ or(1, 1, 1).
 ### Exemplo 1.1
 
 ```prolog
-%% not(A?, B?) is nondet
+%% not(?A, ?B) is nondet
 %
 %  Verdadeiro se A = not B.
 
 not(0, 1).
 not(1, 0).
 
-%% and(A?, B?, C?) is nondet
+%% and(?A, ?B, ?C) is nondet
 %
 %  Verdadeiro se C = not (A and B).
 
@@ -587,7 +588,7 @@ que duas regiões adjacentes não tenham a mesma cor.
 ### Exemplo 1.2
 
 ```prolog
-%% colocarao(A?, B?, C?, D?, E?) is nondet
+%% colocarao(?A, ?B, ?C, ?D, ?E) is nondet
 %
 %  Verdadeiro se A, B, C, D, E são cores que podem colorir as
 %  respectivas regiões do mapa exemplo de maneira que duas
@@ -606,7 +607,7 @@ coloracao(A, B, C, D, E) :-
 ### Exemplo 1.2
 
 ```prolog
-%% cor\_dif(A?, B?) is nondet
+%% cor\_dif(?A, ?B) is nondet
 %
 %  Verdeiro se A é uma cor diferente da cor B.
 
@@ -615,7 +616,7 @@ cor_dif(A, B) :-
     cor(B),
     A \== B.
 
-%% cor(A?) is nondet
+%% cor(?A) is nondet
 %
 %  Verdadeiro se A é uma cor.
 
