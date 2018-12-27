@@ -1,6 +1,6 @@
 ---
-title: Retrocesso e corte
-template: slide.tex
+title: Programação Lógica
+subtitle: Retrocesso e corte
 ---
 
 # Retrocesso

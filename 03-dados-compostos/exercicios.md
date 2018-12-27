@@ -1,7 +1,9 @@
 ---
-title: Dados compostos
-num: "3"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: |
+    | Programação Lógica
+    | 3
+    | Dados compostos
 ---
 
 #.  [pp99 1.01] Defina um predicado `ultimo(L, X)` que é verdadeiro se `X`
@@ -122,5 +124,3 @@ template: exercicios.tex
 -   [pip]. Programming in Prolog.
 
 -   [pp99]. [99 problemas para resolver em (Prolog)](https://sites.google.com/site/prologsite/prolog-problems)
-
-<!-- vim: set spell spelllang=pt_br: !-->

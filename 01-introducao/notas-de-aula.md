@@ -1,6 +1,7 @@
 ---
-title: Introdução
-template: slide.tex
+# vim: set spell spelllang=pt_br:
+title: Programação Lógica
+subtitle: Introdução
 ---
 
 # Introdução
@@ -103,11 +104,11 @@ Consequência da transparência referencial.
 
 ### Edição e consulta com editor integrado
 
-![](swipl-terminal)
+![](imagens/swipl-terminal.png)
 
 ### Editor integrado
 
-![](swipl-editor)
+![](imagens/swipl-editor.png)
 
 
 ### Edição e consulta com outro editor
@@ -648,5 +649,3 @@ D = azul
 -   [Logic programming](https://en.wikipedia.org/wiki/Logic_programming)
 
 -   [Prolog](https://en.wikipedia.org/wiki/Prolog)
-
-<!-- vim: set spell spelllang=pt_br: !-->

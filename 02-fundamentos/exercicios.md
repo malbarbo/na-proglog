@@ -1,7 +1,9 @@
 ---
-title: Fundamentos
-num: "2"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: |
+    | Programação Lógica
+    | 2
+    | Fundamentos
 ---
 
 **Atenção**: Nos exercícios que pedem a resposta do Prolog a uma dada consulta,
@@ -246,5 +248,3 @@ Prolog.
 -   [lpn]. [Lear Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
 
 -   [pip]. Programming in Prolog.
-
-<!-- vim: set spell spelllang=pt_br: !-->

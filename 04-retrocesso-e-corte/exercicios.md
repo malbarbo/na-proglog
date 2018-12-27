@@ -1,7 +1,9 @@
 ---
-title: Retrocesso e corte
-num: "4"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: |
+    | Programação Lógica
+    | 4
+    | Retrocesso e corte
 ---
 
 #.  [pip 7.9] Três números naturais $A, B, C$ são chamados de terno Pitagórico
@@ -123,5 +125,3 @@ template: exercicios.tex
 -   [pip]. Programming in Prolog.
 
 -   [pp99]. [99 problemas para resolver em (Prolog)](https://sites.google.com/site/prologsite/prolog-problems)
-
-<!-- vim: set spell spelllang=pt_br: !-->

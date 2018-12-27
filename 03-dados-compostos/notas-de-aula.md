@@ -1,6 +1,7 @@
 ---
-title: Dados compostos
-template: slide.tex
+# vim: set spell spelllang=pt_br:
+title: Programação Lógica
+subtitle: Dados compostos
 ---
 
 # Listas
@@ -951,6 +952,3 @@ descendente mais afastado. Uma árvore com um único nó tem altura 0.
     [6](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch6)
     do livro
     [Learn Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
-
-
-<!-- vim: set spell spelllang=pt_br: !-->

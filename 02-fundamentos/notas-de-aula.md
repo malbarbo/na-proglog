@@ -1,6 +1,7 @@
 ---
-title: Fundamentos
-template: slide.tex
+# vim: set spell spelllang=pt_br:
+title: Programação Lógica
+subtitle: Fundamentos
 ---
 
 
@@ -391,5 +392,3 @@ fat(0, 1).
 ### Referências complementares
 
 -   [Introduction to Prolog](http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/)
-
-<!-- vim: set spell spelllang=pt_br: !-->
