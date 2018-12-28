@@ -367,6 +367,7 @@ $if(beamer)$
 \makeatother
 $endif$
 
+\usepackage{menukeys}
 \usepackage{ccicons}
 
 \begin{document}
