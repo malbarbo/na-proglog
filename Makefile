@@ -11,21 +11,16 @@ NA_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix .pdf, $(NA)))
 NA_PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(addsuffix .pdf, $(NA)))
 EX=$(patsubst %/,%,$(dir $(shell ls */exercicios.md)))
 EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
+TECTONIC=$(DEST)/bin/tectonic
+TECTONIC_VERSION=0.1.13
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.5
-# TODO: mover para um arquivo
+PANDOC_VERSION=2.10.1
 PANDOC_CMD=$(PANDOC) \
+		--pdf-engine=$(CURDIR)/$(TECTONIC) \
+		--metadata-file ../metadata.yml \
 		--template ../templates/default.latex \
 		--standalone \
-		-V author:"Marco A L Barbosa\\\\\\href{http://malbarbo.pro.br}{malbarbo.pro.br}" \
-		--metadata author="Marco A L Barbosa" \
-		-V lang:pt-BR \
-		-V institute:"\\href{http://din.uem.br}{Departamento de Informática}\\\\\\href{http://www.uem.br}{Universidade Estadual de Maringá}{}" \
-		-V theme:metropolis \
-		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
-		-V header-includes:"\captionsetup[figure]{labelformat=empty}" \
-		-V header-includes:"\usepackage{caption}" \
-		-t beamer
+		--to beamer
 
 default:
 	@echo Executando make em paralelo [$(shell nproc) tarefas]
@@ -39,14 +34,14 @@ handout: $(NA_PDF_HANDOUT)
 
 ex: $(EX_PDF)
 
-$(DEST_PDF)/%.pdf: %/notas-de-aula.md templates/default.latex $(PANDOC) Makefile
+$(DEST_PDF)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC) $(TECTONIC) Makefile
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
 		../$(PANDOC_CMD) \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex $(PANDOC) Makefile
+$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC) $(TECTONIC) Makefile
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
 	@cd $$(dirname $<) && \
@@ -54,12 +49,13 @@ $(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex $(PANDOC) 
 		-V classoption:handout \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex $(PANDOC) Makefile
+$(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex metadata-ex.yml $(PANDOC) $(TECTONIC) Makefile
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
 		../$(PANDOC_CMD) \
-			-t latex \
+			--to latex \
+			--metadata-file ../metadata-ex.yml \
 			-V papersize=a4 \
 			-V geometry='margin=1.5cm' \
 			-V fontsize=11pt \
@@ -67,7 +63,12 @@ $(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex $(PANDOC) 
 
 $(PANDOC):
 	mkdir -p $(DEST)
-	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux.tar.gz | tar xz -C $(DEST) --strip-components=1
+	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux-amd64.tar.gz | tar xz -C $(DEST) --strip-components=1
+
+$(TECTONIC):
+	mkdir -p $(DEST)/bin/
+	curl -L https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@$(TECTONIC_VERSION)/tectonic-$(TECTONIC_VERSION)-x86_64-unknown-linux-musl.tar.gz \
+		| tar xz -C $(DEST)/bin/
 
 clean:
 	@echo Removendo $(DEST_PDF)
