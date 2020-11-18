@@ -1,7 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
 title: Programação Lógica
-subtitle: Introdução
 ---
 
 Introdução
@@ -51,9 +50,15 @@ descrever o fluxo de controle.
 - Alguns autores consideram "como" (imperativo) vs "o que" (declarativo)
 
 
-## Funcional vs lógico
+## Paradigmas declarativos
 
-- Os dois principais paradigmas declarativos são o funcional e o lógico
+- Os principais paradigmas declarativos são
+
+    - Funcional
+
+    - Lógico
+
+    - Por restrições
 
 
 ## Funcional vs lógico
@@ -84,34 +89,53 @@ descrever o fluxo de controle.
 
 - Para estudar o paradigma lógico vamos utilizar a linguagem Prolog
 
-- Existem muitas implementações
+    - Existem muitas implementações
 
-- Vamos utilizar o [SWI-Prolog](http://www.swi-prolog.org)
+    - Vamos utilizar o [SWI-Prolog](http://www.swi-prolog.org)
 
 
 ## Instalação e execução
 
 - Instalação
 
-    ```console
+    ```sh
     $ apt-get install swi-prolog
     ```
 
 - Execução
 
-    ```console
+    ```sh
     $ swipl
     ```
 
 
 ## Edição e consulta com editor integrado
 
-![](imagens/swipl-terminal.png)
+\scriptsize
+
+```sh
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.0.2)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+For online help and background, visit http://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- emacs('arquivo.pl'). # Edita arquivo.pl
+true.
+
+?- editor(joao, E).     # Consula
+E = vim.                # Resultado
+```
 
 
-## Editor integrado
+## Edição e consulta com editor integrado
 
 ![](imagens/swipl-editor.png)
+
+
+## Edição e consulta com editor web swish
+
+![](imagens/swish.png)
 
 
 ## Edição e consulta com outro editor
@@ -158,15 +182,17 @@ Tutorial
 
 - Um fato é algo que é verdadeiro sobre uma relação de objetos
 
-- Fato: João utiliza o editor vim.
+- Exemplo de fato
 
-    ```prolog
-    editor(joao, vim).
-    ```
+    - João utiliza o editor vim
 
-- `joao` e `vim` são objetos
+        ```prolog
+        editor(joao, vim).
+        ```
 
-- `editor` é uma relação
+    - `joao` e `vim` são objetos
+
+    - `editor` é uma relação
 
 
 ## Fatos
@@ -205,7 +231,7 @@ Tutorial
 
 - Podemos fazer consultas sobre os fatos que foram definidos
 
-- A forma de uma consulta é a mesma de um fato
+- A forma de uma consulta é similar a de um fato
 
 
 ## Consultas
@@ -239,16 +265,16 @@ Tutorial
 ## Consultas
 
 - Quando uma consulta é realizada o Prolog faz uma busca sequencial por fatos
-  que unificam com o fato que está sendo consultado
+  que unificam com o termo que está sendo consultado
 
-    - Dois fatos unificam se os predicados são os mesmos e cada argumento
+    - Dois termos unificam se os predicados são os mesmos e cada argumento
       correspondente é o mesmo
 
 - Se um fato que unifica com a consulta for encontrado, o Prolog irá responder
-  `true`, caso contrário o Prolog responderá `false`
+  `true`{.prolog}, caso contrário o Prolog responderá `false`{.prolog}
 
-- A resposta `false` significa que não foi encontrado um fato que unifica com
-  a questão
+- A resposta `false`{.prolog} significa que não foi encontrado um fato que
+  unifica com a questão
 
 
 ## Consultas
@@ -275,8 +301,8 @@ Tutorial
 
 ## Variáveis
 
-- Para fazer perguntas que as respostas não sejam apenas `true` e `false`
-  usamos variáveis
+- Para fazer perguntas que as respostas não sejam apenas `true`{.prolog}
+  e `false`{.prolog} usamos variáveis
 
 - As variáveis começam com letra maiúscula
 
@@ -293,7 +319,8 @@ Tutorial
 
 - Consulta
 
-    - Existe algum E tal que Pedro utiliza o editor E? \pause
+    - Existe algum `E`{.prolog} tal que Pedro utiliza o editor `E`{.prolog}?
+      \pause
 
         ```prolog
         ?- editor(pedro, E).
@@ -327,7 +354,7 @@ Tutorial
 
 - Consulta
 
-    - Existe algum E tal que João utiliza o editor E? \pause
+    - Existe algum `E`{.prolog} tal que João utiliza o editor `E`{.prolog}? \pause
 
         ```prolog
         ?- editor(joao, E).
@@ -387,9 +414,10 @@ Tutorial
 
 - Consulta
 
-    - Existe algum E tal que João e Maria utilizam o editor E? De outra forma:
-      existe algum E tal que João utiliza o editor E e Maria utiliza o editor
-      E? \pause
+    - Existe algum `E`{.prolog} tal que João e Maria utilizam o editor
+      `E`{.prolog}? De outra forma: existe algum `E`{.prolog} tal que João
+      utiliza o editor `E`{.prolog} e Maria utiliza o editor `E`{.prolog}?
+      \pause
 
         ```prolog
         ?- editor(joao, E), editor(maria, E).
@@ -402,6 +430,8 @@ Tutorial
 
 - Fatos
 
+    \small
+
     ```prolog
     editor(joao, vim).
     editor(joao, emacs).
@@ -409,24 +439,29 @@ Tutorial
     editor(maria, vim).
     ```
 
+    \normalsize
+
 - Consulta
 
-    - Existem X e Y tal que X e Y utilizam o editor emacs? De outra forma:
-      existem X e Y tal que X utiliza o editor emacs e Y utiliza o editor
-      emacs? \pause
+    - Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog}
+      utilizam o editor emacs? De outra forma: existem `X`{.prolog}
+      e `Y`{.prolog} tal que `X`{.prolog} utiliza o editor emacs e `Y`{.prolog}
+      utiliza o editor emacs? \pause
 
-        ```prolog
-        ?- editor(X, emacs), editor(Y, emacs).
-        X = Y, Y = joao ;
-        X = joao, Y = pedro ;
-        X = pedro, Y = joao ;
-        X = Y, Y = pedro.
-        ```
+        \small
+
+        `?- editor(X, emacs), editor(Y, emacs).`{.prolog} \pause \newline
+        `X = Y, Y = joao ;`{.prolog} \pause \newline
+        `X = joao, Y = pedro ;`{.prolog} \pause \newline
+        `X = pedro, Y = joao ;`{.prolog} \pause \newline
+        `X = Y, Y = pedro.`{.prolog}
 
 
 ## Conjunções
 
 - Fatos
+
+    \small
 
     ```prolog
     editor(joao, vim).
@@ -435,10 +470,13 @@ Tutorial
     editor(maria, vim)
     ```
 
+    \normalsize
+
 - Consulta
 
-    - Existem X e Y tal que X e Y utilizam o editor emacs e o nome de X "vem
-        antes" que o de Y? \pause
+    - Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog}
+      utilizam o editor emacs e o nome de `X`{.prolog} "vem antes" que o de
+      `Y`{.prolog}? \pause
 
         ```prolog
         ?- editor(X, emacs), editor(Y, emacs), X @< Y.
@@ -461,7 +499,8 @@ Tutorial
 
 - Consulta
 
-    - Existem X, Y e Z tal que X e Y utilizam o editor Z? \pause
+    - Existem `X`{.prolog}, `Y`{.prolog} e `Z`{.prolog} tal que `X`{.prolog}
+      e `Y`{.prolog} utilizam o editor `Z`{.prolog}? \pause
 
         ```prolog
         ?- editor(X, Z), editor(Y, Z).
@@ -478,8 +517,10 @@ Tutorial
 
 - Uma **regra** é um sentença genérica sobre objetos e suas relações
 
-- Exemplo: dois programadores podem fazer um par para programação se eles
-  utilizam o mesmo editor
+## Exemplo de regra
+
+- Dois programadores podem fazer um par para programação se eles
+  utilizam o mesmo editor \pause
 
     ```prolog
     par(X, Y) :-
@@ -498,8 +539,9 @@ Exemplos
 
 <!-- TODO: diagrama tikz -->
 
-Defina um predicado `circuito(A, B, C, D)` que é verdadeiro se as entradas A,
-B e C produzem a saída D no circuito abaixo.
+Defina um predicado `circuito(A, B, C, D)`{.prolog} que é verdadeiro se as
+entradas `A`{.prolog}, `B`{.prolog} e `C`{.prolog} produzem a saída
+`D`{.prolog} no circuito abaixo.
 
 ```text
 A ---|\  X
@@ -521,7 +563,11 @@ C ---|/
 %
 %  Verdadeiro se o circuito exemplo com as entradas
 %  A, B e C produz a saída D.
+```
 
+\pause
+
+```prolog
 circuito(A, B, C, D) :-
 	nand(A, B, X),
 	or(B, C, Y),
@@ -535,7 +581,11 @@ circuito(A, B, C, D) :-
 %% and(A?, B?, C?) is nondet
 %
 %  Verdadeiro se C = A and B.
+```
 
+\pause
+
+```prolog
 and(0, 0, 0).
 and(0, 1, 0).
 and(1, 0, 0).
@@ -549,7 +599,9 @@ and(1, 1, 1).
 %% or(A?, B?, C?) is nondet
 %
 %  Verdadeiro se C = A or B.
+```
 
+```prolog
 or(0, 0, 0).
 or(0, 1, 1).
 or(1, 0, 1).
@@ -563,7 +615,9 @@ or(1, 1, 1).
 %% not(A?, B?) is nondet
 %
 %  Verdadeiro se A = not B.
+```
 
+```prolog
 not(0, 1).
 not(1, 0).
 ```
@@ -575,7 +629,9 @@ not(1, 0).
 %% nand(A?, B?, C?) is nondet
 %
 %  Verdadeiro se C = not (A and B).
+```
 
+```prolog
 nand(A, B, C) :-
     and(A, B, S),
     not(S, C).
@@ -618,9 +674,10 @@ false.
 
 <!-- TODO: diagrama tikz -->
 
-Defina um predicado `coloracao(A, B, C, D, E)` que é verdadeiro se A, B, C, D,
-E são cores que podem colorir as respectivas regiões do mapa abaixo de maneira
-que duas regiões adjacentes não tenham a mesma cor.
+Defina um predicado `coloracao(A, B, C, D, E)`{.prolog} que é verdadeiro se
+`A`{.prolog}, `B`{.prolog}, `C`{.prolog}, `D`{.prolog}, E são cores que podem
+colorir as respectivas regiões do mapa abaixo de maneira que duas regiões
+adjacentes não tenham a mesma cor.
 
 ```text
 +-------+-------+
@@ -642,6 +699,11 @@ que duas regiões adjacentes não tenham a mesma cor.
 %  colorir as respectivas regiões do mapa exemplo
 %  de maneira que duas regiões adjacentes não tenham
 %  a mesma cor.
+```
+
+\pause
+
+```prolog
 coloracao(A, B, C, D, E) :-
     cor_dif(A, C),
     cor_dif(A, D),
@@ -659,7 +721,9 @@ coloracao(A, B, C, D, E) :-
 %% cor_dif(A?, B?) is nondet
 %
 %  Verdeiro se A é uma cor diferente da cor B.
+```
 
+```prolog
 cor_dif(A, B) :-
     cor(A),
     cor(B),
@@ -673,7 +737,9 @@ cor_dif(A, B) :-
 %% cor(A?) is nondet
 %
 %  Verdadeiro se A é uma cor.
+```
 
+```prolog
 cor(verde).
 cor(azul).
 cor(amarelo).
