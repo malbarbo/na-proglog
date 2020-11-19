@@ -1,5 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
+# TUDO: adicionar uma conclusão mais motivadora
 title: Programação Lógica
 ---
 
@@ -535,7 +536,122 @@ Exemplos
 ========
 
 
-## Exemplo 1.1
+## Coloração de mapa
+
+<!-- TODO: diagrama tikz -->
+
+Defina um predicado `coloracao(A, B, C, D, E)`{.prolog} que é verdadeiro se
+`A`{.prolog}, `B`{.prolog}, `C`{.prolog}, `D`{.prolog} e `E`{.prolog} são cores
+que podem colorir as respectivas regiões do mapa abaixo de maneira que duas
+regiões adjacentes não tenham a mesma cor.
+
+```text
++-------+-------+
+|   A   |   C   |
+|       +-------+
++-------|   D   |
+|   B   +-------+
+|       |   E   |
++-------+-------+
+```
+
+
+## Coloração de mapa
+
+<div class="columns">
+<div class="column" width="30%">
+\small
+
+```text
++-------+-------+
+|   A   |   C   |
+|       +-------+
++-------|   D   |
+|   B   +-------+
+|       |   E   |
++-------+-------+
+```
+</div>
+<div class="column" width="70%">
+\small
+
+```prolog
+%% colocarao(A?, B?, C?, D?, E?) is nondet
+%
+%  Verdadeiro se A, B, C, D, E são cores que
+%  podem colorir as respectivas regiões do
+%  mapa exemplo de maneira que duas regiões
+%  adjacentes não tenham a mesma cor.
+```
+
+\pause
+
+
+```prolog
+coloracao(A, B, C, D, E) :-
+    cor_dif(A, C),
+    cor_dif(A, D),
+    cor_dif(A, B),
+    cor_dif(B, D),
+    cor_dif(B, E),
+    cor_dif(C, D),
+    cor_dif(D, E).
+```
+</div>
+</div>
+
+
+## Coloração de mapa
+
+<div class="columns">
+<div class="column" width="50%">
+```prolog
+%% cor_dif(A?, B?) is nondet
+%
+%  Verdeiro se A é uma cor
+%  diferente da cor B.
+```
+
+```prolog
+cor_dif(A, B) :-
+    cor(A),
+    cor(B),
+    A \== B.
+```
+</div>
+<div class="column" width="50%">
+\pause
+
+```prolog
+%% cor(A?) is nondet
+%
+%  Verdadeiro se A é uma cor.
+```
+
+```prolog
+cor(verde).
+cor(azul).
+cor(amarelo).
+```
+</div>
+</div>
+
+
+## Coloração de mapas
+
+```prolog
+?- coloracao(A, B, C, D, E).
+A = E, E = verde,
+B = C, C = azul,
+D = amarelo ;
+A = E, E = verde,
+B = C, C = amarelo,
+D = azul
+...
+```
+
+
+## Simulação de circuito
 
 <!-- TODO: diagrama tikz -->
 
@@ -556,31 +672,18 @@ C ---|/
 ```
 
 
-## Exemplo 1.1
+## Simulação de circuito
 
-```prolog
-%% circuito(A?, B?, C?, D?) is nondet
-%
-%  Verdadeiro se o circuito exemplo com as entradas
-%  A, B e C produz a saída D.
-```
+\small
 
-\pause
-
-```prolog
-circuito(A, B, C, D) :-
-	nand(A, B, X),
-	or(B, C, Y),
-	and(X, Y, D).
-```
-
-
-## Exemplo 1.1
+<div class="columns">
+<div class="column" width="50%">
 
 ```prolog
 %% and(A?, B?, C?) is nondet
 %
-%  Verdadeiro se C = A and B.
+%  Verdadeiro se C é o resultado
+%  do and lógico de A e B.
 ```
 
 \pause
@@ -591,15 +694,18 @@ and(0, 1, 0).
 and(1, 0, 0).
 and(1, 1, 1).
 ```
-
-
-## Exemplo 1.1
+</div>
+<div class="column" width="50%">
+\pause
 
 ```prolog
 %% or(A?, B?, C?) is nondet
 %
-%  Verdadeiro se C = A or B.
+%  Verdadeiro se C é o resultado
+%  do or lógico de A e B.
 ```
+
+\pause
 
 ```prolog
 or(0, 0, 0).
@@ -608,37 +714,101 @@ or(1, 0, 1).
 or(1, 1, 1).
 ```
 
+</div>
+</div>
 
-## Exemplo 1.1
+
+## Simulação de circuito
+
+\small
+
+<div class="columns">
+<div class="column" width="50%">
 
 ```prolog
 %% not(A?, B?) is nondet
 %
-%  Verdadeiro se A = not B.
+%  Verdadeiro se A é
+%  a negação de B.
 ```
+
+\pause
 
 ```prolog
 not(0, 1).
 not(1, 0).
 ```
 
+</div>
 
-## Exemplo 1.1
+<div class="column" width="50%">
+
+\pause
 
 ```prolog
 %% nand(A?, B?, C?) is nondet
 %
-%  Verdadeiro se C = not (A and B).
+%  Verdadeiro se C é o resultado
+%  do nand (not and) lógico de
+%  A e B.
 ```
+
+\pause
 
 ```prolog
 nand(A, B, C) :-
     and(A, B, S),
     not(S, C).
 ```
+</div>
+</div>
 
 
-## Exemplo 1.1
+## Simulação de circuito
+
+\small
+
+<div class="columns">
+<div class="column" width="35%">
+
+```text
+A ---|\  X
+     | >o----+
+B -+-|/      |
+   |         +-|\
+   |           | >-- D
+   |         +-|/
+   +-|\ Y    |
+     | )-----+
+C ---|/
+```
+</div>
+<div class="column" width="65%">
+
+\pause
+
+```prolog
+%% circuito(A?, B?, C?, D?) is nondet
+%
+%  Verdadeiro se o circuito exemplo
+%  com as entradas A, B e C produz
+%  a saída D.
+```
+
+\pause
+
+```prolog
+circuito(A, B, C, D) :-
+    nand(A, B, X),
+    or(B, C, Y),
+    and(X, Y, D).
+```
+
+</div>
+</div>
+
+
+## Simulação de circuito
 
 ```prolog
 ?- circuito(1, 0, 1, 1).
@@ -647,14 +817,14 @@ false.
 ```
 
 
-## Exemplo 1.1
+## Simulação de circuito
 
 - Inicialmente fizemos o predicado pensando em especificar as entradas do
   circuito e obter a saída, mas é possível especificar a saída e obter as
   entradas!
 
 
-## Exemplo 1.1
+## Simulação de circuito
 
 ```prolog
 ?- circuito(A, B, C, 1).
@@ -670,99 +840,10 @@ false.
 ```
 
 
-## Exemplo 1.2
-
-<!-- TODO: diagrama tikz -->
-
-Defina um predicado `coloracao(A, B, C, D, E)`{.prolog} que é verdadeiro se
-`A`{.prolog}, `B`{.prolog}, `C`{.prolog}, `D`{.prolog}, E são cores que podem
-colorir as respectivas regiões do mapa abaixo de maneira que duas regiões
-adjacentes não tenham a mesma cor.
-
-```text
-+-------+-------+
-|   A   |   C   |
-|       +-------+
-+-------|   D   |
-|   B   +-------+
-|       |   E   |
-+-------+-------+
-```
-
-
-## Exemplo 1.2
-
-```prolog
-%% colocarao(A?, B?, C?, D?, E?) is nondet
-%
-%  Verdadeiro se A, B, C, D, E são cores que podem
-%  colorir as respectivas regiões do mapa exemplo
-%  de maneira que duas regiões adjacentes não tenham
-%  a mesma cor.
-```
-
-\pause
-
-```prolog
-coloracao(A, B, C, D, E) :-
-    cor_dif(A, C),
-    cor_dif(A, D),
-    cor_dif(A, B),
-    cor_dif(B, D),
-    cor_dif(B, E),
-    cor_dif(C, D),
-    cor_dif(D, E).
-```
-
-
-## Exemplo 1.2
-
-```prolog
-%% cor_dif(A?, B?) is nondet
-%
-%  Verdeiro se A é uma cor diferente da cor B.
-```
-
-```prolog
-cor_dif(A, B) :-
-    cor(A),
-    cor(B),
-    A \== B.
-```
-
-
-## Exemplo 1.2
-
-```prolog
-%% cor(A?) is nondet
-%
-%  Verdadeiro se A é uma cor.
-```
-
-```prolog
-cor(verde).
-cor(azul).
-cor(amarelo).
-```
-
-
-## Exemplo 1.2
-
-```prolog
-?- coloracao(A, B, C, D, E).
-A = E, E = verde,
-B = C, C = azul,
-D = amarelo ;
-A = E, E = verde,
-B = C, C = amarelo,
-D = azul
-...
-```
-
-
 
 Leitura recomendada
 ===================
+
 
 ## Leitura recomendada
 
