@@ -616,7 +616,7 @@ coloracao(A, B, C, D, E) :-
 cor_dif(A, B) :-
     cor(A),
     cor(B),
-    A \== B.
+    dif(A, B).
 ```
 </div>
 <div class="column" width="50%">
