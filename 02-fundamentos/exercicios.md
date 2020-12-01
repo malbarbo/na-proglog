@@ -1,9 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: |
-    | Programação Lógica
-    | 2
-    | Fundamentos
+title: Fundamentos
 ---
 
 **Atenção**: Nos exercícios que pedem a resposta do Prolog a uma dada consulta,
@@ -169,6 +166,17 @@ Prolog.
     a. `e_filho(X)`, X é filho.
     a. `ancestral(X, Y)`, X é ancestral de Y.
 
+#. Projete um predicado para encontrar o valor (digito de 1 a 9) de cada letra no seguinte enigma
+
+    ```
+    SEND +
+    MORE =
+    MONEY
+    ```
+
+    de maneira que a adição fique correta. Note que a posição que a letra aparece muda o valor que ela representa no número. Por exemplo, se `E = 3`, no "número" SEND a letra `E` corresponde a 300 enquanto que no "número" MORE ela corresponde a 3 e em MONEY 30. Use restrições sobre inteiros!
+
+<!--
 #.  Defina um predicado `triangulo(A, B, C, T)` que é verdadeiro se `A`, `B`
     e `C` formam um triângulo do tipo `T`, onde `T` pode ser `equilatero`
     (todos os lados iguais), `isosceles` (pelo menos dois lados iguais) ou
@@ -240,6 +248,8 @@ Prolog.
     ?- perfeito(9).
     false.
     ```
+-->
+
 
 # Referências
 
