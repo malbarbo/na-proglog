@@ -1,5 +1,3 @@
-% Exemplo 3.1
-
 %% tamanho(+XS, ?T) is nondet
 %
 %  Verdadeiro se a quantidade de elementos na lista XS é T.
@@ -11,20 +9,19 @@
 test(t0) :- tamanho([], 0).
 test(t1) :- tamanho([1], 1).
 test(t2) :- tamanho([7, 2], 2).
+test(t2, T == 3) :- tamanho([7, 2, 3], T).
 
 :- end_tests(tamanho).
 
 
 tamanho([_ | XS], T) :-
-	tamanho(XS, T0),
-	T is T0 + 1.
+    tamanho(XS, T0),
+    T is T0 + 1.
 
 tamanho([], 0).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Exemplo 3.2
 
 %% kesimo(+XS, +K, ?N) is semdet
 %
@@ -36,7 +33,7 @@ tamanho([], 0).
 
 test(t0) :- kesimo([5, 3, 10], 0, 5).
 test(t1) :- kesimo([5, 3, 10], 1, 3).
-test(t2) :- kesimo([5, 3, 10], 2, 10).
+test(t2, N == 10) :- kesimo([5, 3, 10], 2, N).
 test(t4, fail) :- kesimo([5, 3, 10], 4, _).
 
 :- end_tests(kesimo).
@@ -52,9 +49,7 @@ kesimo([_ | XS], K, X) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Exemplo 3.3
-
-%% comprimida(+XS, ?YS) is nondet
+%% comprimida2(+XS, ?YS) is nondet
 %
 %  Verdadeiro se XS comprimida é YS, isto é, sem elementos repetidos
 %  consecutivos.
@@ -69,43 +64,17 @@ test(t2) :- comprimida([3, 3, 4, 4, 4, 3, 5, 5, 5], [3, 4, 3, 5]).
 
 comprimida([], []).
 
-comprimida([X | XS], YS) :-
-	comprimida(XS, YS),
-	[X | _] = YS, !.
+comprimida([X], [X]) :- !.
 
-comprimida([X | XS], [X | YS]) :-
-	comprimida(XS, YS),
-	[X | _] \= YS.
+comprimida([X, X | XS], YS) :-
+    comprimida([X | XS], YS), !.
 
-
-%% comprimida2(+XS, ?YS) is nondet
-%
-%  Verdadeiro se XS comprimida é YS, isto é, sem elementos repetidos
-%  consecutivos.
-
-:- begin_tests(comprimida2).
-
-test(t0) :- comprimida2([], []).
-test(t1) :- comprimida2([x], [x]).
-test(t2) :- comprimida2([3, 3, 4, 4, 4, 3, 5, 5, 5], [3, 4, 3, 5]).
-
-:- end_tests(comprimida2).
-
-comprimida2([], []).
-
-comprimida2([X], [X]) :- !.
-
-comprimida2([X, X | XS], YS) :-
-	comprimida2([X | XS], YS), !.
-
-comprimida2([X, Y | XS], [X | YS]) :-
-	X \== Y,
-	comprimida2([Y | XS], YS).
+comprimida([X, Y | XS], [X | YS]) :-
+    dif(X, Y),
+    comprimida([Y | XS], YS).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Exemplo 3.4
 
 %% membro(?X, ?XS) is nondet
 %
@@ -149,8 +118,6 @@ membrochk(X, [_ | XS]) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Exemplo 3.5
-
 %% concatenacao(?X, ?Y, ?Z) is nondet
 %
 %  Verdadeiro se Z é a concatenação de X com Y.
@@ -180,8 +147,6 @@ concatenacao([X | XS], YS, [X | XSYS]) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Exemplo 3.6
-
 %% super_soma(+XS, ?S) is semidet
 %
 %  Verdadeiro se S e a soma de todos elementos da lista aninhada XS.
@@ -209,18 +174,16 @@ super_soma([X | XS], S) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Exemplo 3.8
-
 %% tamanho_acc(+XS, ?T) is semidet
 %
 %  Verdadeiro se a quantidade de elementos de XS é T.
 
 :- begin_tests(tamanho_acc).
 
-test(tamanho_acc2, T =:= 3) :-
+test(tamanho_acc2, T == 3) :-
     tamanho([4, 5, 2], T).
 
-test(tamanho_acc3, T =:= 11) :-
+test(tamanho_acc3, T == 11) :-
     tamanho_acc([4, 5, 2], 8, T).
 
 :- end_tests(tamanho_acc).
@@ -240,8 +203,6 @@ tamanho_acc([_|R], Acc, T) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Exemplo 3.9
 
 %% reverso(+A, ?R) is nondet
 %
@@ -296,8 +257,6 @@ reverso_acc([A|As], Acc, R) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Exemplo 3.10
 
 %% concatenacao_dif(?X, ?Y, ?Z) is nondet
 %

@@ -1,55 +1,68 @@
 ---
-# vim: set spell spelllang=pt_br:
-title: Programação Lógica
-subtitle: Dados compostos
+# vim: set spell spelllang=pt_br sw=4:
+title: Dados compostos
 ---
 
-# Listas
 
-### Listas
+Listas
+======
+
+
+## Definição
 
 <!-- TODO: onde colocar a sessão de otimização? -->
 <!-- TODO: como introduzir corte? -->
 
--   Podemos representar uma lista em Prolog de forma semelhante a listas em Racket
+- Podemos representar uma lista em Prolog de forma semelhante a listas em
+  Racket \pause
 
--   Uma lista é
+- Uma lista é
 
-    -   `vazia`; ou
+    - `vazia`{.prolog}; ou
 
-    -   `cons(A, B)`, onde `A` é um termo qualquer e `B` é uma lista
+    - `cons(A, B)`{.prolog}, onde `A`{.prolog} é um termo qualquer e `B`{.prolog} é uma lista
 
-\pause
 
--   Exemplos
+## Exemplo
+
+- Exemplos
 
     ```prolog
-    ?- L0 = vazio, L1 = cons(3, vazio), L2 = cons(3, cons(4, vazio)).
+    ?- L0 = vazio, L1 = cons(3, vazio),
+                      L2 = cons(3, cons(4, vazio)).
     L0 = vazia,
     L1 = cons(3, vazia),
     L2 = cons(3, cons(4, vazia)).
     ```
 
--   A lista `L0` é vazia, a lista `L1` contém apenas o elemento 3 e a lista
-    `L2` contém os elemento 3 e 4
+- A lista `L0`{.prolog} é vazia, a lista `L1`{.prolog} contém apenas o elemento
+  3 e a lista `L2`{.prolog} contém os elemento 3 e 4
 
-### Listas
 
--   Vamos definir um predicado para verificar se um termo é uma lista
+## Exemplo - lista
+
+<!-- TODO: colocar  os exemplos primeiro -->
+
+- Vamos definir um predicado para verificar se um termo é uma lista \pause
 
     ```prolog
     %% lista(+X) is semidet
     %
     %  Verdadeiro se X é uma lista.
+    ```
 
+    \pause
+
+    ```prolog
     lista(vazia).
 
     lista(cons(_, B)) :- lista(B).
     ```
 
-### Listas
 
--   Consultas
+## Exemplo - lista
+
+- Consultas
 
     ```prolog
     ?- lista(vazia).
@@ -64,20 +77,22 @@ subtitle: Dados compostos
     false.
     ```
 
--   Não existe nada diferente do vimos anteriormente. O "truque" é que estamos
-    usando estruturas recursivas
+- Não existe nada diferente do vimos anteriormente. O "truque" é que estamos
+  usando estruturas definidas com autorreferência
 
-### Listas
 
--   O Prolog já "entende" uma definição de lista semelhante a nossa
+## Listas
 
-    -   `[]` ao invés de `vazia`
+- O Prolog já "entende" uma definição de lista semelhante a nossa
 
-    -   `'.'` ao invés de `cons`
+    - `[]`{.prolog} ao invés de `vazia`{.prolog}
 
-### Listas
+    - `'.'`{.prolog} (no Prolog "clássico" e `'[|]'`{.prolog} no SWI-Prolog) ao invés de `cons`{.prolog}
 
--   Exemplos
+
+## Construção
+
+- Exemplos
 
     ```prolog
     ?- L0 = [], L1 = '.'(3, []), L2 = '.'(3, '.'(4, [])).
@@ -95,12 +110,13 @@ subtitle: Dados compostos
     L2 = '.'(3,'.'(4,[]))
     ```
 
--   Para exibir uma lista o Prolog utiliza uma notação mais amigável, mas
-    podemos ver que a representação interna utiliza termos `'.'`
+- Para exibir uma lista o Prolog utiliza uma notação mais amigável, mas podemos
+  ver que a representação interna utiliza termos `'.'`{.prolog}
 
-### Listas
 
-- Podemos utilizar esta notação amigável para definir listas
+## Construção
+
+- Podemos utilizar esta notação amigável para construir listas
 
     ```prolog
     ?- L0 = [], L1 = [3], L2 = [3, 4].
@@ -109,17 +125,18 @@ subtitle: Dados compostos
     L2 = [3, 4].
     ```
 
+
 ## Composição
 
-### Composição
-
--   Podemos utilizar uma lista já existente para definir outra lista
+- Podemos utilizar uma lista já existente para construir outra lista
 
     ```prolog
     ?- X = [1, 2, 3], Y = '.'(5, X).
     X = [1, 2, 3],
     Y = [5, 1, 2, 3].
     ```
+
+    \pause
 
     ou usando uma sintaxe mais amigável
 
@@ -130,26 +147,28 @@ subtitle: Dados compostos
     Z = [3, 4, 1, 2, 3].
     ```
 
--   A notação `[ A | B ]` é equivalente a `'.'(A, B)`
+    \pause
+
+- A notação `[ A | B ]`{.prolog} é equivalente a `'.'(A, B)`{.prolog}
 
     ```prolog
     ?- X = '.'(3, '.'(4, [])), Y = [3 | [4 | []]], Z = [3, 4].
     X = Y, Y = Z, Z = [3, 4].
     ```
 
+
 ## Decomposição
 
-### Decomposição
+- Como obter os componentes de uma lista? \pause
 
--   Como obter os componentes de uma lista?
+    - Da mesma forma que obtemos os componentes de outras estruturas, \pause
+      usando unificação \pause
 
-    -   Da mesma forma que obtemos os componentes de outras estruturas, usando
-        unificação
+    - Lembre-se, uma lista é um termo e pode ser usado da mesma forma que
+      qualquer outro termo
 
-    -   Lembre-se, uma lista é um termo e pode ser usado da mesma forma que
-        qualquer outro termo
 
-### Decomposição
+## Decomposição
 
 - Exemplos
 
@@ -167,7 +186,8 @@ subtitle: Dados compostos
     B = [3, 4].
     ```
 
-### Decomposição
+
+## Decomposição
 
 - Exemplos
 
@@ -188,24 +208,22 @@ subtitle: Dados compostos
     ```
 
 
-## Receita de projeto
+## Projetando predicados
 
-### Receita de projeto
+- Para projetar muitos tipos de predicados podemos seguir as mesmas receitas de
+  projeto que usávamos para escrever funções em Racket
 
--   Para definir muitos tipos de predicados podemos seguir as mesmas receitas
-    de projeto que usávamos para escrever funções em Racket
+- De forma semelhante ao Racket, para cada tipo de dado, usamos um modelo
 
--   De forma semelhante ao Racket, para cada tipo de dado, usamos um template
+    - Para definir alguns tipos de predicado não tem receita de projeto
 
-    -   Para definir alguns tipos de predicado não tem receita de projeto
-
-    -   Nestes casos o treino (experiência) ajuda bastante
+    - Nestes casos o treino (experiência) ajuda bastante
 
 
-### Receita de projeto para listas
+## Projetando predicados
 
--   Como a definição de lista tem dois casos, o template para lista também têm
-    dois casos
+- Como a definição de lista tem dois casos, o modelo para lista também têm dois
+  casos
 
     ```prolog
     pred_lista([], ...) :- ???.
@@ -215,19 +233,22 @@ subtitle: Dados compostos
         ??? X.
     ```
 
--   Quando a lista não é vazia, pode ser necessário criar outros casos
+- Quando a lista não é vazia, pode ser necessário criar outros casos
 
-### Exemplo 3.1
 
-Defina um predicado `tamanho(L, T)` que é verdadeiro se a quantidade de
-elementos na lista `L` é `T`. (Veja o predicado pré-definido `length/2`).
+## Exemplo - tamanho
 
-### Exemplo 3.1
+Projete um predicado `tamanho(L, T)`{.prolog} que é verdadeiro se a quantidade
+de elementos na lista `L`{.prolog}  é `T`{.prolog} . (Veja o predicado
+pré-definido `length/2`{.prolog}).
+
+
+## Exemplo - tamanho
 
 ```prolog
 :- use_module(library(plunit)).
 
-%% tamanho(?XS, ?T) is semidet
+%% tamanho(+XS, ?T) is semidet
 %
 %  Verdadeiro se o tamanho de XS é T.
 
@@ -240,7 +261,8 @@ test(t2, T == 2) :- tamanho([7, 2], T).
 :- end_tests(tamanho).
 ```
 
-\pause
+## Exemplo - tamanho
+
 
 ```prolog
 tamanho([_ | XS], T) :-
@@ -250,12 +272,13 @@ tamanho([_ | XS], T) :-
 tamanho([], 0).
 ```
 
-### Exemplo 3.1
+
+## Exemplo - tamanho
 
 ```prolog
 % Leitura em português do predicado
 
-% O tamanho da lista [ \_ | XS ] é T se
+% O tamanho da lista [ _ | XS ] é T se
 %   T0 é o tamanho da lista XS e
 %   T é T0 + 1
 tamanho([_ | XS], T) :-
@@ -266,6 +289,8 @@ tamanho([_ | XS], T) :-
 tamanho([], 0).
 ```
 
+## Exemplo - tamanho
+
 Resultado dos testes
 
 ```text
@@ -275,12 +300,17 @@ Resultado dos testes
 true.
 ```
 
-### Exemplo 3.2
 
-Defina um predicado `kesimo(XS, K, N)` que é verdadeiro se `N` é o `K`-ésimo
-elemento da lista `XS`. (Veja o predicado pré-definido `nth0/3`)
+## Exemplo - $k$-ésimo
 
-### Exemplo 3.2
+<!-- TODO: renomear kesimo para nesimo -->
+
+Projete um predicado `kesimo(XS, K, N)`{.prolog} que é verdadeiro se
+`N`{.prolog}  é o $k$-ésimo elemento da lista `XS`{.prolog}. (Veja o predicado
+pré-definido `nth0/3`{.prolog} )
+
+
+## Exemplo - $k$-ésimo
 
 ```prolog
 %% kesimo(+XS, +K, ?N) is semidet
@@ -292,14 +322,13 @@ elemento da lista `XS`. (Veja o predicado pré-definido `nth0/3`)
 test(t0) :- kesimo([5, 3, 10], 0, 5).
 test(t1) :- kesimo([5, 3, 10], 1, 3).
 test(t2, N == 10) :- kesimo([5, 3, 10], 2, N).
-test(t4, [fail]) :- kesimo([5, 3, 10], 4, _).
+test(t4, fail) :- kesimo([5, 3, 10], 4, _).
 
 :- end_tests(kesimo).
 ```
 
--   Usamos o argumento `[fail]` para testar que o predicado falha
 
-### Exemplo 3.2
+## Exemplo - $k$-ésimo
 
 ```prolog
 kesimo([X | _], 0, X).
@@ -310,17 +339,18 @@ kesimo([_ | XS], K, X) :-
     kesimo(XS, K0, X).
 ```
 
--   Fizemos a combinação de template de lista e número natural
+Fizemos a combinação de modelos de lista e número natural
 
-### Exemplo 3.2
+
+## Exemplo - $k$-ésimo
 
 ```prolog
 % Leitura em português do predicado
 
-% X é 0-ésimo elemento da lista [X | \_].
+% X é 0-ésimo elemento da lista [X | _].
 kesimo([X | _], 0, X).
 
-% X é o K-ésimo elemento da lista [\_ | XS] se
+% X é o K-ésimo elemento da lista [_ | XS] se
 %   K > 0 e
 %   K0 é K - 1 e
 %   X é o K0-ésimo elemento da lista XS
@@ -330,7 +360,8 @@ kesimo([_ | XS], K, X) :-
     kesimo(XS, K0, X).
 ```
 
-### Exemplo 3.2
+
+## Exemplo - $k$-ésimo
 
 Resultado dos testes
 
@@ -350,16 +381,15 @@ true.
 
 (What!?)
 
-# Escrevendo predicados (semi) determinísticos
 
-### Escrevendo predicados (semi) determinísticos
+## Projetando predicados (semi) determinísticos
 
 <!-- TODO: Mudar esta discussão para os fundamentos -->
 <!-- TODO: Discutir a parte de corte para confirmar escolha na seção de aritmética -->
 
--   Os testes (por padrão) esperam que o predicado não ofereça escolha mas
-    depois de ser satisfeito uma vez, o predicado `kesimo` está oferecendo
-    a possibilidade de ressatisfação, ou seja, ele é não determinístico
+- Os testes (por padrão) esperam que o predicado não ofereça escolha mas depois
+  de ser satisfeito uma vez, o predicado `kesimo` está oferecendo
+  a possibilidade de ressatisfação, ou seja, ele é não determinístico
 
     ```prolog
     ?- kesimo([5, 3, 10], 1, 3).
@@ -367,145 +397,169 @@ true.
     false.
     ```
 
-### Escrevendo predicados (semi) determinísticos
 
--   Porque o predicado `tamanho` não teve este problema?
+## Projetando predicados (semi) determinísticos
 
-    -   Teoricamente o predicado `tamanho` também deveria apresentar este
-        problema, isto porque após a consulta ser satisfeita unificando com
-        a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer
-        a possibilidade de continuar a busca e tentar a unificação com
-        a segunda cláusula, o que criaria o ponto de escolha
+- Porque o predicado `tamanho` não teve este problema?
 
-    -   Isto não acontece porque o SWI-prolog faz uma otimização. Ele só faz
-        a busca entre as cláusulas do predicado que tenham o primeiro argumento
-        "compatível" com a consulta
+    - Teoricamente o predicado `tamanho` também deveria apresentar este
+      problema, isto porque após a consulta ser satisfeita unificando com
+      a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer
+      a possibilidade de continuar a busca e tentar a unificação com a segunda
+      cláusula, o que criaria o ponto de escolha
 
-        -   Se o primeiro argumento da consulta é uma constante, ele tenta as
-            cláusula que o primeiro argumento seja a mesma constante da
-            consulta ou uma variável
 
-        -   Se o primeiro argumento da consulta é uma variável, ele tenta todas
-            as cláusulas
+## Projetando predicados (semi) determinísticos
 
-        -   Se o primeiro argumento da consulta é uma estrutura, ele tenta as
-            cláusula que o primeiro argumento seja uma estrutura com o mesmo
-            functor da estrutura da consulta ou uma variável
+- Porque o predicado `tamanho` não teve este problema?
 
-### Escrevendo predicados (semi) determinísticos
+    - Isto não acontece porque o SWI-prolog faz uma otimização. Ele só faz
+      a busca entre as cláusulas do predicado que tenham o primeiro argumento
+      "compatível" com a consulta
 
--   Considerando a definição de `tamanho`
+        - Se o primeiro argumento da consulta é uma constante, ele tenta as
+          cláusula que o primeiro argumento seja a mesma constante da consulta
+          ou uma variável
 
-    ```prolog
-    tamanho([_ | XS], T) :-
-        tamanho(XS, T0),
-        T is T0 + 1.
+        - Se o primeiro argumento da consulta é uma variável, ele tenta todas
+          as cláusulas
 
-    tamanho([], 0).
-    ```
+        - Se o primeiro argumento da consulta é uma estrutura, ele tenta as
+          cláusula que o primeiro argumento seja uma estrutura com o mesmo
+          functor da estrutura da consulta ou uma variável
 
--   Observamos que o primeiro argumento da primeira cláusula é a estrutura
-    `'.'`, e o primeiro argumento da segunda cláusula é a constante `[]`
 
--   Seguindo a otimização do SWI-Prolog, em uma consulta `tamanho` com
-    o primeiro argumento `[]`, o interpretador tentará a unificação apenas com
-    a segunda cláusula. Em uma consulta com uma lista não vazia como primeiro
-    argumento, o interpretador tentará a unificação apenas com a primeira
-    cláusula
+## Projetando predicados (semi) determinísticos
 
--   Vamos ver o que acontece com a definição de `kesimo`
+\small
 
-### Escrevendo predicados (semi) determinísticos
+Considerando a definição de `tamanho`
 
--   Considerando a definição
+```prolog
+tamanho([_ | XS], T) :-
+    tamanho(XS, T0),
+    T is T0 + 1.
 
-    ```prolog
-    kesimo([X | _], 0, X).
+tamanho([], 0).
+```
 
-    kesimo([_ | XS], K, X) :-
-        K > 0,
-        K0 is K - 1,
-        kesimo(XS, K0, X).
-    ```
+Observamos que o primeiro argumento da primeira cláusula é a estrutura
+`'.'`{.prolog}, e o primeiro argumento da segunda cláusula é a constante
+`[]`{.prolog}.
 
--   Neste caso o primeiro argumento das duas cláusulas é a estrutura `'.'`. Isto
-    implica que em qualquer consulta que o primeiro argumento seja uma lista,
-    o interpretador tentará as duas cláusulas, o que pode gerar um ponto de
-    escolha
+Seguindo a otimização do SWI-Prolog, em uma consulta `tamanho`{.prolog} com o
+primeiro argumento `[]`{.prolog}, o interpretador tentará a unificação apenas
+com a segunda cláusula. Em uma consulta com uma lista não vazia como primeiro
+argumento, o interpretador tentará a unificação apenas com a primeira cláusula.
 
--   Conceitualmente o predicado `kesimo` é semi determinísticos, mas a nossa
-    implementação é não determinística, como resolver este problema?
+Vamos ver o que acontece com a definição de `kesimo`{.prolog}
 
-### Escrevendo predicados (semi) determinísticos
 
--   O Prolog tem o operador de corte (`!`) que pode ser usado, entre outras
-    coisas, para confirmar uma escolha e evitar que o interpretador faça outras
-    tentativas
+## Projetando predicados (semi) determinísticos
 
-    ```prolog
-    % usamos o operador de corte para confirmar a escolha,
-    % desta forma, se uma consulta for satisfeita unificando com
-    % a primeira cláusula, a segunda não será considerada
-    kesimo([X | _], 0, X) :- !.
+\small
 
-    kesimo([_ | XS], K, X) :-
-        K > 0,
-        K0 is K - 1,
-        kesimo(XS, K0, X).
-    ```
+Considerando a definição
 
--   Veremos em outro momento todos os usos e o funcionamento detalhado do
-    operador de corte
+```prolog
+kesimo([X | _], 0, X).
 
--   O operador de corte não faz parte do paradigma lógico
+kesimo([_ | XS], K, X) :-
+    K > 0,
+    K0 is K - 1,
+    kesimo(XS, K0, X).
+```
 
--   Outra alternativa seria colocar o `K` como primeiro argumento. Porque isto
-    também resolveria o problema?
+Neste caso o primeiro argumento das duas cláusulas é a estrutura
+`'.'`{.prolog}. Isto implica que em qualquer consulta que o primeiro argumento
+seja uma lista, o interpretador tentará as duas cláusulas, o que pode gerar um
+ponto de escolha.
 
-### Exemplo 3.3
+Conceitualmente o predicado `kesimo`{.prolog} é semi determinístico, mas a
+nossa implementação é não determinística, como resolver este problema?
 
-Defina um predicado `comprimida(XS, YS)` que é verdadeiro se lista `YS`
-é a lista `XS` comprimida, isto é, sem elementos repetidos consecutivos.
 
-### Exemplo 3.3
+## Escrevendo predicados (semi) determinísticos
+
+O Prolog tem o operador de corte (`!`{.prolog}) que pode ser usado, entre
+outras coisas, para confirmar uma escolha e evitar que o interpretador faça
+outras tentativas
+
+```prolog
+% usamos o operador de corte para confirmar a escolha,
+% desta forma, se uma consulta for satisfeita unificando com
+% a primeira cláusula, a segunda não será considerada
+kesimo([X | _], 0, X) :- !.
+
+kesimo([_ | XS], K, X) :-
+    K > 0,
+    K0 is K - 1,
+    kesimo(XS, K0, X).
+```
+
+
+## Escrevendo predicados (semi) determinísticos
+
+Veremos em outro momento todos os usos e o funcionamento detalhado do operador
+de corte.
+
+O operador de corte não faz parte do paradigma lógico.
+
+Outra alternativa seria colocar o `K`{.prolog} como primeiro argumento. Porque
+isto também resolveria o problema?
+
+
+## Exemplo - comprimida
+
+Projete um predicado `comprimida(XS, YS)`{.prolog} que é verdadeiro se lista
+`YS`{.prolog} é a lista `XS`{.prolog} comprimida, isto é, sem elementos
+repetidos consecutivos.
+
+
+## Exemplo - comprimida
+
+\small
 
 ```prolog
 % comprimida(+XS, ?YS) is semidet
 %
-% Verdadeiro se XS comprimida é YS, isto é, sem elementos repetidos
-% consecutivos.
+% Verdadeiro se XS comprimida é YS, isto é,
+% sem elementos repetidos consecutivos.
 
 :- begin_tests(comprimida).
 
 test(t0) :- comprimida([], []).
 test(t1) :- comprimida([x], [x]).
-test(t2) :- comprimida([3, 3, 3, 4, 4, 3, 5, 5, 5], [3, 4, 3, 5]).
+test(t2) :- comprimida([3, 4, 4, 1, 5, 5], [3, 4, 1, 5]).
+test(t2, X == [4, 1, 5]) :-
+    comprimida([4, 4, 4, 1, 5, 5], X).
+test(t2, X == [3, 4, 1, 5]) :-
+    comprimida([3, 4, 4, 1, 5, 5], X).
 
 :- end_tests(comprimida).
 ```
 
 
-### Exemplo 3.3
+## Exemplo - comprimida
 
 ```prolog
 comprimida([], []).
 
-% elemento repetido
-comprimida([X | XS], YS) :-
-    comprimida(XS, YS),
-    [X | _] = YS.
+comprimida([X], [X]).
 
-% elemento distinto
-comprimida([X | XS], [X | YS]) :-
-    comprimida(XS, YS),
-    [X | _] \= YS.
+comprimida([X, X | XS], YS) :-
+    comprimida([X | XS], YS).
+
+comprimida([X, Y | XS], [X | YS]) :-
+    dif(X, Y),
+    comprimida([Y | XS], YS).
 ```
 
-Usamos o template para listas. Caso a lista não seja vazia, existem duas
-alternativas, o elemento é repetido ou não é repetido
+Usamos o modelo para listas. Caso a lista não seja vazia, existem duas
+alternativas, o primeiro elemento é repetido ou não.
 
 
-### Exemplo 3.3
+## Exemplo - comprimida
 
 Resultado dos testes
 
@@ -521,71 +575,37 @@ Warning: /home/malbarbo/desktop/x.pl:72:
 true.
 ```
 
-### Exemplo 3.3
+
+## Exemplo - comprimida
+
+\small
 
 Solução usando corte para tornar o predicado semi determinístico
 
 ```prolog
 % comprimida(+XS, ?YS) is semidet
 %
-% Verdadeiro se XS comprimida é YS, isto é, sem elementos repetidos
-% consecutivos.
+% Verdadeiro se XS comprimida é YS, isto é,
+% sem elementos repetidos consecutivos.
 
 comprimida([], []).
 
-% elemento repetido
-comprimida([X | XS], YS) :-
-    comprimida(XS, YS),
-    [X | _] = YS,
-    !.
+comprimida([X], [X]).
 
-% elemento distinto
-comprimida([X | XS], [X | YS]) :-
-    comprimida(XS, YS),
-    [X | _] \= YS.
-```
+comprimida([X, X | XS], YS) :-
+    comprimida([X | XS], YS).
 
-### Exemplo 3.3
-
-Solução alternativa
-
-```prolog
-% comprimida2(+XS, ?YS) is semidet
-%
-% Verdadeiro se XS comprimida é YS, isto é, sem elementos repetidos
-% consecutivos.
-
-:- begin_tests(comprimida2).
-
-test(t0) :- comprimida2([], []).
-test(t1) :- comprimida2([x], [x]).
-test(t2) :- comprimida2([3, 3, 4, 4, 4, 3, 5, 5, 5], [3, 4, 3, 5]).
-
-:- end_tests(comprimida2).
-```
-
-### Exemplo 3.3
-
-```prolog
-comprimida2([], []).
-
-comprimida2([X], [X]) :- !.
-
-comprimida2([X, X | XS], YS) :-
-    comprimida2([X | XS], YS),
-    !.
-
-comprimida2([X, Y | XS], [X | YS]) :-
-    X \== Y,
-    comprimida2([Y | XS], YS).
+comprimida([X, Y | XS], [X | YS]) :-
+    dif(X, Y),
+    comprimida([Y | XS], YS).
 ```
 
 
-# Exemplos
+<!-- TODO: quanto falar de variáveis instanciadas vs não instancias?
 
-### Variáveis instanciadas vs não instanciadas
+## Variáveis instanciadas vs não instanciadas
 
--   Vamos voltar ao predicado `tamanho`
+- Vamos voltar ao predicado `tamanho`{.prolog}
 
     ```prolog
     tamanho([_ | XS], T) :-
@@ -595,7 +615,7 @@ comprimida2([X, Y | XS], [X | YS]) :-
     tamanho([], 0).
     ```
 
--   O que acontece na consulta?
+- O que acontece na consulta?
 
     ```prolog
     ?- tamanho(XS, 3).
@@ -603,20 +623,21 @@ comprimida2([X, Y | XS], [X | YS]) :-
 
 \pause
 
--   Entra em laço. A consulta unifica com a primeira cláusula, a primeira meta
-    unifica novamente com a primeira cláusula e assim por diante
+- Entra em laço. A consulta unifica com a primeira cláusula, a primeira meta
+  unifica novamente com a primeira cláusula e assim por diante
 
--   Neste caso o operador de corte sozinho não resolve o problema é necessário
-    fazer duas definições
+- Neste caso o operador de corte sozinho não resolve o problema é necessário
+  fazer duas definições
 
-    -   Uma para o caso que em `XS` está instanciado e outro para o caso em que
-        `XS` não está instanciado
+    - Uma para o caso que em `XS`{.prolog} está instanciado e outro para o caso em que
+      `XS` não está instanciado
 
-    -   Usamos os predicados pré-definidos `nonvar` e `var`, respectivamente
+    - Usamos os predicados pré-definidos `nonvar`{.prolog} e `var`{.prolog}, respectivamente
 
-### Variáveis instanciadas vs não instanciadas
 
--   Nova versão
+## Variáveis instanciadas vs não instanciadas
+
+- Nova versão
 
     ```prolog
     tamanho([], 0) :- !.
@@ -633,9 +654,10 @@ comprimida2([X, Y | XS], [X | YS]) :-
         tamanho(XS, T0).
     ```
 
-### Variáveis instanciadas vs não instanciadas
 
--   O que acontece nas consultas?
+## Variáveis instanciadas vs não instanciadas
+
+- O que acontece nas consultas?
 
     ```prolog
     ?- length(XS, T).
@@ -644,16 +666,20 @@ comprimida2([X, Y | XS], [X | YS]) :-
     ...
     ```
 
--   Como alterar a definição de `tamanho` para funcionar da mesma forma que
-    `length`?
+- Como alterar a definição de `tamanho`{.prolog} para funcionar da mesma forma que
+  `length`{.prolog}?
+-->
 
-### Exemplo 3.4
 
-Defina um predicado `membro(X, XS)` que é verdadeiro se `X` é membro de `XS`.
-Defina uma versão que seja não determinística e outra que seja semi
-determinística.  (Veja os predicados pré-definido `member/2` e `memberchk/2`)
+## Exemplo - membro
 
-### Exemplo 3.4
+Defina um predicado `membro(X, XS)`{.prolog} que é verdadeiro se `X`{.prolog}
+é membro de `XS`{.prolog}. Defina uma versão que seja não determinística
+e outra que seja semi determinística.  (Veja os predicados pré-definido
+`member/2`{.prolog} e `memberchk/2`{.prolog})
+
+
+## Exemplo - membro
 
 ```prolog
 % membro(?X, ?XS) is nondet
@@ -662,15 +688,16 @@ determinística.  (Veja os predicados pré-definido `member/2` e `memberchk/2`)
 
 :- begin_tests(membro).
 
-test(t0, [nondet]) :- membro(1, [1, 1, 3, 7]).
-test(t1, [nondet]) :- membro(3, [1, 3, 7]).
-test(t2, [nondet]) :- membro(7, [1, 3, 7]).
+test(t0, nondet) :- membro(1, [1, 1, 3, 7]).
+test(t1, nondet) :- membro(3, [1, 3, 7]).
+test(t2, nondet) :- membro(7, [1, 3, 7]).
 test(t3, all(X == [1, 3, 7])) :- membro(X, [1, 3, 7]).
 
 :- end_tests(membro).
 ```
 
-\pause
+
+## Exemplo - membro
 
 ```prolog
 membro(X, [X | _]).
@@ -678,7 +705,8 @@ membro(X, [_ | XS]) :-
     membro(X, XS).
 ```
 
-### Exemplo 3.4
+
+## Exemplo - membro
 
 Exemplos
 
@@ -695,20 +723,22 @@ L = [_G67, _G69, X|_G279] ;
 ...
 ```
 
-### Exemplo 3.4
 
--   O predicado `membro` é não determinístico
+## Exemplo - membro
 
--   Para testar predicados não determinísticos usados o argumento `[nondet]`
+- O predicado `membro`{.prolog} é não determinístico
 
--   Para testar todas as respostas de um predicado não determinísticos usamos
-    o termo `all`
+- Para testar predicados não determinísticos usados o argumento `nondet`{.prolog}
 
--   Como definir uma versão semi determinística deste predicado?
+- Para testar todas as respostas de um predicado não determinísticos usamos
+  o termo `all`{.prolog}
 
-### Exemplo 3.4
+- Como definir uma versão semi determinística deste predicado?
 
--   Usando o operador de corte
+
+## Exemplo - membro
+
+- Usando o operador de corte
 
     ```prolog
     % membrochk(+X, ?XS) is semidet
@@ -720,28 +750,40 @@ L = [_G67, _G69, X|_G279] ;
     test(t0) :- membrochk(1, [1, 3, 7]).
     test(t1) :- membrochk(7, [1, 3, 7]).
     test(t2, X == 1) :- membrochk(X, [1, 3, 7]).
-    test(t3, [fail]) :- membrochk(5, [1, 3, 7]).
+    test(t3, fail) :- membrochk(5, [1, 3, 7]).
 
     :- end_tests(membrochk).
+    ```
 
+
+## Exemplo - membro
+
+- Usando o corte
+
+    ```prolog
     membrochk(X, [X | _]) :- !.
     membrochk(X, [_ | XS]) :-
         membrochk(X, XS).
     ```
 
--   Usando o predicado pré-definido `once`
+- Usando o predicado pré-definido `once`{.prolog}
 
     ```prolog
     membrochk(X, XS) :-
         once(membro(X, XS)).
     ```
 
-### Exemplo 3.5
 
-Defina um predicado `concatenacao(XS, YS, ZS)` que é verdadeiro se `ZS`
-é a concatenação de `XS` com `YS`. (Veja o predicado pré-definido `append/3`)
+## Exemplo - concatenação
 
-### Exemplo 3.5
+Defina um predicado `concatenacao(XS, YS, ZS)`{.prolog} que é verdadeiro se
+`ZS`{.prolog} é a concatenação de `XS`{.prolog} com `YS`{.prolog}. (Veja
+o predicado pré-definido `append/3`{.prolog})
+
+
+## Exemplo - concatenação
+
+\small
 
 ```prolog
 % concatenacao(?XS, ?YS, ?ZS) is nondet
@@ -749,21 +791,20 @@ Defina um predicado `concatenacao(XS, YS, ZS)` que é verdadeiro se `ZS`
 % Verdadeiro se ZS é a concatenação de XS com YS.
 
 :- begin_tests(concatenacao).
-
 test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
 test(t1, XS == [1, 2, 4]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
 test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
-test(t3, all(p(XS, YS) == [
-         p([], [1, 2, 3]),
-         p([1], [2, 3]),
-         p([1, 2], [3]),
-         p([1, 2, 3], [])])) :-
+test(t3, all([XS, YS] == [
+         [[], [1, 2, 3]],
+         [[1], [2, 3]],
+         [[1, 2], [3]],
+         [[1, 2, 3], []]])) :-
     concatenacao(XS, YS, [1, 2, 3]).
-
 :- end_tests(concatenacao).
 ```
 
-### Exemplo 3.5
+
+## Exemplo - concatenação
 
 ```prolog
 concatenacao([], YS, YS).
@@ -772,7 +813,10 @@ concatenacao([X | XS], YS, [X | XSYS]) :-
     concatenacao(XS, YS, XSYS).
 ```
 
-### Exemplo 3.5
+
+## Exemplo - concatenação
+
+\small
 
 Resultado dos testes
 
@@ -786,19 +830,19 @@ Warning: /home/malbarbo/desktop/ex_dados.pl:46:
 true.
 ```
 
--   Porque?
+Porque? \pause Na consulta `concatenacao(XS, [3], [1, 2, 4, 3])`{.prolog} são
+testadas as duas cláusulas, gerando a escolha
 
-    -   Na consulta `concatenacao(XS, [3], [1, 2, 4, 3])` são testadas as duas
-        cláusulas, gerando a escolha
+Qual é a solução?
 
--   Solução
+- Adicionar o operador de corte na primeira cláusula faz com que o teste
+  `t3`{.prolog} falhe ...
+- Adicionar `nondet`{.prolog} ao teste `t1`{.prolog}
 
-    -   Adicionar o operador de corte na primeira cláusula faz com que o teste
-        `t3` falhe ...
 
-    -   Adicionar `nondet` ao teste `t1`
+## Exemplo - concatenação
 
-### Exemplo 3.5
+\small
 
 ```prolog
 % concatenacao(?XS, ?YS, ?ZS) is nondet
@@ -806,9 +850,9 @@ true.
 % Verdadeiro se ZS é a concatenação de XS com YS.
 
 :- begin_tests(concatenacao).
-
 test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
-test(t1, [nondet, XS == [1, 2, 4]]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
+test(t1, [nondet, XS == [1, 2, 4]]) :-
+    concatenacao(XS, [3], [1, 2, 4, 3]).
 test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
 test(t3, all(p(XS, YS) == [
          p([], [1, 2, 3]),
@@ -816,24 +860,26 @@ test(t3, all(p(XS, YS) == [
          p([1, 2], [3]),
          p([1, 2, 3], [])])) :-
     concatenacao(XS, YS, [1, 2, 3]).
-
 :- end_tests(concatenacao).
 ```
 
-# Listas aninhadas
 
-### Listas aninhadas
+Listas aninhadas
+================
 
--   Uma lista aninhada é
+## Listas aninhadas
 
-    -   `[]`; ou
+- Uma lista aninhada é
 
-    -   `[X | XS]`, onde `X` não é uma lista aninhada e `XS` é uma lista aninhada; ou
+    - `[]`{.prolog}; ou
 
-    -   `[X | XS]`, onde `X` e `XS` são listas aninhadas
+    - `[X | XS]`{.prolog}, onde `X`{.prolog} não é uma lista aninhada
+      e `XS`{.prolog} é uma lista aninhada; ou
+
+    - `[X | XS]`{.prolog}, onde `X`{.prolog} e `XS`{.prolog} são listas aninhadas
 
 
--   Template
+- Modelo
 
     ```prolog
     pred_lista_aninhada([], ...) :- ???.
@@ -849,28 +895,33 @@ test(t3, all(p(XS, YS) == [
         ???.
     ```
 
-### Exemplo 3.6
 
-Defina um predicado `super_soma(XS, S)` que é verdadeiro se `S` é soma de todos
-os elementos da lista aninhada `XS`.
+## Exemplo - super soma
 
-### Exemplo 3.6
+Defina um predicado `super_soma(XS, S)`{.prolog} que é verdadeiro se
+`S`{.prolog} é soma de todos os elementos da lista aninhada `XS`{.prolog}.
+
+
+## Exemplo - super soma
 
 ```prolog
-%% super\_soma(XS, S) is semidet
+%% super_soma(XS, S) is semidet
 %
-%  Verdadeiro se S é a soma de todos elementos da lista aninhada XS.
+%  Verdadeiro se S é a soma de todos elementos
+%  da lista aninhada XS.
 
 :- begin_tests(super_soma).
 
 test(t0) :- super_soma([[], [], [[], []]], 0).
 test(t1) :- super_soma([[1], [2, 3], [4, [5, 6], 7]], 28).
-test(t2, S == 36) :- super_soma([[1, 2], 3, [4, [5, 6, [7]], 8]], S).
+test(t2, S == 36) :-
+    super_soma([[1, 2], 3, [4, [5, 6, [7]], 8]], S).
 
 :- end_tests(super_soma).
 ```
 
-### Exemplo 3.6
+
+## Exemplo - super soma
 
 ```prolog
 super_soma([], 0).
@@ -886,18 +937,22 @@ super_soma([X | XS], S) :-
     S is S1 + S2.
 ```
 
-# Árvore binária
 
-### Árvore binária
 
--   Uma árvore binária é:
+Árvore binária
+==============
 
-    -   `nil`; ou
 
-    -   `t(X, L, R)` onde `X` é o elemento raiz e `L` é a sub árvore a esquerda
-        e `R` é a sub árvore a direita
+## Árvore binária
 
-- Template
+- Uma árvore binária é:
+
+    - `nil`{.prolog}; ou
+
+    - `t(X, L, R)`{.prolog} onde `X`{.prolog} é o elemento raiz e `L`{.prolog}
+      é a sub árvore a esquerda e `R`{.prolog} é a sub árvore a direita
+
+- Modelo
 
     ```prolog
     pred_arvore_binaria(nil, ...) :- ???.
@@ -908,46 +963,54 @@ super_soma([X | XS], S) :-
         ??? X.
     ```
 
-### Exemplo 3.7
 
-Defina um predicado `altura(T, H)` que é verdadeiro se `H` é altura da árvore
-binária `T`. A altura de uma árvore binária é a distância entre a raiz e o seu
-descendente mais afastado. Uma árvore com um único nó tem altura 0.
+## Exemplo - altura
 
-
-# Otimizações
-
-### Otimizações
-
--   Assim como o Racket, o Prolog faz otimizações das chamadas recursivas em
-    cauda
-
--   As vezes é necessário utilizar acumuladores para transformar uma recursão em
-    recursão em cauda
-
--   Uma outra técnica de otimização comum em Prolog é a utilização de
-    diferenças de listas
+Defina um predicado `altura(T, H)`{.prolog} que é verdadeiro se `H`{.prolog}
+é altura da árvore binária `T`{.prolog}. A altura de uma árvore binária
+é a distância entre a raiz e o seu descendente mais afastado. Uma árvore com um
+único nó tem altura 0.
 
 
-### Acumuladores
 
--   Exemplo 3.8, tamanho de uma lista.
-
--   Exemplo 3.9, reverso de uma lista.
+Otimizações
+===========
 
 
-### Diferenças de listas
+## Otimizações
 
--   Exemplo 3.10, concatenação de listas.
+- Assim como o Racket, o Prolog faz otimizações das chamadas recursivas em
+  cauda
+
+- As vezes é necessário utilizar acumuladores para transformar uma recursão em
+  recursão em cauda
+
+- Uma outra técnica de otimização comum em Prolog é a utilização de diferenças
+  de listas
 
 
-# Referências
+## Acumuladores
 
-### Referências
+- Exemplo tamanho de uma lista.
 
--   Capítulo 3 e sessão 7.5 do livro Programming in Prolog
+- Exemplo reverso de uma lista.
 
--   Capítulos
+
+## Diferenças de listas
+
+- Exemplo concatenação de listas.
+
+
+
+Referências
+===========
+
+
+## Referências
+
+- Capítulo 3 e sessão 7.5 do livro Programming in Prolog
+
+- Capítulos
     [4](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch4) e
     [6](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch6)
     do livro
