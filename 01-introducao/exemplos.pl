@@ -17,9 +17,9 @@
 %  Verdadeiro se o circuito exemplo com as entradas A, B e C produz a saída D.
 
 circuito(A, B, C, D) :-
-	nand(A, B, X),
-	or(B, C, Y),
-	and(X, Y, D).
+    nand(A, B, X),
+    or(B, C, Y),
+    and(X, Y, D).
 
 %% and(A?, B?, C?) is nondet
 %
@@ -51,8 +51,8 @@ not(1, 0).
 %  Verdadeiro se C = not (A and B).
 
 nand(A, B, C) :-
-    and(A, B, NOTC),
-    not(NOTC, C).
+    and(A, B, N),
+    not(N, C).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,22 +76,22 @@ nand(A, B, C) :-
 %  mesma cor.
 
 coloracao(A, B, C, D, E) :-
-	cor_dif(A, C),
-	cor_dif(A, D),
-	cor_dif(A, B),
-	cor_dif(B, D),
-	cor_dif(B, E),
-	cor_dif(C, D),
-	cor_dif(D, E).
+    cor_dif(A, C),
+    cor_dif(A, D),
+    cor_dif(A, B),
+    cor_dif(B, D),
+    cor_dif(B, E),
+    cor_dif(C, D),
+    cor_dif(D, E).
 
 %% cor_dif(A?, B?) is nondet
 %
 %  Verdeiro se A é uma cor diferente da cor B.
 
 cor_dif(A, B) :-
-	cor(A),
-	cor(B),
-	A \== B.
+    cor(A),
+    cor(B),
+    A \== B.
 
 %% cor(A?) is nondet
 %

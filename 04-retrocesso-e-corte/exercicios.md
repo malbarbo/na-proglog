@@ -1,9 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: |
-    | Programação Lógica
-    | 4
-    | Retrocesso e corte
+title: Retrocesso e corte
 ---
 
 #.  [pip 7.9] Três números naturais $A, B, C$ são chamados de terno Pitagórico
@@ -114,8 +111,8 @@ title: |
     Defina um predicado `zebra(N)` que é verdadeiro se a pessoa com
     nacionalidade N tem como animal de estimação uma zebra.
 
-#.  Defina um predicado que resolva o problema de lógica descrito em
-    [rachacuca.com.br](http://rachacuca.com.br/teste-de-einstein/).
+#.  Defina um predicado que resolva o problema de lógica "Teste de Einstein"
+    descrito em [rachacuca.com.br/teste-de-einstein](http://rachacuca.com.br/teste-de-einstein/).
 
 
 # Referências

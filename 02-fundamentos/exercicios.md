@@ -90,20 +90,20 @@ Prolog.
 #.  [lpn 2.1] Quais dos seguintes par de termos unificam? Quando for o caso, dê
     o valor instanciado para cada variável que levou a unificação.
 
-    a. `bread = bread`
-    a. `’Bread’ = bread`
-    a. `’bread’ = bread`
-    a. `Bread = bread`
-    a. `bread = sausage`
-    a. `food(bread) = bread`
-    a. `food(bread) = X`
-    a. `food(X) = food(bread)`
-    a. `food(bread, X) = food(Y, sausage)`
-    a. `food(bread, X, beer) = food(Y, sausage, X)`
-    a. `food(bread, X, beer) = food(Y, kahuna_burger)`
-    a. `food(X) = X`
-    a. `meal(food(bread), drink(beer)) = meal(X,Y)`
-    a. `meal(food(bread), X) = meal(X,drink(beer))`
+    a. `bread = bread`{.prolog}
+    a. `'Bread' = bread`{.prolog}
+    a. `'bread' = bread`{.prolog}
+    a. `Bread = bread`{.prolog}
+    a. `bread = sausage`{.prolog}
+    a. `food(bread) = bread`{.prolog}
+    a. `food(bread) = X`{.prolog}
+    a. `food(X) = food(bread)`{.prolog}
+    a. `food(bread, X) = food(Y, sausage)`{.prolog}
+    a. `food(bread, X, beer) = food(Y, sausage, X)`{.prolog}
+    a. `food(bread, X, beer) = food(Y, kahuna_burger)`{.prolog}
+    a. `food(X) = X`{.prolog}
+    a. `meal(food(bread), drink(beer)) = meal(X,Y)`{.prolog}
+    a. `meal(food(bread), X) = meal(X,drink(beer))`{.prolog}
 
 #.  [lpn 1.3] Quantos fatos, regras, cláusulas e predicados existem na seguinte
     base de conhecimento? Qual é a cabeça de cada regra e quais são as metas

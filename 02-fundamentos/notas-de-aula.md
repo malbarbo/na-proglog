@@ -38,7 +38,7 @@ Termos
 
 - Cada termo é definido com uma sequência de caracteres
 
-    - Letras maiúsculas: `A .. Z`{}
+    - Letras maiúsculas: `A .. Z`
 
     - Letras minúsculas: `a .. z`
 
@@ -53,7 +53,7 @@ Termos
 
     - Átomos começam com letra minúscula ou símbolo, ou entre apóstrofos '
 
-        ```prolog
+        ```
         casa
         -->
         'Jose da Silva'
@@ -62,7 +62,7 @@ Termos
 
     - Números
 
-        ```prolog
+        ```
         89
         -17
         2.67e10
@@ -73,7 +73,7 @@ Termos
 
 - Parecem átomos mas começam com letras maiúsculas ou `_`{.prolog}
 
-    ```prolog
+    ```
     X
     Reposta
     Nome_longo
@@ -579,9 +579,11 @@ Referências
 
 ## Referências básicas
 
-- Capítulos 1 e 2 do livro Programming in Prolog
-
 - Seção [Prolog Integer Arithmetic](https://www.metalevel.at/prolog/clpz) do livro [The Power Of Prolog](https://www.metalevel.at/prolog/clpz)
+
+- Capítulos 2 e 3 da apostila [Paradigmas de programação - Prolog](http://www.ic.unicamp.br/~meidanis/courses/mc346/2017s2/prolog/apostila-prolog.pdf)
+
+- Capítulos 1 e 2 do livro Programming in Prolog
 
 - Capítulos
   [1](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch1)

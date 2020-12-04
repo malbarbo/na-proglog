@@ -339,7 +339,7 @@ kesimo([_ | XS], K, X) :-
     kesimo(XS, K0, X).
 ```
 
-Fizemos a combinação de modelos de lista e número natural
+Note que fizemos, mais ou menos, a combinação de modelos de lista e número natural
 
 
 ## Exemplo - $k$-ésimo
@@ -1009,6 +1009,8 @@ Referências
 ## Referências
 
 - Capítulo 3 e sessão 7.5 do livro Programming in Prolog
+
+- Capítulo 4 da apostila [Paradigmas de programação - Prolog](http://www.ic.unicamp.br/~meidanis/courses/mc346/2017s2/prolog/apostila-prolog.pdf)
 
 - Capítulos
     [4](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch4) e

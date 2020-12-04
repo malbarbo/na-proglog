@@ -1,9 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: |
-    | Programação Lógica
-    | 3
-    | Dados compostos
+title: Dados compostos
 ---
 
 #.  [pp99 1.01] Defina um predicado `ultimo(L, X)` que é verdadeiro se `X`

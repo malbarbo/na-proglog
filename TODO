@@ -1,3 +1,33 @@
+---
+# vim: set spell spelllang=pt_br sw=4:
+---
+
 # TODO
 
--   Inverter o sinal do modo dos parâmetros: X? para ?X
+- Remover itemização dos primeiro nível (ou: usar itemização apenas se forem itens!)
+
+- Separar introdução em introdução e tutorial
+
+- Mudar a abordagem. Parece que a partir do cap 3 a preocupação é com os
+  detalhes do funcionamento do Prolog, deveríamos nos preocupar com solucionar
+  problemas... Talvez possamos nos inspirar no livro "The Power of Prolog"
+
+- Ver os TODOs em cada arquivo
+
+- Inverter o sinal do modo dos parâmetros: X? para ?X
+
+- Melhorar a descrição dos modos dos parâmetros (está muito informal)
+
+- Adicionar referências "The Power of Prolog"
+
+- Usar clpfd ao invés da aritmética primitiva (segundo The Power of Prolog)
+
+- Usar consistentemente destaque nós código. Ou os trechos de código no meio do
+  texto são marcados com `{.prolog}` ou não
+
+- Substituir `.` por `[|]` no cap 2
+
+- Mudar estilo de comentário de documentação para `%!` (veja
+  https://www.swi-prolog.org/pldoc/man?section=pldoc-comments)
+
+- Usar dif/2 ao invés de \==

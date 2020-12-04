@@ -75,8 +75,8 @@ test(t0, all(N == [0, 1, 2, 3])) :-
 
 natural(0).
 natural(N) :-
-	natural(N0),
-	N is N0 + 1.
+    natural(N0),
+    N is N0 + 1.
 
 
 %% naturalx(?N) is nondet
@@ -119,8 +119,8 @@ nat(N) :-
 
 nat(N, N).
 nat(N, X) :-
-	N1 is N + 1,
-	nat(N1, X).
+    N1 is N + 1,
+    nat(N1, X).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,8 +183,8 @@ test(t0, P == 7) :- primeiro_primo(7, P).
 :- end_tests(primeiro_primo).
 
 primeiro_primo(N, P) :-
-	nat(N, P), % gerar um candidado
-	primo(P),  % testa o candidado
+    nat(N, P), % gerar um candidado
+    primo(P),  % testa o candidado
     !.         % interrompe o processo após achar uma solução
 
 
