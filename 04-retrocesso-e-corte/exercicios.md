@@ -4,8 +4,9 @@ title: Retrocesso e corte
 ---
 
 #.  [pip 7.9] Três números naturais $A, B, C$ são chamados de terno Pitagórico
-    se $A^2 + B^2 = C^2$. Escreva um predicado `terno_pitagorico(A, B, C)` que
-    gere ternos Pitagóricos. Dica: use o gerador `int` visto em sala. Exemplo
+    se $A^2 + B^2 = C^2$. Projete um predicado
+    `terno_pitagorico(A, B, C)`{.prolog} que gere ternos Pitagóricos. Dica: use
+    o gerador `between`{.prolog} visto em sala. Exemplo
 
     ```prolog
     ?- terno_pitagorico(A, B, C).
@@ -21,9 +22,10 @@ title: Retrocesso e corte
     ...
     ```
 
-#.  [pp99 1.26] Defina um predicado `combinacao(K, L, C)` que é verdadeiro se
-    `C` é uma combinação de `K` elementos de `L`. Este predicado deve ser capaz
-    de gerar todas as combinações de `K` elementos via retrocesso. Exemplo
+#.  [pp99 1.26] Defina um predicado `combinacao(K, L, C)`{.prolog} que
+    é verdadeiro se `C`{.prolog} é uma combinação de `K`{.prolog} elementos de
+    `L`{.prolog}. Este predicado deve ser capaz de gerar todas as combinações
+    de `K`{.prolog} elementos via retrocesso. Exemplo
 
     ```prolog
     ?- combinacao(3, [a, b, c d], C).
@@ -34,9 +36,10 @@ title: Retrocesso e corte
     false.
     ```
 
-#.  Defina um predicado `subconjunto(L, S)` que é verdadeiro se `S` é um
-    subconjunto de `L`.  Este predicado deve ser capaz de gerar todos os
-    subconjuntos de `L` via retrocesso. Exemplo
+#.  Defina um predicado `subconjunto(L, S)`{.prolog} que é verdadeiro se
+    `S`{.prolog} é um subconjunto de `L`{.prolog}. Este predicado deve ser
+    capaz de gerar todos os subconjuntos de `L`{.prolog} via retrocesso.
+    Exemplo
 
     ```prolog
     ?- subconjunto([a, b, c], S).
@@ -53,30 +56,22 @@ title: Retrocesso e corte
 
 #.  Dado um conjunto de números inteiros e um inteiro $S$, o problema da soma
     dos subconjuntos consiste em verificar se existe um subconjunto não vazio
-    cuja soma é $S$. Defina um predicado `soma_subconjunto(A, S, P)` que
-    é verdadeiro se `P` é um subconjunto de `A` e a soma dos elementos de `P`
-    é `S`. Uma estratégia simples (e ingênua) para implementar este predicado
-    é testar os subconjunto até encontrar um que tenha a soma esperada.
+    cuja soma é $S$. Defina um predicado `soma_subconjunto(A, S, P)`{.prolog}
+    que é verdadeiro se `P`{.prolog} é um subconjunto de `A`{.prolog} e a soma
+    dos elementos de `P`{.prolog} é `S`{.prolog}. Uma estratégia simples (e
+    ingênua) para implementar este predicado é testar os subconjunto até
+    encontrar um que tenha a soma esperada.
 
     ```prolog
     ?- soma_subconjunto([-7, -3, -2, 5, 8], 0, P).
     P = [-3, -2, 5].
     ```
 
-#.  Defina um predicado `ordenacao(L, S)` que é verdadeiro se `S` é a lista `L`
-    com os elementos ordenados. Este predicado deve implementar um algoritmo de
-    ordenação bastante ingênuo, que testa as permutações de `S` até encontrar
-    uma permutação ordenada. Seu predicado deve ser determinístico. Exemplo
-
-    ```prolog
-    ?- ordenacao([7, 2, 4, 3], S).
-    S = [2, 3, 4, 7].
-    ```
-
-#.  Defina um predicado `primo(N)` que é verdadeiro se `N` é  um número primo.
-    Seu predicado deve funcionar se `N` estiver instanciado ou não. Se `N` não
-    estiver instanciado o seu predicado deve gerar os número primos via
-    retrocesso. Veja os predicados pré-definidos `var` e `nonvar`. Exemplos
+#.  Defina um predicado `primo(N)`{.prolog} que é verdadeiro se `N`{.prolog}
+    é um número primo. Seu predicado deve funcionar se `N`{.prolog} estiver
+    instanciado ou não. Se `N`{.prolog} não estiver instanciado o seu predicado
+    deve gerar os número primos via retrocesso. Veja os predicados
+    pré-definidos `var`{.prolog} e `nonvar`{.prolog}. Exemplos
 
     ```prolog
     ?- primo(7).
@@ -95,6 +90,7 @@ title: Retrocesso e corte
     de permutações e testar se as rainhas foram posicionadas de maneira
     correta.
 
+<!--
 #.  [lpn 6.6] Existe uma rua com três casas vizinhas com cores diferentes
     (vermelho, azul e verde). Em cada casa vive uma pessoa de uma nacionalidade
     diferente e que têm uma animal de estimação diferente. Mais alguns fatos
@@ -113,6 +109,7 @@ title: Retrocesso e corte
 
 #.  Defina um predicado que resolva o problema de lógica "Teste de Einstein"
     descrito em [rachacuca.com.br/teste-de-einstein](http://rachacuca.com.br/teste-de-einstein/).
+-->
 
 
 # Referências

@@ -1,6 +1,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.1
-
 %% selecionado(?X, ?L, ?R) is nondet
 %
 %  Verdadeiro se R é a lista L sem o elemento X.
@@ -23,8 +21,6 @@ selecionado(X, [Y|YS], [Y|R]) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.2
-
 %% permutacao(+L, ?P) is nondet
 %
 %  Verdadeiro se P é uma permutação de L. Se P não estiver instanciado, o
@@ -47,8 +43,6 @@ permutacao(L, [X|T]) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.3
-
 %% natural(-N) is nondet
 %
 %  Verdadeiro se N é um número natural. Este predicado é um gerador. A cada fez
@@ -124,9 +118,7 @@ nat(N, X) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.4
-
-%% aprova(?A) is nondet
+%% aprovado(?A) is nondet
 %
 %  Verdadeiro se o aluno A foi aprovado.
 
@@ -169,63 +161,36 @@ exame(andre, 6.5).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.5
-
-%% primeiro_primo(+N, ?P) is semidet
+%% ordenacao(+L, -S) is semidet
 %
-%  Verdadeiro se P é o primeiro primo maior ou igual a N.
+%  Verdadeiro se S é a lista L com os elementos ordenados.
 
-:- begin_tests(primeiro_primo).
+:- begin_tests(ordenacao).
 
-test(t0, P == 17) :- primeiro_primo(14, P).
-test(t0, P == 7) :- primeiro_primo(7, P).
+test(ordenacao, S == [2, 3, 4, 7]) :-
+    ordenacao([7, 2, 4, 3], S).
 
-:- end_tests(primeiro_primo).
+:- end_tests(ordenacao).
 
-primeiro_primo(N, P) :-
-    nat(N, P), % gerar um candidado
-    primo(P),  % testa o candidado
-    !.         % interrompe o processo após achar uma solução
+ordenacao(L, S) :-
+    permutation(L, S),
+    ordenado(S), !.
 
 
-%% primo(+X) is semidet
+%% ordenado(+L) is semidet
 %
-%  Verdadeiro se X é um número primo.
+%  Verdadeiro se L é uma lista de números ordenados.
 
-primo(X) :-
-    menor_divisor(X, 2, Y),
-    X =:= Y.
-
-%% menor_divisor(+X, +D, ?Y) is semidet
-%
-%  Verdadeiro se Y é o menor divisor de X maior ou igual a D.
-
-% X é o menor divisor de X començando com X
-menor_divisor(X, X, X) :- !.
-
-% D é o menor divisor de X començando com D se X é divisível por D.
-menor_divisor(X, D, D) :-
-    divisivel(X, D), !.
-
-% D não é divisor de X
-menor_divisor(X, D, Y) :-
-    \+ divisivel(X, D),
-    D1 is D + 1,
-    D1 =< X,
-    menor_divisor(X, D1, Y).
+ordenado([]).
+ordenado([_]).
+ordenado([A, B | R]) :-
+    A =< B,
+    ordenado([B | R]).
 
 
-%% Divisivel(+X, +Y) is semidet
-%
-% Verdadeiro se X é divisível por Y.
-
-divisivel(X, Y) :-
-    X rem Y =:= 0.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exemplo 4.6
-
 %% grafo(+N, -G, -Cs)
 %
 %  N é o número do grafo G.
@@ -334,4 +299,56 @@ aresta(grafo(_, A), U, W) :-
 vertice(grafo(V, _), U) :-
     member(U, V).
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% primeiro_primo(+N, ?P) is semidet
+%
+%  Verdadeiro se P é o primeiro primo maior ou igual a N.
+
+:- begin_tests(primeiro_primo).
+
+test(t0, P == 17) :- primeiro_primo(14, P).
+test(t0, P == 7) :- primeiro_primo(7, P).
+
+:- end_tests(primeiro_primo).
+
+primeiro_primo(N, P) :-
+    nat(N, P), % gerar um candidado
+    primo(P),  % testa o candidado
+    !.         % interrompe o processo após achar uma solução
+
+
+%% primo(+X) is semidet
+%
+%  Verdadeiro se X é um número primo.
+
+primo(X) :-
+    menor_divisor(X, 2, Y),
+    X =:= Y.
+
+%% menor_divisor(+X, +D, ?Y) is semidet
+%
+%  Verdadeiro se Y é o menor divisor de X maior ou igual a D.
+
+% X é o menor divisor de X començando com X
+menor_divisor(X, X, X) :- !.
+
+% D é o menor divisor de X començando com D se X é divisível por D.
+menor_divisor(X, D, D) :-
+    divisivel(X, D), !.
+
+% D não é divisor de X
+menor_divisor(X, D, Y) :-
+    \+ divisivel(X, D),
+    D1 is D + 1,
+    D1 =< X,
+    menor_divisor(X, D1, Y).
+
+
+%% Divisivel(+X, +Y) is semidet
+%
+% Verdadeiro se X é divisível por Y.
+
+divisivel(X, Y) :-
+    X rem Y =:= 0.
 % vim: set ft=prolog spell spelllang=pt_br:
