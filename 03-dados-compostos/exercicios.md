@@ -92,6 +92,8 @@ title: Dados compostos
     F = [3, 3, 5, 7].
     ```
 
+<!--
+
 #.  [p99 1.07] Defina um predicado `aplainada(L, F)` que é verdadeiro se `F`
     é uma versão não aninhada de `L`. Exemplo
 
@@ -112,6 +114,8 @@ title: Dados compostos
 
 #.  Analise os exercícios anteriores e reescreva os predicados (que obtiverem
     algum melhora no desempenho) utilizando diferença de listas.
+
+-->
 
 
 # Referências

@@ -864,6 +864,8 @@ test(t3, all(p(XS, YS) == [
 ```
 
 
+<!--
+
 Listas aninhadas
 ================
 
@@ -971,7 +973,7 @@ Defina um predicado `altura(T, H)`{.prolog} que é verdadeiro se `H`{.prolog}
 é a distância entre a raiz e o seu descendente mais afastado. Uma árvore com um
 único nó tem altura 0.
 
-
+-->
 
 Otimizações
 ===========
