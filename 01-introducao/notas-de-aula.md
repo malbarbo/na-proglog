@@ -16,98 +16,96 @@ descrever o fluxo de controle.
 
 ## Imperativo vs declarativo
 
-- Imperativo
+Imperativo \pause
 
-    - Modelo de computação baseado em sequência passo a passo de comandos
+- Modelo de computação baseado em sequência passo a passo de comandos \pause
 
-    - Atribuições destrutivas
+- Atribuições destrutivas \pause
 
-    - Ordem de execução é crucial, os comandos só podem ser entendidos no
-      contexto das computações anteriores devido aos efeitos colaterais
+- Ordem de execução é crucial, os comandos só podem ser entendidos no contexto das computações anteriores devido aos efeitos colaterais \pause
 
-    - Controle é responsabilidade do programador
+- Controle é responsabilidade do programador \pause
 
-    - Exemplos: Java, C, Pascal
-
-
-## Imperativo vs declarativo
-
-- Declarativo
-
-    - Modelo de computação baseado em um sistema onde as relações são
-      especificadas diretamente em termos da entrada
-
-    - Atribuição não destrutiva
-
-    - A ordem de execução não importa (não tem efeitos colaterais)
-
-    - O programador não é responsável pelo controle
-
-    - Exemplos: SQL, Prolog, Haskell
+- Exemplos: Java, C, Pascal
 
 
 ## Imperativo vs declarativo
 
-- Alguns autores consideram "como" (imperativo) vs "o que" (declarativo)
+Declarativo \pause
+
+- Modelo de computação baseado em um sistema onde as relações são especificadas diretamente em termos da entrada \pause
+
+- Atribuição não destrutiva \pause
+
+- A ordem de execução não importa (não tem efeitos colaterais) \pause
+
+- O programador não é responsável pelo controle \pause
+
+- Exemplos: SQL, Prolog, Haskell
+
+
+## Imperativo vs declarativo
+
+Alguns autores consideram "como" (imperativo) vs "o que" (declarativo)
 
 
 ## Paradigmas declarativos
 
-- Os principais paradigmas declarativos são
-
-    - Funcional
-
-    - Lógico
-
-    - Por restrições
-
-
-## Funcional vs lógico
+Os principais paradigmas declarativos são
 
 - Funcional
 
-    - Baseado em declaração e aplicação de funções (cálculo lambda)
+- Lógico
 
-    - Todos os parâmetro de uma função precisam estar instanciados
-
-    - Clara distinção entre entrada e saída
+- Por restrições
 
 
 ## Funcional vs lógico
 
-- Lógico
+Funcional
 
-    - Baseado no cálculo de predicados
+- Baseado em declaração e aplicação de funções (cálculo lambda)
 
-    - Objetos e relações
+- Todos os parâmetro de uma função precisam estar instanciados
 
-    - A computação é feita usando um mecanismo de inferência lógico
+- Clara distinção entre entrada e saída
 
-    - A computação pode ser realizada com variáveis não instanciadas
+
+## Funcional vs lógico
+
+Lógico
+
+- Baseado no cálculo de predicados
+
+- Objetos e relações
+
+- A computação é feita usando um mecanismo de inferência lógico
+
+- A computação pode ser realizada com variáveis não instanciadas
 
 
 ## Prolog
 
-- Para estudar o paradigma lógico vamos utilizar a linguagem Prolog
+Para estudar o paradigma lógico vamos utilizar a linguagem Prolog
 
-    - Existem muitas implementações
+- Existem muitas implementações
 
-    - Vamos utilizar o [SWI-Prolog](http://www.swi-prolog.org)
+- Vamos utilizar o [SWI-Prolog](http://www.swi-prolog.org)
 
 
 ## Instalação e execução
 
-- Instalação
+Instalação
 
-    ```sh
-    $ apt-get install swi-prolog
-    ```
+```sh
+$ apt-get install swi-prolog
+```
 
-- Execução
+Execução
 
-    ```sh
-    $ swipl
-    ```
+```sh
+$ swipl
+```
 
 
 ## Edição e consulta com editor integrado
@@ -136,27 +134,27 @@ E = vim.                # Resultado
 
 ## Edição e consulta com editor web swish
 
-![](imagens/swish.png)
+![](imagens/swish.png){width=10cm}
 
 
 ## Edição e consulta com outro editor
 
-- Editar o arquivo usando o editor de sua preferência
+Editar o arquivo usando o editor de sua preferência
 
-- Ler o arquivo no swipl
+Ler o arquivo no swipl
 
-    ```prolog
-    ?- consult('arquivo.pl').
-    ```
+```prolog
+?- consult('arquivo.pl').
+```
 
-- Fazer consultas
+Fazer consultas
 
-    ```prolog
-    ?- editor(joao, E).
-    E = emacs.
-    ```
+```prolog
+?- editor(joao, E).
+E = emacs.
+```
 
-- Depois de alterar o arquivo, ele deve ser lido novamente
+Depois de alterar o arquivo, ele deve ser lido novamente
 
 
 
@@ -168,367 +166,349 @@ Tutorial
 
 <!-- TODO: Adicionar definição de relação e fazer comparação com função !-->
 
-- Neste tutorial não seremos muito formais
+Neste tutorial não seremos muito formais. \pause
 
-- Programar em Prolog consiste em
+Programar em Prolog consiste em \pause
 
-    - Especificar fatos sobre objetos e suas relações
+- Especificar fatos sobre objetos e suas relações \pause
 
-    - Definir regras sobre objetos e suas relações
+- Definir regras sobre objetos e suas relações \pause
 
-    - Fazer consultas (perguntas) sobre objetos e suas relações
-
-
-## Fatos
-
-- Um fato é algo que é verdadeiro sobre uma relação de objetos
-
-- Exemplo de fato
-
-    - João utiliza o editor vim
-
-        ```prolog
-        editor(joao, vim).
-        ```
-
-    - `joao` e `vim` são objetos
-
-    - `editor` é uma relação
+- Fazer consultas (perguntas) sobre objetos e suas relações
 
 
 ## Fatos
 
-- Os nomes das relações e dos objetos devem começar com letras minúsculas
+Um fato é algo que é verdadeiro sobre uma relação de objetos.
 
-- A ordem dos objetos é arbitrária, mas você deve ser consistente
+Exemplo de fato \pause
 
-- Os objetos de uma relação são chamados de argumentos
-
-- O nome da relação é chamado de predicado
-
-- O número de argumentos de um predicado é a aridade do predicado
-
-
-## Fatos
-
-- Uma relação pode ter qualquer quantidade de argumentos
-
-- Fato: Está chovendo. \pause
+- João utiliza o editor vim \pause
 
     ```prolog
-    chovendo.
+    editor(joao, vim).
     ```
 
     \pause
 
-- Fato: Maria comprou um livro do Jorge. \pause
+- `joao` e `vim` são objetos \pause
 
-    ```prolog
-    comprou(maria, livro, jorge).
-    ```
+- `editor` é uma relação
 
 
-## Consultas
+## Fatos
 
-- Podemos fazer consultas sobre os fatos que foram definidos
+Os nomes das relações e dos objetos devem começar com letras minúsculas. \pause
 
-- A forma de uma consulta é similar a de um fato
+A ordem dos objetos é arbitrária, mas você deve ser consistente. \pause
+
+Os objetos de uma relação são chamados de argumentos. \pause
+
+O nome da relação é chamado de predicado. \pause
+
+O número de argumentos de um predicado é a aridade do predicado.
 
 
-## Consultas
+## Fatos
 
-- Dado os seguintes fatos
+Uma relação pode ter qualquer quantidade de argumentos. \pause
 
-    ```prolog
-    editor(joao, vim).
-    editor(pedro, emacs).
-    ```
+Fato: Está chovendo. \pause
 
-- Podemos fazer algumas consultas
+```prolog
+chovendo.
+```
 
-    - É verdade que o João utiliza o editor vim? \pause
+\pause
 
-        ```prolog
-        ?- editor(joao, vim).
-        true.
-        ```
+Fato: Maria comprou um livro do Jorge. \pause
 
-        \pause
-
-    - É verdade que o João utiliza o editor emacs? \pause
-
-        ```prolog
-        ?- editor(joao, emacs).
-        false.
-        ```
+```prolog
+comprou(maria, livro, jorge).
+```
 
 
 ## Consultas
 
-- Quando uma consulta é realizada o Prolog faz uma busca sequencial por fatos
-  que unificam com o termo que está sendo consultado
+Podemos fazer consultas sobre os fatos que foram definidos. \pause
 
-    - Dois termos unificam se os predicados são os mesmos e cada argumento
-      correspondente é o mesmo
-
-- Se um fato que unifica com a consulta for encontrado, o Prolog irá responder
-  `true`{.prolog}, caso contrário o Prolog responderá `false`{.prolog}
-
-- A resposta `false`{.prolog} significa que não foi encontrado um fato que
-  unifica com a questão
+A forma de uma consulta é similar a de um fato.
 
 
 ## Consultas
 
-- Fatos
+Dado os seguintes fatos
 
-    ```prolog
-    humano(socrates).
-    humano(aristoteles).
+```prolog
+editor(joao, vim).
+editor(pedro, emacs).
+```
 
-    ateniense(socrates).
-    ```
+Podemos fazer algumas consultas. \pause
 
-- Consulta \pause
+É verdade que o João utiliza o editor vim? \pause
 
-    ```prolog
-    ?- ateniense(aristoteles).
-    false.
-    ```
+```prolog
+?- editor(joao, vim).
+true.
+```
 
-- Apesar de poder ser verdade no mundo real que Aristóteles era ateniense
-  (viveu em Atenas), nós não podemos provar isto a partir dos fatos dados
+\pause
 
+É verdade que o João utiliza o editor emacs? \pause
 
-## Variáveis
-
-- Para fazer perguntas que as respostas não sejam apenas `true`{.prolog}
-  e `false`{.prolog} usamos variáveis
-
-- As variáveis começam com letra maiúscula
+```prolog
+?- editor(joao, emacs).
+false.
+```
 
 
-## Variáveis
+## Consultas
 
-- Fatos
+Quando uma consulta é realizada o Prolog faz uma busca sequencial por fatos que unificam com o termo que está sendo consultado. \pause
 
-    ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    ```
+- Dois termos unificam se os predicados são os mesmos e cada argumento correspondente é o mesmo. \pause
 
-- Consulta
+Se um fato que unifica com a consulta for encontrado, o Prolog irá responder `true`{.prolog}, caso contrário o Prolog responderá `false`{.prolog}. \pause
 
-    - Existe algum `E`{.prolog} tal que Pedro utiliza o editor `E`{.prolog}?
-      \pause
-
-        ```prolog
-        ?- editor(pedro, E).
-        E = emacs.
-        ```
+A resposta `false`{.prolog} significa que não foi encontrado um fato que unifica com a questão.
 
 
-## Variáveis
+## Consultas
 
-- O Prolog realiza uma busca da mesma forma que antes, mas considera que uma
-  variável não instanciada unifica com qualquer objeto
+Fatos
 
-- Quando o Prolog encontra um fato que unifica com a consulta, ele marca o fato
-  e exibe os valores unificados com as variáveis
+```prolog
+humano(socrates).
+humano(aristoteles).
 
-    - Se o utilizador pressionar \keys{\return} a busca é finalizada
+ateniense(socrates).
+```
 
-    - Se o utilizador pressionar \keys{;} a busca é reiniciada a partir da
-      marca
+Consulta \pause
+
+```prolog
+?- ateniense(aristoteles).
+false.
+```
+
+Apesar de poder ser verdade no mundo real que Aristóteles era ateniense (viveu em Atenas), nós não podemos provar isto a partir dos fatos dados.
 
 
 ## Variáveis
 
-- Fatos
+Para fazer perguntas que as respostas não sejam apenas `true`{.prolog} e `false`{.prolog} usamos variáveis. \pause
 
-    ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    ```
+As variáveis começam com letra maiúscula.
 
-- Consulta
 
-    - Existe algum `E`{.prolog} tal que João utiliza o editor `E`{.prolog}? \pause
+## Variáveis
 
-        ```prolog
-        ?- editor(joao, E).
-        E = vim ;
-        E = emacs.
-        ```
+Fatos
+
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+```
+
+Consulta
+
+Existe algum `E`{.prolog} tal que Pedro utiliza o editor `E`{.prolog}? \pause
+
+```prolog
+?- editor(pedro, E).
+E = emacs.
+```
+
+
+## Variáveis
+
+O Prolog realiza uma busca da mesma forma que antes, mas considera que uma variável não instanciada unifica com qualquer objeto. \pause
+
+Quando o Prolog encontra um fato que unifica com a consulta, ele marca o fato e exibe os valores unificados com as variáveis \pause
+
+- Se o utilizador pressionar `enter` a busca é finalizada
+
+- Se o utilizador pressionar `;` a busca é reiniciada a partir da marca
+
+
+## Variáveis
+
+Fatos
+
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+```
+
+Consulta
+
+Existe algum `E`{.prolog} tal que João utiliza o editor `E`{.prolog}? \pause
+
+```prolog
+?- editor(joao, E).
+E = vim ;
+E = emacs.
+```
 
 
 ## Conjunções
 
-- Também é possível fazer consultas mais elaboradas usando conjunções (e)
+Também é possível fazer consultas mais elaboradas usando conjunções (e).
 
 
 ## Conjunções
 
-- Fatos
+Fatos
+
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+editor(maria, vim).
+```
+
+Consultas
+
+- João e Pedro utilizam o editor emacs? \pause
+
+- João utiliza o editor emacs e Pedro utiliza o editor emacs? \pause
 
     ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    editor(maria, vim).
+    ?- editor(joao, emacs), editor(pedro, emacs).
+    true.
     ```
-
-- Consultas
-
-    - João e Pedro utilizam o editor emacs?
-
-    - João utiliza o editor emacs e Pedro utiliza o editor emacs? \pause
-
-        ```prolog
-        ?- editor(joao, emacs), editor(pedro, emacs).
-        true.
-        ```
 
 - O símbolo "," é pronunciado "e"
 
 
 ## Conjunções
 
-- Quando uma sequência de metas separadas por vírgula é dada para o Prolog, ele
-  tenta satisfazer uma meta por vez
+Quando uma sequência de metas separadas por vírgula é dada para o Prolog, ele tenta satisfazer uma meta por vez. \pause
 
-- Todas as metas devem ser satisfeitas para a consulta ser satisfeita
-
-
-## Conjunções
-
-- Fatos
-
-    ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    editor(maria, vim).
-    ```
-
-- Consulta
-
-    - Existe algum `E`{.prolog} tal que João e Maria utilizam o editor
-      `E`{.prolog}? De outra forma: existe algum `E`{.prolog} tal que João
-      utiliza o editor `E`{.prolog} e Maria utiliza o editor `E`{.prolog}?
-      \pause
-
-        ```prolog
-        ?- editor(joao, E), editor(maria, E).
-        E = vim ;
-        false.
-        ```
+Todas as metas devem ser satisfeitas para a consulta ser satisfeita.
 
 
 ## Conjunções
 
-- Fatos
+Fatos
 
-    \small
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+editor(maria, vim).
+```
+
+Consulta
+
+- Existe algum `E`{.prolog} tal que João e Maria utilizam o editor `E`{.prolog}? De outra forma: existe algum `E`{.prolog} tal que João utiliza o editor `E`{.prolog} e Maria utiliza o editor `E`{.prolog} \pause
 
     ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    editor(maria, vim).
+    ?- editor(joao, E), editor(maria, E).
+    E = vim ;
+    false.
     ```
-
-    \normalsize
-
-- Consulta
-
-    - Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog}
-      utilizam o editor emacs? De outra forma: existem `X`{.prolog}
-      e `Y`{.prolog} tal que `X`{.prolog} utiliza o editor emacs e `Y`{.prolog}
-      utiliza o editor emacs? \pause
-
-        \small
-
-        `?- editor(X, emacs), editor(Y, emacs).`{.prolog} \pause \newline
-        `X = Y, Y = joao ;`{.prolog} \pause \newline
-        `X = joao, Y = pedro ;`{.prolog} \pause \newline
-        `X = pedro, Y = joao ;`{.prolog} \pause \newline
-        `X = Y, Y = pedro.`{.prolog}
 
 
 ## Conjunções
 
-- Fatos
+Fatos
 
-    \small
+\small
 
-    ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    editor(maria, vim)
-    ```
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+editor(maria, vim).
+```
 
-    \normalsize
+\normalsize
 
-- Consulta
+Consulta
 
-    - Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog}
-      utilizam o editor emacs e o nome de `X`{.prolog} "vem antes" que o de
-      `Y`{.prolog}? \pause
+- Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs? De outra forma: existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} utiliza o editor emacs e `Y`{.prolog} utiliza o editor emacs? \pause
 
-        ```prolog
-        ?- editor(X, emacs), editor(Y, emacs), X @< Y.
-        X = joao,
-        Y = pedro ;
-        false.
-        ```
+  \small
+
+  `?- editor(X, emacs), editor(Y, emacs).`{.prolog} \pause \newline
+  `X = Y, Y = joao ;`{.prolog} \pause \newline
+  `X = joao, Y = pedro ;`{.prolog} \pause \newline
+  `X = pedro, Y = joao ;`{.prolog} \pause \newline
+  `X = Y, Y = pedro.`{.prolog}
 
 
 ## Conjunções
 
-- Fatos
+Fatos
+
+\small
+
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+editor(maria, vim)
+```
+
+\normalsize
+
+Consulta
+
+- Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs e o nome de `X`{.prolog} "vem antes" que o de `Y`{.prolog}? \pause
 
     ```prolog
-    editor(joao, vim).
-    editor(joao, emacs).
-    editor(pedro, emacs).
-    editor(maria, vim).
+    ?- editor(X, emacs), editor(Y, emacs), X @< Y.
+    X = joao,
+    Y = pedro ;
+    false.
     ```
 
-- Consulta
 
-    - Existem `X`{.prolog}, `Y`{.prolog} e `Z`{.prolog} tal que `X`{.prolog}
-      e `Y`{.prolog} utilizam o editor `Z`{.prolog}? \pause
+## Conjunções
 
-        ```prolog
-        ?- editor(X, Z), editor(Y, Z).
-        ```
+Fatos
 
-    - Qual é a resposta?
+```prolog
+editor(joao, vim).
+editor(joao, emacs).
+editor(pedro, emacs).
+editor(maria, vim).
+```
+
+Consulta
+
+- Existem `X`{.prolog}, `Y`{.prolog} e `Z`{.prolog} tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor `Z`{.prolog}? \pause
+
+```prolog
+?- editor(X, Z), editor(Y, Z).
+```
+
+- Qual é a resposta?
 
 
 ## Regras
 
-- Forma de abstração utilizada pelo Prolog
+As regras são a forma de abstração utilizada pelo Prolog. \pause
 
-- Usamos regras para dizer que um fato depende de um outro grupo de fatos
+Usamos regras para dizer que um fato depende de um outro grupo de fatos. \pause
 
-- Uma **regra** é um sentença genérica sobre objetos e suas relações
+Uma **regra** é um sentença genérica sobre objetos e suas relações.
+
 
 ## Exemplo de regra
 
-- Dois programadores podem fazer um par para programação se eles
-  utilizam o mesmo editor \pause
+Dois programadores podem fazer um par para programação se eles utilizam o mesmo editor \pause
 
-    ```prolog
-    par(X, Y) :-
-        editor(X, Z),
-        editor(Y, Z),
-        X @< Y.
-    ```
+```prolog
+par(X, Y) :-
+    editor(X, Z),
+    editor(Y, Z),
+    X @< Y.
+```
 
 
 
@@ -540,10 +520,7 @@ Exemplos
 
 <!-- TODO: diagrama tikz -->
 
-Defina um predicado `coloracao(A, B, C, D, E)`{.prolog} que é verdadeiro se
-`A`{.prolog}, `B`{.prolog}, `C`{.prolog}, `D`{.prolog} e `E`{.prolog} são cores
-que podem colorir as respectivas regiões do mapa abaixo de maneira que duas
-regiões adjacentes não tenham a mesma cor.
+Defina um predicado `coloracao(A, B, C, D, E)`{.prolog} que é verdadeiro se `A`{.prolog}, `B`{.prolog}, `C`{.prolog}, `D`{.prolog} e `E`{.prolog} são cores que podem colorir as respectivas regiões do mapa abaixo de maneira que duas regiões adjacentes não tenham a mesma cor.
 
 ```text
 +-------+-------+
@@ -655,9 +632,7 @@ D = azul
 
 <!-- TODO: diagrama tikz -->
 
-Defina um predicado `circuito(A, B, C, D)`{.prolog} que é verdadeiro se as
-entradas `A`{.prolog}, `B`{.prolog} e `C`{.prolog} produzem a saída
-`D`{.prolog} no circuito abaixo.
+Defina um predicado `circuito(A, B, C, D)`{.prolog} que é verdadeiro se as entradas `A`{.prolog}, `B`{.prolog} e `C`{.prolog} produzem a saída `D`{.prolog} no circuito abaixo.
 
 ```text
 A ---|\  X
@@ -819,9 +794,7 @@ false.
 
 ## Simulação de circuito
 
-- Inicialmente fizemos o predicado pensando em especificar as entradas do
-  circuito e obter a saída, mas é possível especificar a saída e obter as
-  entradas!
+Inicialmente fizemos o predicado pensando em especificar as entradas do circuito e obter a saída, mas é possível especificar a saída e obter as entradas!
 
 
 ## Simulação de circuito
@@ -841,11 +814,13 @@ false.
 
 
 
-Leitura recomendada
-===================
+Leitura
+=======
 
 
-## Leitura recomendada
+## Leitura
+
+Recomendada
 
 - [The principal programming paradigms](http://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.pdf)
 
