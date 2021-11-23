@@ -8,9 +8,9 @@ Definições
 
 ## Definições
 
-- Uma **cláusula** é um fato ou uma regra
+Uma **cláusula** é um fato ou uma regra. \pause
 
-- Um **predicado** é a coleção de cláusulas com o mesmo nome e aridade
+Um **predicado** é a coleção de cláusulas com o mesmo nome e aridade.
 
 
 
@@ -19,104 +19,107 @@ Termos
 
 ## Termos
 
-- Um programa em Prolog é construído com termos
+Um programa em Prolog é construído com termos. \pause
 
-- Termos
+Um **termo** é um dos valores \pause
 
-    - Constantes
+- Constantes
 
-        - Átomos
+    - Átomos
 
-        - Números
+    - Números \pause
 
-    - Variáveis
+- Variáveis \pause
 
-    - Estruturas
+- Estruturas
 
 
 ## Tipos de dados
 
-- Cada termo é definido com uma sequência de caracteres
+Cada termo é definido com uma sequência de caracteres
 
-    - Letras maiúsculas: `A .. Z`
+- Letras maiúsculas: `A .. Z`
 
-    - Letras minúsculas: `a .. z`
+- Letras minúsculas: `a .. z`
 
-    - Dígitos: `0 .. 9`
+- Dígitos: `0 .. 9`
 
-    - Símbolos: `+ - * / \ ~ ^ < > : . ? @ # $`
+- Símbolos: `+ - * / \ ~ ^ < > : . ? @ # $`
 
 
 ## Constante
 
-- Constantes nomeiam objetos ou relações específicas
+Constantes nomeiam objetos ou relações específicas \pause
 
-    - Átomos começam com letra minúscula ou símbolo, ou entre apóstrofos '
+- Átomos começam com letra minúscula ou símbolo, ou entre apóstrofos '
 
-        ```
-        casa
-        -->
-        'Jose da Silva'
-        '123'
-        ```
+    ```
+    casa
+    -->
+    'Jose da Silva'
+    '123'
+    ```
 
-    - Números
+\pause
 
-        ```
-        89
-        -17
-        2.67e10
-        ```
+- Números
+
+    ```
+    89
+    -17
+    2.67e10
+    ```
 
 
 ## Variáveis
 
-- Parecem átomos mas começam com letras maiúsculas ou `_`{.prolog}
+Parecem átomos mas começam com letras maiúsculas ou `_`{.prolog}
 
-    ```
-    X
-    Reposta
-    Nome_longo
-    ```
+```prolog
+X
+Reposta
+Nome_longo
+```
 
-- Variáveis anônimas são definidas com o caractere `_`{.prolog}
+\pause
 
-- Cada ocorrência de uma variável anônima refere-se a um valor (que pode ser
-  diferente das ocorrências anteriores)
+Variáveis anônimas são definidas com o caractere `_`{.prolog}. \pause
 
-- Usamos variáveis anônimas quando não estamos interessados no valor
+Cada ocorrência de uma variável anônima refere-se a um valor (que pode ser diferente das ocorrências anteriores). \pause
 
-    ```prolog
-    ?- gosta(joao, _). % existe alguém que joao gosta?
-    true.
-    ```
+Usamos variáveis anônimas quando não estamos interessados no valor
 
-
-## Estruturas
-
-- Estruturas também são chamadas de termos compostos
-
-- Uma **estrutura** é um único objeto composto de outros objetos chamados de
-  argumentos (ou componentes)
-
-- Semelhante a registros em linguagens imperativas, mas os componentes não são
-  nomeados
+```prolog
+?- gosta(joao, _). % existe alguém que joao gosta?
+true.
+```
 
 
 ## Estruturas
 
-- Fato: João possui o livro Algoritmos escrito pelo Cormem
 
-    ```prolog
-    possui(joao, livro(algoritmos, cormem)).
-    ```
+Uma **estrutura** é um único objeto composto de outros objetos chamados de  argumentos (ou componentes) \pause
 
-- O nome da estrutura é chamado de **functor**, no exemplo o functor é `livro`
+- Estruturas também são chamadas de termos compostos. \pause
 
-- `algoritmos` e `cormem` são os **componentes** da estrutura
-  `livro(algoritmos, cormem)`
+- Semelhante a registros em linguagens imperativas, mas os componentes não são nomeados.
 
-- A quantidade de componentes em uma estrutura é a **aridade** da estrutura
+
+## Estruturas
+
+Fato: João possui o livro Algoritmos escrito pelo Cormem
+
+```prolog
+possui(joao, livro(algoritmos, cormem)).
+```
+
+\pause
+
+O nome da estrutura é chamado de **functor**, no exemplo o functor é `livro`. \pause
+
+`algoritmos` e `cormem` são os **componentes** da estrutura `livro(algoritmos, cormem)`. \pause
+
+A quantidade de componentes em uma estrutura é a **aridade** da estrutura.
 
 
 
@@ -125,50 +128,46 @@ Operadores
 
 ## Operadores
 
-- As vezes é conveniente escrever functors como operadores
+As vezes é conveniente escrever functors como operadores. \pause
 
-- `x + y`{.prolog} ao invés de `+(x, y)`{.prolog}
+- `x + y`{.prolog} ao invés de `+(x, y)`{.prolog} \pause
 
-- Observe que os dois exemplos descrevem o mesmo objeto, a estrutura com
-  o functor `+`{.prolog} e os componentes `x` e `y`
-
-
-## Operadores
-
-- O Prolog usa regras de precedência e associatividade semelhantes a de outras
-  linguagens
-
-    - `2 + 4 * 3`{.prolog} é o mesmo que `+(2, \*(4, 3))`{.prolog}
-
-    - `8 / 2 / 2`{.prolog} é o mesmo que `/(/(8,2), 2)`{.prolog}
-
-- Lembre-se: estas construções descrevem estruturas, elas só são interpretadas
-  (e avaliadas) como expressões aritméticas em alguns contexto (veremos
-  a seguir)
-
-    ```prolog
-    ?- X = 2 + 4 * 3, write_canonical(X).
-    +(2,*(4,3))
-    X = 2+4*3.
-    ```
+- Observe que os dois exemplos descrevem o mesmo objeto, a estrutura com o functor `+`{.prolog} e os componentes `x` e `y`
 
 
 ## Operadores
 
-- O símbolo `=`{.prolog} é um operador
+O Prolog usa regras de precedência e associatividade semelhantes a de outras linguagens
 
-    ```prolog
-    ?- X = (casa = 2).
-    X =  (casa=2).
-    ```
+- `2 + 4 * 3`{.prolog} é o mesmo que `+(2, *(4, 3))`{.prolog}
 
-- `casa = 2`{.prolog} é o mesmo que `=(casa, 2)`{.prolog}
+- `8 / 2 / 2`{.prolog} é o mesmo que `/(/(8,2), 2)`{.prolog} \pause
 
-- `X = (casa = 2)`{.prolog} é o mesmo que `=(X, =(casa, 2))`
+Lembre-se: estas construções descrevem estruturas, elas só são interpretadas (e avaliadas) como expressões aritméticas em alguns contexto (veremos a seguir)
 
-- Ambas as construções `casa = 2`{.prolog} e `X = (casa = 2)`{.prolog} são
-  termos, mas uma diferença é que o termo `X = (casa = 2)`{.prolog} está sendo
-  interpretado como código (consulta), enquanto o termo `casa = 2` como um dado
+```prolog
+?- X = 2 + 4 * 3, write_canonical(X).
++(2,*(4,3))
+X = 2+4*3.
+```
+
+
+## Operadores
+
+O símbolo `=`{.prolog} é um operador
+
+```prolog
+?- X = (casa = 2).
+X =  (casa=2).
+```
+
+\pause
+
+`casa = 2`{.prolog} é o mesmo que `=(casa, 2)`{.prolog} \pause
+
+`X = (casa = 2)`{.prolog} é o mesmo que `=(X, =(casa, 2))` \pause
+
+Ambas as construções `casa = 2`{.prolog} e `X = (casa = 2)`{.prolog} são termos, mas uma diferença é que o termo `X = (casa = 2)`{.prolog} está sendo interpretado como código (consulta), enquanto o termo `casa = 2` como um dado.
 
 
 
@@ -178,29 +177,24 @@ Unificação
 
 ## Unificação
 
-- Ideia: dois termos unificam se eles são os mesmos termos ou se eles contêm
-  variáveis que podem ser instanciadas de maneira que os termos resultantes
-  sejam iguais \pause
+Ideia: dois termos unificam se eles são os mesmos termos ou se eles contêm variáveis que podem ser instanciadas de maneira que os termos resultantes sejam iguais. \pause
 
-- O operador `=` é usado para especificar unificação
+O operador `=` é usado para especificar unificação.
 
 
 ## Unificação
 
-- Dois termos constantes unificam se eles são iguais \pause
+Duas constantes unificam se eles são iguais. \pause
 
-- Um termo que é uma variável não instanciada unifica com qualquer outro termo.
-  No caso de duas variáveis não instanciadas é criado uma co-referência, neste
-  caso, quando uma das variáveis é instanciada, a outra também é \pause
+Uma variável não instanciada unifica com qualquer outro termo. No caso de duas variáveis não instanciadas é criado uma co-referência, neste caso, quando uma das variáveis é instanciada, a outra também é. \pause
 
-- Duas estruturas unificam se \pause
+Duas estruturas unificam se \pause
 
-    - Elas têm o mesmo functor e a mesma aridade
+- Elas têm o mesmo functor e a mesma aridade \pause
 
-    - Todos os argumentos correspondentes unificam (observe que a definição
-      é recursiva)
+- Todos os argumentos correspondentes unificam (observe que a definição é recursiva) \pause
 
-    - A instanciação das variáveis são compatíveis
+- A instanciação das variáveis são compatíveis
 
 
 ## Unificação
@@ -227,117 +221,112 @@ Além do paradigma lógico
 
 ## Além do paradigma lógico
 
-- Nós podemos escrever muitos programas utilizando apenas as construções que
-  vimos até agora
+Nós podemos escrever muitos programas utilizando apenas as construções que vimos até agora. \pause
 
-- No entanto, trabalhar com números de forma eficiente requer construções "além
-  do paradigma lógico"
+No entanto, trabalhar com números de forma eficiente requer construções "além do paradigma lógico". \pause
 
-- Primeiro veremos a forma tradicional de trabalhar com número em Prolog
+Primeiro veremos a forma tradicional de trabalhar com número em Prolog. \pause
 
-- Depois veremos a forma moderna usando restrições
+Depois veremos a forma moderna usando restrições.
 
 
 ## Aritmética
 
-- Termos que representam expressões aritméticas são avaliados quando usados com
-  os predicados `=:=`{.prolog}, `=\=`{.prolog}, `>`{.prolog}, `>=`{.prolog},
-  `<`{.prolog}, `=<`{.prolog}
+Termos que representam expressões aritméticas são avaliados quando usados com os predicados `=:=`{.prolog}, `=\=`{.prolog}, `>`{.prolog}, `>=`{.prolog}, `<`{.prolog}, `=<`{.prolog} \pause
 
-    \small
+\small
 
-    ```prolog
-    ?- 3 + 4 =:= 10 - 3.     % igual
-    true.
-    ?- 4 * 3 =\= 4 + 4 + 4.  % diferente
-    false.
-    ?- X = 3, Y = 5, X + Y > 2 * X.
-    X = 3,
-    Y = 5.
-    ?- X = 3, Y = 5, X + Y < 2 * X.
-    false.
-    ?- X > 2.
-    ERROR: >/2: Arguments are not sufficiently instantiated
-    ```
+```prolog
+?- 3 + 4 =:= 10 - 3.     % igual
+true.
+?- 4 * 3 =\= 4 + 4 + 4.  % diferente
+false.
+?- X = 3, Y = 5, X + Y > 2 * X.
+X = 3,
+Y = 5.
+?- X = 3, Y = 5, X + Y < 2 * X.
+false.
+?- X > 2.
+ERROR: >/2: Arguments are not sufficiently instantiated
+```
 
-- Observe que os termos não podem ter variáveis não instanciadas
+\pause
+
+Observe que os termos não podem ter variáveis não instanciadas.
 
 
 ## Aritmética
 
-- O operador `is`{.prolog} pode ser usado para instanciar uma variável com o resultado
-  de uma expressão aritmética
+O operador `is`{.prolog} pode ser usado para instanciar uma variável com o resultado de uma expressão aritmética. \pause
 
-- O termo da direita é interpretado como um expressão aritmética e o resultado
-  da avaliação da expressão é unificado com o termo da esquerda
+O termo da direita é interpretado como um expressão aritmética e o resultado da avaliação da expressão é unificado com o termo da esquerda \pause
 
-    \small
+\small
 
-    ```prolog
-    ?- X is 3 + 4 * 2.
-    X = 11.
+```prolog
+?- X is 3 + 4 * 2.
+X = 11.
 
-    ?- 2 + 2 is 2 + 2.
-    false.
+?- 2 + 2 is 2 + 2.
+false.
 
-    ?- 2 is X.
-    ERROR: is/2: Arguments are not sufficiently instantiated
-    ```
+?- 2 is X.
+ERROR: is/2: Arguments are not sufficiently instantiated
+```
 
 
 
 ## Escrevendo código em Prolog
 
-- Antes de fazermos alguns exemplos, vamos discutir a forma que vamos projetar predicados
+Antes de fazermos alguns exemplos, vamos discutir a forma que vamos projetar predicados. \pause
 
-\pause
+Vamos seguir um processo similar ao que usamos para escrever funções em Racket \pause
 
-- Vamos seguir um processo similar ao que usamos para escrever funções em Racket
+- Especificação
 
-    - Definimos o nome do predicado e seus argumentos (com o modo dos argumentos e o determinismo)
+    - Nome do predicado e seus argumentos (com o modo dos argumentos e o determinismo)
 
-    - Descrevemos o propósito do predicado
+    - Propósito do predicado
 
-    - Criamos exemplos
+    - Exemplos
 
-    - Implementamos o predicado
+- Implementação \pause
 
-    - Testamos
+- Verificação \pause
+
+- Revisão
 
 
-## Descrição do predicado
+## Propósito do predicado
 
-- De acordo com [PLdoc](http://www.swi-prolog.org/pldoc/package/pldoc.html)
+De acordo com [PLdoc](http://www.swi-prolog.org/pldoc/package/pldoc.html).
 
 
 ## Determinismo
 
-- Um predicado pode ser
+Um predicado pode ser
 
-    - `det` (determinístico) satisfeito uma vez sem escolha
+- `det` (determinístico) satisfeito uma vez sem escolha
 
-    - `semidet` (semi determinístico) falha ou é satisfeito uma vez sem
-      escolha
+- `semidet` (semi determinístico) falha ou é satisfeito uma vez sem escolha
 
-    - `nondet` (não determinístico) sem limite de vezes que o predicado
-      é satisfeito e pode deixar escolha na última vez que é satisfeito
+- `nondet` (não determinístico) sem limite de vezes que o predicado é satisfeito e pode deixar escolha na última vez que é satisfeito
 
 
 ## Modo dos argumentos
 
-- Modo dos argumentos (descrição simplificada)
+Modo dos argumentos (descrição simplificada)
 
-    - `+` argumento precisa estar completamente instanciado
+- `+` argumento precisa estar completamente instanciado
 
-    - `-` argumento não pode estar instanciado
+- `-` argumento não pode estar instanciado
 
-    - `?` argumento pode ou não estar instanciado
+- `?` argumento pode ou não estar instanciado
 
 
 ## Exemplos
 
-- Usaremos a biblioteca
-  [plunit](http://www.swi-prolog.org/pldoc/package/plunit.html)
+Usaremos a biblioteca [plunit](http://www.swi-prolog.org/pldoc/package/plunit.html).
 
 
 ## Quadrado
@@ -383,13 +372,12 @@ true.
 
 ## Fatorial
 
-Defina um predicado `fatorial(N, F)` que é verdadeiro se o fatorial de `N`{.prolog}
-é `F`{.prolog}.
+Defina um predicado `fatorial(N, F)` que é verdadeiro se o fatorial de `N`{.prolog} é `F`{.prolog}.
 
 
 ## Fatorial
 
-\small
+\footnotesize
 
 ```prolog
 :- use_module(library(plunit)).
@@ -426,85 +414,90 @@ fat(0, 1).
 
 ## Considerações
 
-- Nós vimos que a implementação desses predicados não foram "suaves"
+Nós vimos que a implementação desses predicados não foram "suaves". \pause
 
-- Além disso, os predicados restringem o modo de alguns algoritmos para instanciados
+Além disso, os predicados restringem o modo de alguns algoritmos para instanciados.
 
 \pause
 
-- Veremos outra forma de implementar esses predicados
+Veremos outra forma de implementar esses predicados.
 
 
 ## Restrições
 
-- No paradigma de programa por restrições o usuário específica as restrições
-  que as solução de uma problema deve atender e o ambiente de execução tentar
-  encontrar a solução que atenda as restrições
+No paradigma de programa por restrições o usuário específica as restrições que as solução de uma problema deve atender e o ambiente de execução tentar encontrar a solução que atenda as restrições.
 
 \pause
 
-- Nós podemos combinar programação por restrições com programação lógica
+Nós podemos combinar programação por restrições com programação lógica \pause
 
-    - Isto vai nos permitir escrever programas mais simples e mais genéricos ao
-      mesmo tempo que facilitará raciocinar sobre os programas
+- Isto vai nos permitir escrever programas mais simples e mais genéricos ao mesmo tempo que facilitará raciocinar sobre os programas
 
-    - Não veremos como o ambiente procura por soluções que atendam as
-      restrições... (vai ser como uma caixa preta para nós)
+- Não veremos como o ambiente procura por soluções que atendam as restrições... (vai ser como uma caixa preta para nós)
 
 
 ## Restrições
 
-- Já vimos um predicado que cria uma restrição: a unificação! \pause
+Já vimos dois predicado que criam restrições: a unificação e o `dif`. \pause
 
-- `dif`{.prolog} restringe que dois termos sejam diferentes
+\small
 
-    \small
-
-    ```prolog
-    ?- dif(7, 4 + 3).
-    true.
-    ?- dif(7, A).
-    dif(A, 7).
-    ?- dif(A, A).
-    false.
-    ?- dif(A, B).
-    dif(A, B).
-    ?- dif(A, B), A = nada.
-    A = nada,
-    dif(nada, B).
-    ?- dif(A, B), A = nada, B = nada.
-    false.
-    ```
+```prolog
+?- dif(7, 4 + 3).
+true.
+?- dif(7, A).
+dif(A, 7).
+?- dif(A, A).
+false.
+?- dif(A, B).
+dif(A, B).
+?- dif(A, B), A = nada.
+A = nada,
+dif(nada, B).
+?- dif(A, B), A = nada, B = nada.
+false.
+```
 
 
 ## Restrições sobre inteiros
 
-- Precisamos incluir a biblioteca CLP(FD) -- Constraint Logic Programming over Finite Domains
+Precisamos incluir a biblioteca CLP(FD) -- Constraint Logic Programming over Finite Domains
 
-    ```prolog
-    :- use_module(library(clpdf))
-    ```
+```prolog
+:- use_module(library(clpdf))
+```
 
 
 ## Restrições sobre inteiros
 
-- Restrições básicas
+<div class="columns">
+<div class="column" width="50%">
+Restrições básicas
 
-    - `#=`{.prolog}
-    - `#\=`{.prolog}
-    - `#<`{.prolog}
-    - `#=<`{.prolog}
-    - `#>`{.prolog}
-    - `#>=`{.prolog}
+- `#=`{.prolog}
+- `#\=`{.prolog}
+- `#<`{.prolog}
+- `#=<`{.prolog}
+- `#>`{.prolog}
+- `#>=`{.prolog}
 
-- Outros predicados
+\pause
+</div>
+<div class="column" width="50%">
 
-    - `in`{.prolog}
-    - `ins`{.prolog}
-    - `all_distinct`{.prolog}
-    - `label`{.prolog}
+Outros predicados
 
-- Veja a lista completa na [documentação](http://eu.swi-prolog.org/pldoc/man?section=clpfd-predicate-index)
+- `in`{.prolog}
+- `ins`{.prolog}
+- `all_distinct`{.prolog}
+- `label`{.prolog}
+
+</div>
+</div>
+
+\pause
+
+Veja a lista completa na [documentação](http://eu.swi-prolog.org/pldoc/man?section=clpfd-predicate-index).
 
 
 ## Restrições sobre inteiros
