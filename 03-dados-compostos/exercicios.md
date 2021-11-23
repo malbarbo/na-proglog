@@ -21,7 +21,7 @@ title: Dados compostos
     máximo da lista `XS`.
 
 #.  [pp99 1.06] Defina um predicado `palindromo(L)` que é verdadeiro se a lista
-    `L` é palíndromo.
+    `L` é palíndromo. Dica: defina um predicaco auxiliar `invertida(A, B)` que é verdadeiro se `A` é a lista `B` invertida.
 
 #.  [p99 1.20] Defina um predicado `removido_em(L, X, I, R)` que é verdadeiro
     se `R` é a lista `L` com o elemento `X` removido da posição `I`.
@@ -93,7 +93,6 @@ title: Dados compostos
     ```
 
 <!--
-
 #.  [p99 1.07] Defina um predicado `aplainada(L, F)` que é verdadeiro se `F`
     é uma versão não aninhada de `L`. Exemplo
 
@@ -101,6 +100,7 @@ title: Dados compostos
     ?- aplainada([a, [b, [c, d], e]], F).
     F = [a, b, c, d, e].
     ```
+-->
 
 #.  Defina um predicado `arvore(T)` que é verdadeiro se `T` é uma árvore
     binária (de acordo com a definição das notas de aula).
@@ -114,8 +114,6 @@ title: Dados compostos
 
 #.  Analise os exercícios anteriores e reescreva os predicados (que obtiverem
     algum melhora no desempenho) utilizando diferença de listas.
-
--->
 
 
 # Referências
