@@ -67,6 +67,8 @@ title: Retrocesso e corte
     P = [-3, -2, 5].
     ```
 
+<!--
+
 #.  Defina um predicado `primo(N)`{.prolog} que é verdadeiro se `N`{.prolog}
     é um número primo. Seu predicado deve funcionar se `N`{.prolog} estiver
     instanciado ou não. Se `N`{.prolog} não estiver instanciado o seu predicado
@@ -90,7 +92,6 @@ title: Retrocesso e corte
     de permutações e testar se as rainhas foram posicionadas de maneira
     correta.
 
-<!--
 #.  [lpn 6.6] Existe uma rua com três casas vizinhas com cores diferentes
     (vermelho, azul e verde). Em cada casa vive uma pessoa de uma nacionalidade
     diferente e que têm uma animal de estimação diferente. Mais alguns fatos

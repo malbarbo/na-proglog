@@ -43,10 +43,9 @@ aquario(C1, C2, C3, C4) :-
     member(crianca(_, _, _, salgadinho), Criancas),
     member(crianca(_, _, _, sanduiche), Criancas),
     % Nem a criança que quer ver o peixepalhaço nem a que quer ver o tubarão levou bolacha.
-    quer_ver(Criancas, QuerVerPeixe, peixe_palhaco),
-    quer_ver(Criancas, QuerVerTubarao, tubarao),
-    QuerVerPeixe \= crianca(_, _, _, bolacha),
-    QuerVerTubarao \= crianca(_, _, _, bolacha),
+    member(crianca(_, _, C, bolacha), Criancas),
+    dif(C, peixe_palhaco),
+    dif(C, tubarao),
     % Quem levou sanduíche é 1 ano mais novo que a criança que quer ver o peixe­palhaço.
     mais_novo(Criancas, crianca(_, _, _, sanduiche), crianca(_, _, peixe_palhaco, _), 1),
     % A criança que levou fruta é 1 ano mais nova do que quem deseja ver o tubarão.

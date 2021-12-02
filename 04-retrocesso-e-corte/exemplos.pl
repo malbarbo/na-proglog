@@ -1,3 +1,5 @@
+:- use_module(library(clpfd)).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% selecionado(?X, ?L, ?R) is nondet
 %
@@ -38,15 +40,14 @@ test(permutacao, all(P == [[a, b, c], [a, c, b], [b, a, c], [b, c, a], [c, a, b]
 permutacao([], []).
 
 permutacao(L, [X|T]) :-
-    select(X, L, R),
+    selecionado(X, L, R),
     permutacao(R, T).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% natural(-N) is nondet
+%% natural(?N) is nondet
 %
-%  Verdadeiro se N é um número natural. Este predicado é um gerador. A cada fez
-%  que ele é satisfeito ele gera um número.
+%  Verdadeiro se N é um número natural.
 %
 %  Veja o predicado pré-definido between/3.
 %
@@ -69,52 +70,9 @@ test(t0, all(N == [0, 1, 2, 3])) :-
 
 natural(0).
 natural(N) :-
-    natural(N0),
-    N is N0 + 1.
-
-
-%% naturalx(?N) is nondet
-%
-%  Versão do predicado natural/1 que funciona com argumento instanciado ou não.
-
-:- begin_tests(naturalx).
-
-test(t0) :-  naturalx(8).
-test(t1, fail) :-  naturalx(a).
-test(t2, fail) :-  naturalx(-1).
-test(t3, all(N == [0, 1, 2, 3])) :-
-    naturalx(N),
-    (N >= 4, !, fail; true).
-
-:- end_tests(naturalx).
-
-naturalx(N) :-
-    nonvar(N), !,
-    integer(N), % predicado pré-definido que é verdadeiro se N é inteiro.
-    N > 0.
-
-naturalx(N) :-
-    natural(N).
-
-%% nat(-N) is nondet
-%
-%  Versão eficiente do predicado natural/1.
-
-:- begin_tests(nat).
-
-test(t0, all(N == [0, 1, 2, 3])) :-
-    nat(N),
-    ( N >= 4, !, fail; true).
-
-:- end_tests(nat).
-
-nat(N) :-
-    nat(0, N).
-
-nat(N, N).
-nat(N, X) :-
-    N1 is N + 1,
-    nat(N1, X).
+    N #> 0,
+    N #= N0 + 1,
+    natural(N0).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,13 +131,22 @@ test(ordenacao, S == [2, 3, 4, 7]) :-
 :- end_tests(ordenacao).
 
 ordenacao(L, S) :-
-    permutation(L, S),
+    permutacao(L, S),
     ordenado(S), !.
 
 
 %% ordenado(+L) is semidet
 %
 %  Verdadeiro se L é uma lista de números ordenados.
+
+:- begin_tests(ordenado).
+
+test(ordenado0) :- ordenado([]).
+test(ordenado1) :- ordenado([_]).
+test(ordenadon) :- ordenado([1, 2, 2, 3]).
+test(ordenadon, fail) :- ordenado([2, 2, 3, 1]).
+
+:- end_tests(ordenado).
 
 ordenado([]).
 ordenado([_]).
@@ -313,7 +280,8 @@ test(t0, P == 7) :- primeiro_primo(7, P).
 :- end_tests(primeiro_primo).
 
 primeiro_primo(N, P) :-
-    nat(N, P), % gerar um candidado
+    P #>= N,
+    natural(P), % gerar um candidado
     primo(P),  % testa o candidado
     !.         % interrompe o processo após achar uma solução
 
