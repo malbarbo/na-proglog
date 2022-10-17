@@ -16,7 +16,7 @@ EXS_PL=$(addprefix $(DEST)/, $(addsuffix -exemplos.pl, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
 TECTONIC_VERSION=0.9.0
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.10.1
+PANDOC_VERSION=2.19.2
 PANDOC_CMD=$(PANDOC) \
 		--from markdown-auto_identifiers \
 		--pdf-engine=$(CURDIR)/$(TECTONIC) \

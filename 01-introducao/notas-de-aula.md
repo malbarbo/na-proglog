@@ -426,13 +426,11 @@ editor(pedro, emacs).
 editor(maria, vim).
 ```
 
-\normalsize
+\small
 
 Consulta
 
 - Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs? De outra forma: existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} utiliza o editor emacs e `Y`{.prolog} utiliza o editor emacs? \pause
-
-  \small
 
   `?- editor(X, emacs), editor(Y, emacs).`{.prolog} \pause \newline
   `X = Y, Y = joao ;`{.prolog} \pause \newline
