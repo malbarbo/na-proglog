@@ -23,7 +23,7 @@ header-includes: |
       UprightFont    = *-Light,
       ItalicFont     = *-LightItalic,
       BoldFont       = *-Regular,
-      BoldItalicFont = *-RegularItalic
+      BoldItalicFont = *-MediumItalic
     ]{FiraSans}
     \setmonofont[
       Extension   = .otf,
@@ -67,8 +67,6 @@ header-includes: |
     \usepackage{caption}
     \captionsetup[figure]{labelformat=empty}
     \usepackage{ccicons}
-    \usepackage{newunicodechar}
-    \newunicodechar{λ}{\ensuremath{\lambda}}
     \makeatletter
     \beamer@ignorenonframefalse
     \makeatother
