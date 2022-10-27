@@ -19,14 +19,14 @@ Uma lista é
 
 - `vazia`{.prolog}; ou
 
-- `cons(A, B)`{.prolog}, onde `A`{.prolog} é um termo qualquer e `B`{.prolog} é uma lista
+- `cons(A, B)`{.prolog}, onde `A`{.prolog} é um termo qualquer e `B`{.prolog} é uma lista.
 
 
 ## Exemplo
 
 ```prolog
-?- L0 = vazio, L1 = cons(3, vazio),
-                  L2 = cons(3, cons(4, vazio)).
+?- L0 = vazia, L1 = cons(3, vazia),
+                  L2 = cons(3, cons(4, vazia)).
 L0 = vazia,
 L1 = cons(3, vazia),
 L2 = cons(3, cons(4, vazia)).
@@ -39,18 +39,20 @@ A lista `L0`{.prolog} é vazia, a lista `L1`{.prolog} contém apenas o elemento 
 
 <!-- TODO: colocar  os exemplos primeiro -->
 
-Vamos definir um predicado para verificar se um termo é uma lista \pause
+Vamos definir um predicado que é verdadeiro se seu argumento é uma lista \pause
 
 \scriptsize
 
 ```prolog
-%% lista(+X) is semidet
+%% lista(?X) is nondet
 %
 %  Verdadeiro se X é uma lista.
 ```
 
 \pause
 
+<div class="columns">
+<div class="column" width="50%">
 ```prolog
 ?- lista(vazia).
 true.
@@ -63,13 +65,26 @@ false.
 ?- lista(cons(3, 4)).
 false.
 ```
+</div>
+<div class="column" width="50%">
+\pause
+```prolog
+?- lista(X).
+X = vazia ;
+X = cons(_, vazia) ;
+X = cons(_, cons(_, vazia)) ;
+X = cons(_, cons(_, cons(_, vazia))) ;
+...
+```
+</div>
+</div>
 
 
 ## Exemplo - lista
 
 
 ```prolog
-%% lista(+X) is semidet
+%% lista(?X) is semidet
 %
 %  Verdadeiro se X é uma lista.
 lista(vazia).
@@ -79,7 +94,7 @@ lista(cons(_, B)) :- lista(B).
 
 \pause
 
-Não existe nada diferente do vimos anteriormente. O "truque" é que estamos usando estruturas definidas com autorreferência
+Não existe nada diferente do vimos anteriormente. O "truque" é que estamos usando estruturas com autorreferência.
 
 
 ## Listas
@@ -389,7 +404,7 @@ false.
 
 Porque o predicado `tamanho` não funcionou desse forma? \pause
 
-Teoricamente o predicado `tamanho` também deveria funcionar dessa problema, isto porque após a consulta ser satisfeita unificando com a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer a possibilidade de continuar a busca e tentar a unificação com a segunda cláusula, o que criaria o ponto de escolha
+Teoricamente o predicado `tamanho` também deveria funcionar dessa problema, isto porque após a consulta ser satisfeita unificando com a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer a possibilidade de continuar a busca e tentar a unificação com a segunda cláusula, o que criaria o ponto de escolha.
 
 
 ## Projetando predicados (semi) determinísticos
