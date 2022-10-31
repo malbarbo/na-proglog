@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for f in $(find 0* -name '*.pl'); do
     echo Testando: $f
