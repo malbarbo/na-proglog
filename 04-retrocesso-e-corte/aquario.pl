@@ -22,7 +22,7 @@ aquario(C1, C2, C3, C4) :-
     % Quadro crianças estão visitando o aquário
     Criancas = [C1, C2, C3, C4],
     % O nome das crianças são
-    % Aqui definimos as "ordem" das crianças para não termos mais que uma reposta
+    % Aqui definimos as "ordem" das crianças para não termos mais que uma resposta
     C1 = crianca(alan, _, _, _),
     C2 = crianca(danilo, _, _, _),
     C3 = crianca(elias, _, _, _),

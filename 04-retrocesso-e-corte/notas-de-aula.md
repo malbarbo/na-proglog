@@ -82,7 +82,7 @@ Y = paulo.
 
 ## Retrocesso
 
-A maioria dos predicados pré-definidos do Prolog quando usados em metas com (várias) variáveis podem produzir mais do que uma reposta. \pause
+A maioria dos predicados pré-definidos do Prolog quando usados em metas com (várias) variáveis podem produzir mais do que uma resposta. \pause
 
 Vamos ver alguns exemplos.
 
