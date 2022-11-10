@@ -119,7 +119,7 @@ exame(andre, 6.5).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ordenacao(+L, -S) is semidet
+%% ordenacao(+L, ?S) is semidet
 %
 %  Verdadeiro se S é a lista L com os elementos ordenados.
 
@@ -127,6 +127,9 @@ exame(andre, 6.5).
 
 test(ordenacao, S == [2, 3, 4, 7]) :-
     ordenacao([7, 2, 4, 3], S).
+
+test(ordenacao) :-
+    ordenacao([8, 1, 4, 3], [1, 3, 4, 8]).
 
 :- end_tests(ordenacao).
 

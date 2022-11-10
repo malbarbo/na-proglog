@@ -512,7 +512,7 @@ Use a estratégia gerar e testar e projete um predicado `ordenacao(L, S)`{.prolo
 \scriptsize
 
 ```prolog
-%% ordenacao(+L, -S) is semidet
+%% ordenacao(+L, ?S) is semidet
 %
 %  Verdadeiro se S é a lista L com
 %  os elementos ordenados.
