@@ -92,16 +92,6 @@ title: Dados compostos
     F = [3, 3, 5, 7].
     ```
 
-<!--
-#.  [p99 1.07] Defina um predicado `aplainada(L, F)` que é verdadeiro se `F`
-    é uma versão não aninhada de `L`. Exemplo
-
-    ```prolog
-    ?- aplainada([a, [b, [c, d], e]], F).
-    F = [a, b, c, d, e].
-    ```
--->
-
 #.  Defina um predicado `arvore(T)` que é verdadeiro se `T` é uma árvore
     binária (de acordo com a definição das notas de aula).
 
@@ -114,6 +104,16 @@ title: Dados compostos
 
 #.  Analise os exercícios anteriores e reescreva os predicados (que obtiverem
     algum melhora no desempenho) utilizando diferença de listas.
+
+<!--
+#.  [p99 1.07] Defina um predicado `aplainada(L, F)` que é verdadeiro se `F`
+    é uma versão não aninhada de `L`. Exemplo
+
+    ```prolog
+    ?- aplainada([a, [b, [c, d], e]], F).
+    F = [a, b, c, d, e].
+    ```
+-->
 
 
 # Referências
