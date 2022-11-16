@@ -464,7 +464,7 @@ false.
 Precisamos incluir a biblioteca CLP(FD) -- Constraint Logic Programming over Finite Domains
 
 ```prolog
-:- use_module(library(clpdf))
+:- use_module(library(clpfd))
 ```
 
 
