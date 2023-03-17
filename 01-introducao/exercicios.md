@@ -52,10 +52,10 @@ title: Introdução
 #.  [lpn 1.5] Dado a seguinte base de conhecimento
 
     ```prolog
-    likes(sam,Food) :- indian(Food), mild(Food).
-    likes(sam,Food) :- chinese(Food).
-    likes(sam,Food) :- italian(Food).
-    likes(sam,chips).
+    likes(sam, Food) :- indian(Food), mild(Food).
+    likes(sam, Food) :- chinese(Food).
+    likes(sam, Food) :- italian(Food).
+    likes(sam, chips).
 
     indian(curry).
     indian(dahl).
@@ -77,11 +77,11 @@ title: Introdução
     como o Prolog responde as seguintes consultas?
 
     ```prolog
-    likes(sam,dahl).
-    likes(sam,chop_suey).
-    likes(sam,pizza).
-    likes(sam,chips).
-    likes(sam,curry).
+    likes(sam, dahl).
+    likes(sam, chop_suey).
+    likes(sam, pizza).
+    likes(sam, chips).
+    likes(sam, curry).
     ```
 
 
