@@ -456,12 +456,14 @@ editor(maria, vim)
 
 Consulta
 
-- Existem `X`{.prolog} e `Y`{.prolog} tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs e o nome de `X`{.prolog} "vem antes" que o de `Y`{.prolog}? \pause
+- Existem `X`{.prolog} e `Y`{.prolog} distintos tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs? \pause
 
     ```prolog
-    ?- editor(X, emacs), editor(Y, emacs), X @< Y.
+    ?- editor(X, emacs), editor(Y, emacs), dif(X, Y).
     X = joao,
     Y = pedro ;
+    X = pedro,
+    Y = joao ;
     false.
     ```
 
@@ -505,7 +507,7 @@ Dois programadores podem fazer um par para programação se eles utilizam o mesm
 par(X, Y) :-
     editor(X, Z),
     editor(Y, Z),
-    X @< Y.
+    dif(X, Y).
 ```
 
 
