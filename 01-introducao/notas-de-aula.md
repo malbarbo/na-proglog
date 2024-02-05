@@ -304,6 +304,8 @@ As variáveis começam com letra maiúscula.
 
 ## Variáveis
 
+\small
+
 Fatos
 
 ```prolog
@@ -335,6 +337,8 @@ Quando o Prolog encontra um fato que unifica com a consulta, ele marca o fato e 
 
 ## Variáveis
 
+\small
+
 Fatos
 
 ```prolog
@@ -361,6 +365,8 @@ Também é possível fazer consultas mais elaboradas usando conjunções (e).
 
 ## Conjunções
 
+\small
+
 Fatos
 
 ```prolog
@@ -372,9 +378,7 @@ editor(maria, vim).
 
 Consultas
 
-- João e Pedro utilizam o editor emacs? \pause
-
-- João utiliza o editor emacs e Pedro utiliza o editor emacs? \pause
+- João e Pedro utilizam o editor emacs? \pause João utiliza o editor emacs e Pedro utiliza o editor emacs? \pause
 
     ```prolog
     ?- editor(joao, emacs), editor(pedro, emacs).
@@ -393,6 +397,8 @@ Todas as metas devem ser satisfeitas para a consulta ser satisfeita.
 
 ## Conjunções
 
+\small
+
 Fatos
 
 ```prolog
@@ -406,6 +412,8 @@ Consulta
 
 - Existe algum `E`{.prolog} tal que João e Maria utilizam o editor `E`{.prolog}? De outra forma: existe algum `E`{.prolog} tal que João utiliza o editor `E`{.prolog} e Maria utiliza o editor `E`{.prolog} \pause
 
+    \small
+
     ```prolog
     ?- editor(joao, E), editor(maria, E).
     E = vim ;
@@ -415,9 +423,9 @@ Consulta
 
 ## Conjunções
 
-Fatos
-
 \small
+
+Fatos
 
 ```prolog
 editor(joao, vim).
@@ -425,8 +433,6 @@ editor(joao, emacs).
 editor(pedro, emacs).
 editor(maria, vim).
 ```
-
-\small
 
 Consulta
 
@@ -441,9 +447,9 @@ Consulta
 
 ## Conjunções
 
-Fatos
-
 \small
+
+Fatos
 
 ```prolog
 editor(joao, vim).
@@ -452,11 +458,11 @@ editor(pedro, emacs).
 editor(maria, vim)
 ```
 
-\normalsize
-
 Consulta
 
 - Existem `X`{.prolog} e `Y`{.prolog} distintos tal que `X`{.prolog} e `Y`{.prolog} utilizam o editor emacs? \pause
+
+    \small
 
     ```prolog
     ?- editor(X, emacs), editor(Y, emacs), dif(X, Y).
@@ -469,6 +475,8 @@ Consulta
 
 
 ## Conjunções
+
+\small
 
 Fatos
 
