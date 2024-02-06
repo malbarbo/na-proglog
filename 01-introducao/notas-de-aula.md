@@ -455,7 +455,7 @@ Fatos
 editor(joao, vim).
 editor(joao, emacs).
 editor(pedro, emacs).
-editor(maria, vim)
+editor(maria, vim).
 ```
 
 Consulta
