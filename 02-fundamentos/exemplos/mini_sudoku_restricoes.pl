@@ -1,3 +1,5 @@
+% vim: set ft=prolog spell spelllang=pt_br:
+
 :- use_module(library(clpfd)).
 
 %% mini_sudoku(?A, ?B, ?C, ?D,
@@ -51,5 +53,3 @@ mini_sudoku(A, B, C, D,
 %
 %  Verdadeiro se A, B, C e D são diferentes par a par.
 diferentes(A, B, C, D) :- all_distinct([A, B, C, D]).
-
-% vim: set ft=prolog spell spelllang=pt_br:

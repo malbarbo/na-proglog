@@ -1,3 +1,5 @@
+% vim: set ft=prolog spell spelllang=pt_br:
+
 %% mini_sudoku(?A, ?B, ?C, ?D,
 %              ?E, ?F, ?G, ?H,
 %              ?I, ?J, ?K, ?L,
@@ -79,5 +81,3 @@ diferentes(A, B, C, D) :-
     dif(B, C),
     dif(B, D),
     dif(C, D).
-
-% vim: set ft=prolog spell spelllang=pt_br:
