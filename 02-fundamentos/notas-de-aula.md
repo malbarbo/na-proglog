@@ -392,7 +392,7 @@ test(f0) :- fat(0, 1).
 test(f1) :- fat(1, 1).
 test(f2) :- fat(2, 2).
 test(f3) :- fat(3, 6).
-test(f4, [fail]) :- fat(4, 22).
+test(f4, fail) :- fat(4, 22).
 test(f5, F == 120) :- fat(5, F).
 
 :- end_tests(fatorial).
@@ -416,7 +416,7 @@ fat(0, 1).
 
 Nós vimos que a implementação desses predicados não foram "suaves". \pause
 
-Além disso, os predicados restringem o modo de alguns algoritmos para instanciados.
+Além disso, os predicados restringem o modo de alguns parâmetros para instanciados.
 
 \pause
 
@@ -572,7 +572,7 @@ Referências
 
 ## Referências básicas
 
-- Seção [Prolog Integer Arithmetic](https://www.metalevel.at/prolog/clpz) do livro [The Power Of Prolog](https://www.metalevel.at/prolog/clpz)
+- Seção [Data Structures](https://www.metalevel.at/prolog/data) e [Integer Arithmetic](https://www.metalevel.at/prolog/clpz) do livro [The Power Of Prolog](https://www.metalevel.at/prolog/clpz)
 
 - Capítulos 2 e 3 da apostila [Paradigmas de programação - Prolog](http://www.ic.unicamp.br/~meidanis/courses/mc346/2017s2/prolog/apostila-prolog.pdf)
 
