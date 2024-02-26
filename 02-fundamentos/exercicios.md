@@ -3,7 +3,7 @@
 title: Fundamentos
 ---
 
-#.  [lpn 2.1] Quais dos seguintes par de termos unificam? Quando for o caso, dê o valor instanciado para cada variável que levou a unificação.
+#.  [lpn 2.1] Quais dos seguintes pares de termos unificam? Quando for o caso, dê o valor instanciado para cada variável que levou a unificação.
 
     a. `bread = bread`{.prolog}
     a. `'Bread' = bread`{.prolog}
@@ -79,6 +79,29 @@ title: Fundamentos
     a. `e_filho(X)`, X é filho.
     a. `ancestral(X, Y)`, X é ancestral de Y.
 
+
+#.  [pp99 2.01] Defina um predicado `primo(+X)` que é verdadeiro se `X` é um número primo. Exemplo
+
+    ```prolog
+    ?- primo(7).
+    true.
+
+    ?- primo(4).
+    false.
+    ```
+
+
+#.  Defina um predicado `perfeito(+X)` que é verdadeiro se `X` é um número perfeito. Um número é perfeito se a soma dos seu divisores próprios é igual a ela. Por exemplo, o número 6 é perfeito, pois 6 = 1 + 2 + 3. O número 28 também é perfeito, pois 28 = 1 + 2 + 4 + 7 + 14.
+
+    ```prolog
+    ?- perfeito(6).
+    true.
+
+    ?- perfeito(9).
+    false.
+    ```
+
+
 #. Projete um predicado para encontrar o valor (digito de 1 a 9) de cada letra no seguinte enigma
 
     ```
@@ -130,17 +153,6 @@ title: Fundamentos
     S = 41.
     ```
 
-#.  [pp99 2.01] Defina um predicado `primo(X)` que é verdadeiro se `X` é um
-    número primo. Exemplo
-
-    ```prolog
-    ?- primo(7).
-    true.
-
-    ?- primo(4).
-    false.
-    ```
-
 #.  Defina um predicado `quantidade_primos(I, F, Q)` que é verdadeiro se `Q`
     é a quantidade de números primos entre `I` e `F`.
 
@@ -148,19 +160,6 @@ title: Fundamentos
     ?- quantidade_primos(2, 10, Q).
     Q = 4.
     ```
-
-#.  Defina um predicado `perfeito(X)` que é verdadeiro se `X` é um número
-    perfeito. Um número é perfeito se a soma dos seu divisores próprios é igual
-    a ela. Por exemplo, o número 6 é perfeito, pois 6 = 1 + 2 + 3. O número 28
-    também é perfeito, pois 28 = 1 + 2 + 4 + 7 + 14.
-
-    ```prolog
-    ?- perfeito(6).
-    true.
-
-    ?- perfeito(9).
-    false.
-    ```'
 -->
 
 
