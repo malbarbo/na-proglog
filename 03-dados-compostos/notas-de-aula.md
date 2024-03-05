@@ -304,14 +304,22 @@ Resultado dos testes
 true.
 ```
 
+## Exemplo - tamanho
+
+Limitações
+
+O predicado `tamanho` requer que `XS`{.prolog} esteja instanciado. \pause Tente usar o predicado sem instanciar `XS`! \pause
+
+Discussão feito em sala.
+
+Veja o arquivo `tamanho.pl` para uma implementação mais genérica que usa restrições de inteiros.
+
 
 ## Exemplo - $k$-ésimo
 
 <!-- TODO: renomear kesimo para nesimo -->
 
-Projete um predicado `kesimo(XS, K, N)`{.prolog} que é verdadeiro se
-`N`{.prolog}  é o $k$-ésimo elemento da lista `XS`{.prolog}. (Veja o predicado
-pré-definido `nth0/3`{.prolog} )
+Projete um predicado `kesimo(XS, K, N)`{.prolog} que é verdadeiro se `N`{.prolog} é o $k$-ésimo elemento da lista `XS`{.prolog}. (Veja o predicado pré-definido `nth0/3`{.prolog} )
 
 
 ## Exemplo - $k$-ésimo
@@ -404,14 +412,14 @@ false.
 
 Porque o predicado `tamanho` não funcionou desse forma? \pause
 
-Teoricamente o predicado `tamanho` também deveria funcionar dessa problema, isto porque após a consulta ser satisfeita unificando com a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer a possibilidade de continuar a busca e tentar a unificação com a segunda cláusula, o que criaria o ponto de escolha.
+Teoricamente o predicado `tamanho` também deveria funcionar dessa forma, isto porque após a consulta ser satisfeita unificando com a primeira cláusula do predicado `tamanho`, o Prolog deveria oferecer a possibilidade de continuar a busca e tentar a unificação com a segunda cláusula, o que criaria o ponto de escolha.
 
 
 ## Projetando predicados (semi) determinísticos
 
 Porque o predicado `tamanho` não funcionou desse forma? \pause
 
-Isto não aconteceu porque o SWI-prolog faz uma otimização. Ele só faz a busca entre as cláusulas do predicado que tenham o primeiro argumento "compatível" com a consulta \pause
+Porque o SWI-prolog faz uma otimização. Ele só faz a busca entre as cláusulas do predicado que tenham o primeiro argumento "compatível" com a consulta \pause
 
 - Se o primeiro argumento da consulta é uma constante, ele tenta as cláusula que o primeiro argumento seja a mesma constante da consulta ou uma variável \pause
 
@@ -438,7 +446,7 @@ Observamos que o primeiro argumento da primeira cláusula é a estrutura `'.'`{.
 
 Seguindo a otimização do SWI-Prolog, em uma consulta `tamanho`{.prolog} com o primeiro argumento `[]`{.prolog}, o interpretador tentará a unificação apenas com a segunda cláusula. Em uma consulta com uma lista não vazia como primeiro argumento, o interpretador tentará a unificação apenas com a primeira cláusula.
 
-Vamos ver o que acontece com a definição de `kesimo`{.prolog}
+Vamos ver o que acontece com a definição de `kesimo`{.prolog}.
 
 
 ## Projetando predicados (semi) determinísticos
@@ -591,14 +599,11 @@ comprimida([X, Y | XS], [X | YS]) :-
 
 \pause
 
-- Entra em laço. A consulta unifica com a primeira cláusula, a primeira meta
-  unifica novamente com a primeira cláusula e assim por diante
+- Entra em laço. A consulta unifica com a primeira cláusula, a primeira meta unifica novamente com a primeira cláusula e assim por diante
 
-- Neste caso o operador de corte sozinho não resolve o problema é necessário
-  fazer duas definições
+- Neste caso o operador de corte sozinho não resolve o problema é necessário fazer duas definições
 
-    - Uma para o caso que em `XS`{.prolog} está instanciado e outro para o caso em que
-      `XS` não está instanciado
+    - Uma para o caso que em `XS`{.prolog} está instanciado e outro para o caso em que `XS` não está instanciado
 
     - Usamos os predicados pré-definidos `nonvar`{.prolog} e `var`{.prolog}, respectivamente
 
@@ -634,8 +639,7 @@ comprimida([X, Y | XS], [X | YS]) :-
     ...
     ```
 
-- Como alterar a definição de `tamanho`{.prolog} para funcionar da mesma forma que
-  `length`{.prolog}?
+- Como alterar a definição de `tamanho`{.prolog} para funcionar da mesma forma que `length`{.prolog}?
 -->
 
 
@@ -682,9 +686,9 @@ X = 3 ;
 X = 7 ;
 false.
 ?- membro(X, L).
-L = [X|_G279] ;
-L = [_G67, X|_G279] ;
-L = [_G67, _G69, X|_G279] ;
+L = [X|_] ;
+L = [_, X|_] ;
+L = [_, _, X|_] ;
 ...
 ```
 
@@ -758,11 +762,11 @@ Defina um predicado `concatenacao(XS, YS, ZS)`{.prolog} que é verdadeiro se `ZS
 test(t0) :- concatenacao([1, 2], [3, 4, 5], [1, 2, 3, 4, 5]).
 test(t1, XS == [1, 2, 4]) :- concatenacao(XS, [3], [1, 2, 4, 3]).
 test(t2, YS == [4, 3]) :- concatenacao([1, 2], YS, [1, 2, 4, 3]).
-test(t3, all([XS, YS] == [
-         [[], [1, 2, 3]],
-         [[1], [2, 3]],
-         [[1, 2], [3]],
-         [[1, 2, 3], []]])) :-
+test(t3, all((XS, YS) == [
+         ([], [1, 2, 3]),
+         ([1], [2, 3]),
+         ([1, 2], [3]),
+         ([1, 2, 3], [])])) :-
     concatenacao(XS, YS, [1, 2, 3]).
 :- end_tests(concatenacao).
 ```
@@ -977,8 +981,4 @@ Referências
 
 - Capítulo 4 da apostila [Paradigmas de programação - Prolog](http://www.ic.unicamp.br/~meidanis/courses/mc346/2017s2/prolog/apostila-prolog.pdf)
 
-- Capítulos
-    [4](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch4) e
-    [6](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch6)
-    do livro
-    [Learn Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
+- Capítulos [4](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch4) e [6](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch6) do livro [Learn Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
