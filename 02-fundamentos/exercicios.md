@@ -80,7 +80,18 @@ title: Fundamentos
     a. `ancestral(X, Y)`, X é ancestral de Y.
 
 
-#.  [pp99 2.01] Defina um predicado `primo(+X)` que é verdadeiro se `X` é um número primo. Exemplo
+#. Projete um predicado para encontrar o valor de cada letra no seguinte enigma
+
+    ```
+    SEND +
+    MORE =
+    MONEY
+    ```
+
+    de maneira que a adição fique correta. O valor de cada letra deve ser um dígito e todas as letras devem ter valores distintos. A letra `M` não poder ser 0. Note que a posição que a letra aparece muda o valor que ela representa no número. Por exemplo, se `E = 3`, no "número" SEND a letra `E` corresponde a 300 enquanto que no "número" MORE ela corresponde a 3 e em MONEY 30. Use restrições sobre inteiros!
+
+
+#.  (Desafio) [pp99 2.01] Projete um predicado `primo(+X)` que é verdadeiro se `X` é um número primo. Exemplo
 
     ```prolog
     ?- primo(7).
@@ -91,7 +102,7 @@ title: Fundamentos
     ```
 
 
-#.  Defina um predicado `perfeito(+X)` que é verdadeiro se `X` é um número perfeito. Um número é perfeito se a soma dos seu divisores próprios é igual a ela. Por exemplo, o número 6 é perfeito, pois 6 = 1 + 2 + 3. O número 28 também é perfeito, pois 28 = 1 + 2 + 4 + 7 + 14.
+#.  (Desafio) Projete um predicado `perfeito(+X)` que é verdadeiro se `X` é um número perfeito. Um número é perfeito se a soma dos seu divisores próprios é igual a ela. Por exemplo, o número 6 é perfeito, pois 6 = 1 + 2 + 3. O número 28 também é perfeito, pois 28 = 1 + 2 + 4 + 7 + 14.
 
     ```prolog
     ?- perfeito(6).
@@ -101,16 +112,6 @@ title: Fundamentos
     false.
     ```
 
-
-#. Projete um predicado para encontrar o valor (digito de 1 a 9) de cada letra no seguinte enigma
-
-    ```
-    SEND +
-    MORE =
-    MONEY
-    ```
-
-    de maneira que a adição fique correta. Note que a posição que a letra aparece muda o valor que ela representa no número. Por exemplo, se `E = 3`, no "número" SEND a letra `E` corresponde a 300 enquanto que no "número" MORE ela corresponde a 3 e em MONEY 30. Use restrições sobre inteiros!
 
 <!--
 #.  Defina um predicado `triangulo(A, B, C, T)` que é verdadeiro se `A`, `B`
