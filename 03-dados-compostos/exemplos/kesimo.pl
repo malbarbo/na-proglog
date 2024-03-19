@@ -1,8 +1,6 @@
 %% kesimo(+XS, +K, ?N) is semdet
 %
 %  Verdadeiro se N é o K-ésimo elemento da lista XS.
-%
-%  Veja o predicado pré-definido nth0/3.
 
 :- begin_tests(kesimo).
 

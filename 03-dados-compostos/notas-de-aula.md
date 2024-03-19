@@ -1,6 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
 title: Dados compostos
+# TODO: adicionar predicados de alta ordem para ajudar nos testes: findnsols.
 ---
 
 
@@ -529,12 +530,13 @@ comprimida([], []).
 
 comprimida([X], [X]).
 
-comprimida([X, X | XS], YS) :-
-    comprimida([X | XS], YS).
-
 comprimida([X, Y | XS], [X | YS]) :-
     dif(X, Y),
     comprimida([Y | XS], YS).
+
+comprimida([X, X | XS], YS) :-
+    dif(YS, []),
+    comprimida([X | XS], YS).
 ```
 
 Usamos o modelo para listas. Caso a lista não seja vazia, existem duas alternativas, o primeiro elemento é repetido ou não.
@@ -556,25 +558,9 @@ Warning: /home/malbarbo/desktop/x.pl:72:
 true.
 ```
 
+\pause
 
-## Exemplo - comprimida
-
-Solução usando corte para tornar o predicado semi determinístico
-
-\small
-
-```prolog
-comprimida([], []) :- !.
-
-comprimida([X], [X]) :- !.
-
-comprimida([X, X | XS], YS) :-
-    comprimida([X | XS], YS), !.
-
-comprimida([X, Y | XS], [X | YS]) :-
-    dif(X, Y),
-    comprimida([Y | XS], YS).
-```
+Podemos adicionar `nondet` ao exemplos para evitar esses avisos.
 
 
 <!-- TODO: quanto falar de variáveis instanciadas vs não instancias?

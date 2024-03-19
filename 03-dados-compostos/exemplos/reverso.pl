@@ -1,8 +1,6 @@
 %% reverso(+A, ?R) is nondet
 %
 %  Verdadeiro se o reverso da lista A é R.
-%
-%  Veja o predicado pré-definido reverse/2.
 
 :- begin_tests(reverso).
 
