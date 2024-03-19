@@ -1,12 +1,10 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Retrocesso e corte
+urlcolor: Blue
 ---
 
-#.  [pip 7.9] Três números naturais $A, B, C$ são chamados de terno Pitagórico
-    se $A^2 + B^2 = C^2$. Projete um predicado
-    `terno_pitagorico(A, B, C)`{.prolog} que gere ternos Pitagóricos. Dica: use
-    o gerador `between`{.prolog} visto em sala. Exemplo
+@) [pip 7.9] Três números naturais $A, B, C$ são chamados de terno Pitagórico se $A^2 + B^2 = C^2$. Projete um predicado `terno_pitagorico(A, B, C)`{.prolog} que gere ternos Pitagóricos.
 
     ```prolog
     ?- terno_pitagorico(A, B, C).
@@ -22,10 +20,7 @@ title: Retrocesso e corte
     ...
     ```
 
-#.  [pp99 1.26] Defina um predicado `combinacao(K, L, C)`{.prolog} que
-    é verdadeiro se `C`{.prolog} é uma combinação de `K`{.prolog} elementos de
-    `L`{.prolog}. Este predicado deve ser capaz de gerar todas as combinações
-    de `K`{.prolog} elementos via retrocesso. Exemplo
+@) [pp99 1.26] Defina um predicado `combinacao(K, L, C)`{.prolog} que é verdadeiro se `C`{.prolog} é uma combinação de `K`{.prolog} elementos de `L`{.prolog}. Este predicado deve ser capaz de gerar todas as combinações de `K`{.prolog} elementos via retrocesso. Exemplo
 
     ```prolog
     ?- combinacao(3, [a, b, c d], C).
@@ -36,9 +31,7 @@ title: Retrocesso e corte
     false.
     ```
 
-#.  Defina um predicado `subconjunto(L, S)`{.prolog} que é verdadeiro se
-    `S`{.prolog} é um subconjunto de `L`{.prolog}. Este predicado deve ser
-    capaz de gerar todos os subconjuntos de `L`{.prolog} via retrocesso.
+@) Defina um predicado `subconjunto(L, S)`{.prolog} que é verdadeiro se `S`{.prolog} é um subconjunto de `L`{.prolog}. Este predicado deve ser capaz de gerar todos os subconjuntos de `L`{.prolog} via retrocesso.
     Exemplo
 
     ```prolog
@@ -54,69 +47,33 @@ title: Retrocesso e corte
     false.
     ```
 
-#.  Dado um conjunto de números inteiros e um inteiro $S$, o problema da soma
-    dos subconjuntos consiste em verificar se existe um subconjunto não vazio
-    cuja soma é $S$. Defina um predicado `soma_subconjunto(A, S, P)`{.prolog}
-    que é verdadeiro se `P`{.prolog} é um subconjunto de `A`{.prolog} e a soma
-    dos elementos de `P`{.prolog} é `S`{.prolog}. Uma estratégia simples (e
-    ingênua) para implementar este predicado é testar os subconjunto até
-    encontrar um que tenha a soma esperada.
+@) Dado um conjunto de números inteiros e um inteiro $S$, o problema da soma dos subconjuntos consiste em verificar se existe um subconjunto não vazio cuja soma é $S$. Defina um predicado `soma_subconjunto(A, S, P)`{.prolog} que é verdadeiro se `P`{.prolog} é um subconjunto de `A`{.prolog} e a soma dos elementos de `P`{.prolog} é `S`{.prolog}. Uma estratégia simples (e ingênua) para implementar este predicado é testar os subconjunto até encontrar um que tenha a soma esperada.
 
     ```prolog
     ?- soma_subconjunto([-7, -3, -2, 5, 8], 0, P).
     P = [-3, -2, 5].
     ```
 
-<!--
+@) [pip 11-8] Implemente um predicado para encontrar todas as formas de posicionar 4 rainhas em um tabuleiro de xadrez 4x4 de maneira que nenhuma rainha ataque outra. Uma forma de fazer este predicado é criar um gerador de permutações e testar se as rainhas foram posicionadas de maneira correta.
 
-#.  Defina um predicado `primo(N)`{.prolog} que é verdadeiro se `N`{.prolog}
-    é um número primo. Seu predicado deve funcionar se `N`{.prolog} estiver
-    instanciado ou não. Se `N`{.prolog} não estiver instanciado o seu predicado
-    deve gerar os número primos via retrocesso. Veja os predicados
-    pré-definidos `var`{.prolog} e `nonvar`{.prolog}. Exemplos
+@) Quatro crianças estão visitando o aquário pela primeira vez. Dado os seguintes detalhes
 
-    ```prolog
-    ?- primo(7).
-    true.
-    ?- primo(N).
-    N = 2 ;
-    N = 3 ;
-    N = 5 ;
-    N = 7 ;
-    ...
-    ```
+    a) Nem a criança que quer ver o peixe palhaço nem a que quer ver o tubarão levou bolacha.
+    b) Quem levou sanduíche é 1 ano mais novo que a criança que quer ver o peixe palhaço.
+    c) A criança que levou fruta é 1 ano mais nova do que quem deseja ver o tubarão.
+    d) Danilo é 2 anos mais velho do que a criança que levou fruta.
+    e) Alan não tem 6 anos.
+    f) A criança que levou salgadinho quer ver o tubarão.
+    g) Quem deseja ver o tubarão é o Renan ou o menino de 9 anos.
+    h) Quem levou sanduíche tem 8 anos ou quer ver o leão-marinho.
 
-#.  [pip 11-8] Implemente um predicado para encontrar todas as formas de
-    posicionar 4 rainhas em um tabuleiro de xadrez 4x4 de maneira que nenhuma
-    rainha ataque outra. Uma forma de fazer este predicado é criar um gerador
-    de permutações e testar se as rainhas foram posicionadas de maneira
-    correta.
-
-#.  [lpn 6.6] Existe uma rua com três casas vizinhas com cores diferentes
-    (vermelho, azul e verde). Em cada casa vive uma pessoa de uma nacionalidade
-    diferente e que têm uma animal de estimação diferente. Mais alguns fatos
-    sobre as casas:
-
-    -   O inglês vive na casa vermelha.
-
-    -   O espanhol tem como animal de estimação um jaguar.
-
-    -   O japonês vive ao lado de quem tem uma cobra.
-
-    -   Quem tem um cobra vive a esquerda da casa azul.
-
-    Defina um predicado `zebra(N)` que é verdadeiro se a pessoa com
-    nacionalidade N tem como animal de estimação uma zebra.
-
-#.  Defina um predicado que resolva o problema de lógica "Teste de Einstein"
-    descrito em [rachacuca.com.br/teste-de-einstein](http://rachacuca.com.br/teste-de-einstein/).
--->
+    Projete um predicado ` aquario(?C1, ?C2, ?C3, ?C4)`{.prolog}, que é verdadeiro se `C1`{.prolog}, `C2`{.prolog}, `C3`{.prolog} e `C4`{.prolog} são termos `crianca(Nome, Idade, Animal, Lanche)`{.prolog} que atendem as restrições anteriores.
 
 
 # Referências
 
--   [lpn]. [Lear Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
+- [lpn]. [Lear Prolog Now](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-html)
 
--   [pip]. Programming in Prolog.
+- [pip]. Programming in Prolog.
 
--   [pp99]. [99 problemas para resolver em (Prolog)](https://sites.google.com/site/prologsite/prolog-problems)
+- [pp99]. [99 problemas para resolver em (Prolog)](https://sites.google.com/site/prologsite/prolog-problems)

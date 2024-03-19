@@ -15,7 +15,7 @@
 %  - Alguém tem uma zebra
 %
 %  Você pode verificar a solução para esse problema fazendo a consulta
-%  defasio(Casa1, Casa2, Casa3).
+%  desafio(Casa1, Casa2, Casa3).
 
 desafio(Casa1, Casa2, Casa3) :-
     % existe uma rua com três casa vizinhas

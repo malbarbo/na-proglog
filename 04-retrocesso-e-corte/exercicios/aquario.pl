@@ -16,7 +16,7 @@
 %  5) Alan não tem 6 anos.
 %  6) A criança que levou salgadinho quer ver o tubarão.
 %  7) Quem deseja ver o tubarão é o Renan ou o menino de 9 anos.
-%  8)Quem levou sanduíche tem 8 anos ou quer ver o leão-marinho.
+%  8) Quem levou sanduíche tem 8 anos ou quer ver o leão-marinho.
 
 aquario(C1, C2, C3, C4) :-
     % Quadro crianças estão visitando o aquário

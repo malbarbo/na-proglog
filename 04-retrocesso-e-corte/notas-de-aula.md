@@ -211,14 +211,12 @@ Especificação \pause
 %% selecionado(?X, ?L, ?R) is nondet
 %
 %  Verdadeiro se R é a lista L sem o elemento X.
-%
-%  Veja o predicado pré-definido select/3.
 
 :- begin_tests(selecionado).
-test(t0, all(r(X, R) == [
-             r(4, [2, 6]),
-             r(2, [4, 6]),
-             r(6, [4, 2])])) :-
+test(t0, all((X, R) == [
+             (4, [2, 6]),
+             (2, [4, 6]),
+             (6, [4, 2])])) :-
     selecionado(X, [4, 2, 6], R).
 
 :- end_tests(selecionado).
@@ -265,8 +263,6 @@ Especificação \pause
 %% permutacao(+L, ?P) is nondet
 %
 %  Verdadeiro se P é uma permutação de L.
-%
-%  Veja o predicado pré-definido permutation/2.
 
 :- begin_tests(permutacao).
 
@@ -512,21 +508,21 @@ Use a estratégia gerar e testar e projete um predicado `ordenacao(L, S)`{.prolo
 \scriptsize
 
 ```prolog
-%% ordenacao(+L, ?S) is semidet
+%% ordenado(+L, ?S) is semidet
 %
 %  Verdadeiro se S é a lista L com
 %  os elementos ordenados.
 
-:- begin_tests(ordenacao).
+:- begin_tests(ordenado).
 
-test(ordenacao, S == [2, 3, 4, 7]) :-
-    ordenacao([7, 2, 4, 3], S).
+test(ordenado, S == [2, 3, 4, 7]) :-
+    ordenado([7, 2, 4, 3], S).
 
-:- end_tests(ordenacao).
+:- end_tests(ordenado).
 
-ordenacao(L, S) :-
+ordenado(L, S) :-
     permutation(L, S),
-    ordenado(S), !.
+    em_ordem(S), !.
 ```
 
 </div>
@@ -537,24 +533,24 @@ ordenacao(L, S) :-
 \scriptsize
 
 ```prolog
-%% ordenado(+L) is semidet
+%% em_ordem(+L) is semidet
 %
-%  Verdadeiro se L é uma lista de números ordenados.
+%  Verdadeiro se L é uma lista de números em_ordems.
 
-:- begin_tests(ordenado).
+:- begin_tests(em_ordem).
 
-test(ordenado0) :- ordenado([]).
-test(ordenado1) :- ordenado([_]).
-test(ordenadon) :- ordenado([1, 2, 2, 3]).
-test(ordenadon, fail) :- ordenado([2, 2, 3, 1]).
+test(em_ordem0) :- em_ordem([]).
+test(em_ordem1) :- em_ordem([_]).
+test(em_ordemn) :- em_ordem([1, 2, 2, 3]).
+test(em_ordemn, fail) :- em_ordem([2, 2, 3, 1]).
 
-:- end_tests(ordenado).
+:- end_tests(em_ordem).
 
-ordenado([]).
-ordenado([_]).
-ordenado([A, B | R]) :-
+em_ordem([]).
+em_ordem([_]).
+em_ordem([A, B | R]) :-
     A =< B,
-    ordenado([B | R]).
+    em_ordem([B | R]).
 ```
 </div>
 </div>
@@ -565,10 +561,16 @@ ordenado([A, B | R]) :-
 Projete um predicado `caminho_hamiltoniano(+G, -C)`{.prolog} que é verdadeiro se `C`{.prolog} é um caminho hamiltoniano (lista de vértices) do grafo `G`{.prolog}. Um caminho hamiltoniano é um caminho que passa exatamente uma vez por cada vértice de `G`{.prolog}. Use a estratégia gerar e testar, gere permutações dos vértices e verifique se forma um caminho.
 
 
-## Exemplo - primeiro primo
+## Exemplo - problema de lógica
 
-Projete um predicado `primeiro_primo(+N, ?P)`{.prolog} que é verdadeiro se `P`{.prolog} é o primeiro primo maior que ou igual a `N`{.prolog}. Use a estratégia gerar e testar, gere números inteiros a partir de `N`{.prolog} e teste se ele é primo.
+[lpn 6.6] Existe uma rua com três casas vizinhas com cores diferentes (vermelho, azul e verde). Em cada casa vive uma pessoa de uma nacionalidade diferente e que têm uma animal de estimação diferente. Mais alguns fatos sobre as casas:
 
+- O inglês vive na casa vermelha.
+- O espanhol tem como animal de estimação um jaguar.
+- O japonês vive ao lado de quem tem uma cobra.
+- Quem tem um cobra vive a esquerda da casa azul.
+
+Defina um predicado `zebra(?N)`{.prolog} que é verdadeiro se a pessoa com nacionalidade `N`{.prolog} tem como animal de estimação uma zebra.
 
 
 Referências
